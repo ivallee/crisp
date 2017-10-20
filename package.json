@@ -1,7 +1,7 @@
 {
-  "name": "react-simple-boilerplate",
+  "name": "lhl-final-project",
   "version": "1.0.0",
-  "description": "Simple and lightweight Boilerplate for ReactJS projects",
+  "description": "",
   "scripts": {
     "lint": "eslint --ext .jsx,.js src",
     "start": "node server.js"
