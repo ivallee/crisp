@@ -1,10 +1,10 @@
 var path = require('path');
-var webpack = require('webpack');
+require('webpack');
 
 module.exports = {
   devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://0.0.0.0:3000',
     './src/index.jsx'
   ],
   output: {
@@ -19,19 +19,6 @@ module.exports = {
       { loader: 'url-loader', test: /\.gif$/ },
       { loader: 'file-loader', test: /\.(ttf|eot|svg)$/ },
     ],
-    resolve: {
-      alias: {
-        config$: './configs/app-config.js',
-        react: './vendor/react-master',
-      },
-      extensions: ['', 'js', 'jsx'],
-      modules: [
-        'node_modules',
-        'bower_components',
-        'shared',
-        '/shared/vendor/modules',
-      ],
-    },
     rules: [
       {
         test: /\.jsx?$/,
