@@ -11,15 +11,21 @@ class Filters extends Component {
     updateFilter: PropTypes.func
   }
 
+  addFilter = () => {
+    this.props.addFilter({type: 'Placeholder'});
+  }
+
   render() {
     return (
       <div>
         <h4>Filters</h4>
         <ul className="list-group">
-          <li className="list-group-item">Dinner</li>
-          <li className="list-group-item">Vegan</li>
-          <li className="list-group-item">Fast</li>
-          <li className="list-group-item active">Add a filter</li>
+          {
+            this.props.filters.list.map((filter, index) => {
+              return <li className="list-group-item" key={index}>{filter.type}</li>;
+            })
+          }
+          <li className="list-group-item active" onClick={this.addFilter}>Add a filter</li>
         </ul>
       </div>
     );

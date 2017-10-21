@@ -5,7 +5,7 @@ import Filters from './Filters.jsx';
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = { query: '', filters: { nextID: 0 } };
+    this.state = { query: '', filters: { nextID: 0, list: [] } };
   }
 
   doSearch = () => {
@@ -19,20 +19,20 @@ class Search extends Component {
 
   addFilter = (newFilter) => {
     let filters = this.state.filters;
-    filters[filters.nextID] = newFilter;
+    filters.list[filters.nextID] = newFilter;
     filters.nextID += 1;
     this.setState({filters});
   }
 
   removeFilter = (filterID) => {
     let filters = this.state.filters;
-    delete filters[filterID];
+    delete filters.list[filterID];
     this.setState({filters});
   }
 
   updateFilter = (filterID, newFilter) => {
     let filters = this.state.filters;
-    filters[filterID] = newFilter;
+    filters.list[filterID] = newFilter;
     this.setState({filters});
   }
 
