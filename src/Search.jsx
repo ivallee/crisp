@@ -3,6 +3,11 @@ import SearchBar from './SearchBar.jsx';
 import Filters from './Filters.jsx';
 
 class Search extends Component {
+
+  doSearch = (query) => {
+    console.log(`Searching for ${query}`);
+  }
+
   render() {
     return (
       <div>
@@ -17,7 +22,7 @@ class Search extends Component {
 
         <div className="row marketing">
           <div className="col">
-            <SearchBar />
+            <SearchBar doSearch={this.doSearch}/>
             <Filters />
           </div>
         </div>
