@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
-import Search from './Search.jsx';
-import Results from './__Results.jsx';
-import Recipe from './__Recipe.jsx';
+import { Switch, Route } from 'react-router-dom';
+import Home from './__Home.jsx'
+import SearchResults from './__SearchResults.jsx';
+import RecipeDetails from './__RecipeDetails.jsx';
 
 class Main extends Component {
   render() {
     return (
       
       <Switch>
-        <Route exact path='/' component={Search}/>
-        <Route path='/results' component={Results}/>
-        <Route path='/recipe/:id' component={Recipe}/>
+        <Route exact path='/' component={Home}/>
+        <Route path='/results' component={SearchResults}/>
+        <Route path='/recipe/:id' component={RecipeDetails}/>
       </Switch>
 
     );
-    //React-Router switch to <SearchResults> or <RecipeDetails>
   }
 }
 export default Main;
