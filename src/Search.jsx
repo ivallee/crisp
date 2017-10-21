@@ -3,9 +3,37 @@ import SearchBar from './SearchBar.jsx';
 import Filters from './Filters.jsx';
 
 class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { query: '', filters: { nextID: 0 } };
+  }
 
-  doSearch = (query) => {
-    console.log(`Searching for ${query}`);
+  doSearch = () => {
+    console.log(`Searching for ${this.state.query}`);
+    console.log(JSON.stringify(this.state.filters));
+  }
+
+  setQuery = (query) => {
+    this.setState({ query });
+  }
+
+  addFilter = (newFilter) => {
+    let filters = this.state.filters;
+    filters[filters.nextID] = newFilter;
+    filters.nextID += 1;
+    this.setState({filters});
+  }
+
+  removeFilter = (filterID) => {
+    let filters = this.state.filters;
+    delete filters[filterID];
+    this.setState({filters});
+  }
+
+  updateFilter = (filterID, newFilter) => {
+    let filters = this.state.filters;
+    filters[filterID] = newFilter;
+    this.setState({filters});
   }
 
   render() {
@@ -22,8 +50,8 @@ class Search extends Component {
 
         <div className="row marketing">
           <div className="col">
-            <SearchBar doSearch={this.doSearch}/>
-            <Filters />
+            <SearchBar query={this.state.query} setQuery= {this.setQuery} doSearch={this.doSearch}/>
+            <Filters filters={this.state.filters} addFilter={this.addFilter} removeFilter={this.removeFilter} updateFilter={this.updateFilter}/>
           </div>
         </div>
       </div>
