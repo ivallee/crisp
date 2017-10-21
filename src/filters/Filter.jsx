@@ -9,6 +9,39 @@ class Filter extends Component {
     update: PropTypes.func
   }
 
+  static displayNames = {
+    'ingredient': 'Ingredients',
+    'cuisine': 'Cuisine',
+    'diet': 'Diet',
+    'allergy': 'Allergy'
+  };
+
+  static cuisineList = [
+    { key: '', display: '' },
+    { key: 'african', display: 'African' },
+    { key: 'chinese', display: 'Chinese' },
+    { key: 'korean', display: 'Korean' },
+    { key: 'vietnamese', display: 'Vietnamese' },
+    { key: 'thai', display: 'Thai' },
+    { key: 'british', display: 'British' },
+    { key: 'irish', display: 'Irish' },
+    { key: 'french', display: 'French' },
+    { key: 'italian', display: 'Italian' },
+    { key: 'mexican', display: 'Mexican' },
+    { key: 'spanish', display: 'Spanish' },
+    { key: 'middle eastern', display: 'Middle Eastern' },
+    { key: 'jewish', display: 'Jewish' },
+    { key: 'american', display: 'American' },
+    { key: 'cajun', display: 'Cajun' },
+    { key: 'southern', display: 'Southern' },
+    { key: 'greek', display: 'Greek' },
+    { key: 'german', display: 'German' },
+    { key: 'nordic', display: 'Nordic' },
+    { key: 'eastern european', display: 'Eastern European' },
+    { key: 'caribbean', display: 'Caribbean' },
+    { key: 'latin american', display: 'Latin American' },
+  ];
+
   remove = () => {
     this.props.remove(this.props.index);
   }
@@ -19,6 +52,19 @@ class Filter extends Component {
     this.props.update(newData, this.props.index);
   }
 
+  buildInputs = () => {
+    const commonProps = { className: 'form-control', value: this.props.data.value, onChange: this.update };
+
+    switch(this.props.data.type) {
+    case 'ingredient':
+      return <input type="text" {...commonProps} />;
+    case 'cuisine':
+      return <select {...commonProps}>{Filter.cuisineList.map(cuisine => {
+        return <option value={cuisine.key} key={cuisine.key}>{cuisine.display}</option>;
+      })}</select>;
+    }
+  }
+
   render() {
     return (
       <li className="list-group-item">
@@ -26,9 +72,9 @@ class Filter extends Component {
           <span aria-hidden="true">&times;</span>
         </button>
         <div className="form-group row">
-          <label htmlFor="example-text-input" className="col-2 col-form-label">{this.props.data.type}</label>
+          <label htmlFor="example-text-input" className="col-2 col-form-label">{Filter.displayNames[this.props.data.type]}</label>
           <div className="col-10">
-            <input className="form-control" type="text" value={this.props.data.value} id="example-text-input" onChange={this.update}/>
+            {this.buildInputs()}
           </div>
         </div>
       </li>

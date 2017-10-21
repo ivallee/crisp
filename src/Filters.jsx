@@ -13,7 +13,7 @@ class Filters extends Component {
   }
 
   addFilter = () => {
-    this.props.addFilter({type: 'Placeholder', value: ''});
+    this.props.addFilter({type: 'cuisine', value: ''});
   }
 
   render() {
