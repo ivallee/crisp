@@ -13,7 +13,7 @@ class NavBar extends Component {
               </a> */}
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Register</a>
+              <NavLink className="nav-link" activeClassName="nav-link" to='/results'>Results</NavLink>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Log in</a>
