@@ -3,12 +3,6 @@ import PropTypes from 'proptypes';
 
 
 class Filters extends Component {
-  constructor(props) {
-    super(props);
-    this.props.addFilter({type: 'Dinner'});
-    this.props.addFilter({type: 'Vegan'});
-    this.props.addFilter({type: 'Fast'});
-  }
 
   static propTypes = {
     filters: PropTypes.object,
