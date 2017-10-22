@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import RecipeCard from './RecipeCard.jsx';
 
 class RecipeList extends Component {
-
-  // Logic to generate list of cards should probably go here
+  
+  // Function to generate list of cards should probably go here
 
 
   render() {
