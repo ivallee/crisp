@@ -21,6 +21,7 @@ class SearchBar extends Component {
           value={this.props.query}
           onChange={this.handleQueryChange} />
         <input className="btn btn-lg btn-success"
+          id="search-button"
           type="button"
           value="Search"
           onClick={this.props.doSearch} />

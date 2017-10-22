@@ -1,3 +1,52 @@
 h1 {
   color: tomato;
 }
+
+#toolbar {
+  width: 100%;
+  max-width: 700px;
+  // margin: 10px;
+  border: 1px hidden black;
+  padding-left: 10px;
+  // padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#toolbar .wrapper {
+}
+
+.btn-secondary {
+  color: black;
+  background-color: white;
+}
+
+body {
+  font-family: 'Lora', serif;
+}
+.heading {
+  font-weight: 700;
+}
+.subheading {
+  font-weight: 400;
+}
+
+#react-root {
+  background: lightgoldenrodyellow;
+}
+
+.container {
+  background: white;
+}
+
+.nav-link {
+  padding: 1em 0.75em;
+}
+
+h3.text-muted {
+  margin-bottom: 0em;
+  padding-top: 0.33em;
+}
+
+#search-button {
+  margin-top: 1em;
+}

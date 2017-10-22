@@ -6,10 +6,16 @@ import Footer from './Footer.jsx';
 class App extends Component {
   render() {
     return (
-      <div className="container">
-        <NavBar />
-        <Main />
-        <Footer />
+      <div>
+        <div className="container">
+          <NavBar />
+        </div>
+        <div className="container">
+          <Main />
+        </div>
+        <div className="container">
+          <Footer />
+        </div>
       </div>
     );
   }
