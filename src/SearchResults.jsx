@@ -8,11 +8,9 @@ class SearchResults extends Component {
     return (
       <div>
         <Search />
-        <div className="jumbotron">
-          <h3 className="display-3">Results</h3>
-          <p className="lead">Here are some recipes based on your search criteria.</p>
-          <p>
-          </p>
+        <div id="search-result-list">
+          <h3 id="search-result-list-header">Results</h3>
+          <p>Here are some recipes based on your search criteria.</p>
         </div>
         {/* <div className="row marketing">
           <div className="col">

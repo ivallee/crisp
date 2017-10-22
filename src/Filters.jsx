@@ -18,7 +18,7 @@ class Filters extends Component {
 
   render() {
     return (
-      <div>
+      <div id="filter-div">
         <h4>Filters</h4>
         <button className="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg">Your Filters</button>
         <button type="button" className="btn btn-info">Reset filters</button>
