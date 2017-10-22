@@ -5,8 +5,7 @@ class RecipeCard extends Component {
   render() {
     return (
 
-      <div className='recipe-card'>
-        <div className="col-sm-6">
+        <div className="recipe-card col-sm-6">
           <div className="card">
             <div className="card-block">
               <div className="row">
@@ -40,7 +39,6 @@ class RecipeCard extends Component {
             </div>
           </div>
         </div>
-      </div>
 
     );
   }
