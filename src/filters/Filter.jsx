@@ -95,7 +95,10 @@ class Filter extends Component {
 
     switch(this.props.data.type) {
     case 'ingredient':
-      return <input type="text" {...commonProps} />;
+      return <div>
+
+          <input type="text" {...commonProps} />
+        </div>;
     case 'cuisine':
       return <select {...commonProps}>{Filter.cuisineList.map(cuisine => {
         return <option value={cuisine.key} key={cuisine.key}>{cuisine.display}</option>;

@@ -11,8 +11,22 @@ class Search extends Component {
   doSearch = () => {
     let request = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?query=${this.state.query}`;
     request += '&limitLicense=true&instructionsRequired=true&number=8';
-    console.log(request);
-    console.log(JSON.stringify(this.state.filters));
+
+    const cuisineFilters = this.getFilterString('cuisine');
+    request += cuisineFilters && `&cuisine=${cuisineFilters}`;
+
+    //TODO: diet filter should be unique
+    const dietFilters = this.getFilterString('diet');
+    request += dietFilters && `&diet=${dietFilters}`;
+
+    const allergyFilters = this.getFilterString('allergy');
+    request += allergyFilters && `&intolerances=${allergyFilters}`;
+
+    //TODO: mealType filter should be unique
+    const mealTypeFilters = this.getFilterString('mealType');
+    request += mealTypeFilters && `&type=${mealTypeFilters}`;
+
+    console.log(encodeURI(request));
   }
 
   setQuery = (query) => {
@@ -35,6 +49,16 @@ class Search extends Component {
     let filters = this.state.filters;
     filters[filterID] = newFilter;
     this.setState({filters});
+  }
+
+  getFilterString = (type) => {
+    const filterList =  this.state.filters.filter((filter) => {
+      return filter.type === type;
+    }).map(filter => filter.value);
+
+    if(!filterList) return '';
+
+    return filterList.join(', ');
   }
 
   render() {
