@@ -13,7 +13,8 @@ class Filter extends Component {
     'ingredient': 'Ingredients',
     'cuisine': 'Cuisine',
     'diet': 'Diet',
-    'allergy': 'Allergy'
+    'allergy': 'Allergy',
+    'mealType': 'Meal Type'
   };
 
   static cuisineList = [
@@ -42,6 +43,43 @@ class Filter extends Component {
     { key: 'latin american', display: 'Latin American' },
   ];
 
+  static dietList = [
+    { key: '', display: '' },
+    { key: 'vegan', display: 'Vegan' },
+    { key: 'lacto vegetarian', display: 'No Eggs' },
+    { key: 'ovo vegetarian', display: 'No Dairy' },
+  ];
+
+  static allergyList = [
+    { key: '', display: '' },
+    { key: 'dairy', display: 'Dairy' },
+    { key: 'egg', display: 'Egg' },
+    { key: 'gluten', display: 'Gluten' },
+    { key: 'peanut', display: 'Peanut' },
+    { key: 'sesame', display: 'Sesame' },
+    { key: 'seafood', display: 'Seafood' },
+    { key: 'shellfish', display: 'Shellfish' },
+    { key: 'soy', display: 'Soy' },
+    { key: 'sulfite', display: 'Sulfite' },
+    { key: 'tree nut', display: 'Tree Nut' },
+    { key: 'wheat', display: 'Wheat' },
+  ];
+
+  static mealTypeList = [
+    { key: '', display: '' },
+    { key: 'main course', display: 'Main Course' },
+    { key: 'side dish', display: 'Side Dish' },
+    { key: 'dessert', display: 'Dessert' },
+    { key: 'appetizer', display: 'Appetizer' },
+    { key: 'salad', display: 'Salad' },
+    { key: 'bread', display: 'Bread' },
+    { key: 'breakfast', display: 'Breakfast' },
+    { key: 'soup', display: 'Soup' },
+    { key: 'beverage', display: 'Beverage' },
+    { key: 'sauce', display: 'Sauce' },
+    { key: 'drink', display: 'Drink' },
+  ];
+
   remove = () => {
     this.props.remove(this.props.index);
   }
@@ -61,6 +99,18 @@ class Filter extends Component {
     case 'cuisine':
       return <select {...commonProps}>{Filter.cuisineList.map(cuisine => {
         return <option value={cuisine.key} key={cuisine.key}>{cuisine.display}</option>;
+      })}</select>;
+    case 'diet':
+      return <select {...commonProps}>{Filter.dietList.map(diet => {
+        return <option value={diet.key} key={diet.key}>{diet.display}</option>;
+      })}</select>;
+    case 'allergy':
+      return <select {...commonProps}>{Filter.allergyList.map(allergy => {
+        return <option value={allergy.key} key={allergy.key}>{allergy.display}</option>;
+      })}</select>;
+    case 'mealType':
+      return <select {...commonProps}>{Filter.mealTypeList.map(mealType => {
+        return <option value={mealType.key} key={mealType.key}>{mealType.display}</option>;
       })}</select>;
     }
   }

@@ -12,8 +12,10 @@ class Filters extends Component {
     updateFilter: PropTypes.func
   }
 
-  addFilter = () => {
-    this.props.addFilter({type: 'cuisine', value: ''});
+  addFilter = (type) => {
+    return () => {
+      this.props.addFilter({type, value: ''});
+    };
   }
 
   render() {
@@ -31,7 +33,13 @@ class Filters extends Component {
                     return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter}/>;
                   })
                 }
-                <li className="list-group-item active" onClick={this.addFilter}>Add a filter</li>
+                <li className="list-group-item active">
+                  <span className="col" onClick={this.addFilter('ingredient')}>Ingredient</span>
+                  <span className="col" onClick={this.addFilter('cuisine')}>Cuisine</span>
+                  <span className="col" onClick={this.addFilter('diet')}>Diet</span>
+                  <span className="col" onClick={this.addFilter('allergy')}>Allergy</span>
+                  <span className="col" onClick={this.addFilter('mealType')}>Meal Type</span>
+                </li>
               </ul>
             </div>
           </div>

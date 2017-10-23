@@ -9,7 +9,9 @@ class Search extends Component {
   }
 
   doSearch = () => {
-    console.log(`Searching for ${this.state.query}`);
+    let request = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?query=${this.state.query}`;
+    request += '&limitLicense=true&instructionsRequired=true&number=8';
+    console.log(request);
     console.log(JSON.stringify(this.state.filters));
   }
 

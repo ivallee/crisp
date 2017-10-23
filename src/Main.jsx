@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
-import NotFound from './error-pages/NotFound.jsx'
+import NotFound from './error-pages/NotFound.jsx';
 
 class Main extends Component {
   render() {
