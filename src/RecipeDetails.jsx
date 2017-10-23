@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
+import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
 
 class RecipeDetails extends Component {
 
@@ -32,28 +34,8 @@ class RecipeDetails extends Component {
             <button type="button" className="btn btn-danger">Banish</button>
           </div>
         </div>
-        <div>
-          <h5>Ingredients:</h5>
-          <ul>
-            <li>Basil</li>
-            <li>Tomato</li>
-            <li>Cheese</li>
-            <li>White Bread</li>
-            <li>Butter</li>
-          </ul>
-        </div>
-        <div>
-          <h5>Instructions:</h5>
-          <ul>
-            <li>Turn on oven and set to 350F</li>
-            <li>Slice tomato</li>
-            <li>Slice cheese</li>
-            <li>Butter your bread and cover in cheese</li>
-            <li>Bake for 5 minutes? </li>
-            <li>Remove from oven and add tomato and basil</li>
-            <li>Consume</li>
-          </ul>
-        </div>
+        <RecipeDetailsIngredients/>
+        <RecipeDetailsInstructions/>
       </div>
     );
   }
