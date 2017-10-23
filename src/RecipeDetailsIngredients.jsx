@@ -7,6 +7,7 @@ class RecipeDetailsIngredients extends Component {
       <div className="recipe-details-ingredients">
         <h5>Ingredients:</h5>
         <ul>
+          {/* For reach ingredient from api... */}
           <li>Basil</li>
           <li>Tomato</li>
           <li>Cheese</li>

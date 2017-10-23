@@ -7,6 +7,7 @@ class RecipeDetailsInstructions extends Component {
     <div className="recipe-details-instructions">
       <h5>Instructions:</h5>
       <ul>
+        {/* For each step from api... */}
         <li>Turn on oven and set to 350F</li>
         <li>Slice tomato</li>
         <li>Slice cheese</li>

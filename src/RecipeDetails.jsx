@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RecipeDetailsLinks from './RecipeDetailsLinks.jsx';
 import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
 import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
 
@@ -23,19 +24,9 @@ class RecipeDetails extends Component {
           </h4>    
           </div>
         </div>
-        <div className="row">
-          <a className="nav-link" href="#">Back to Search</a>
-        </div>
-        <div className="row" id='toolbar'>
-          <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
-            <button type="button" className="btn btn-secondary">Ingredients</button>
-            <button type="button" className="btn btn-secondary">Instructions</button>
-            <button type="button" className="btn btn-info">Save</button>
-            <button type="button" className="btn btn-danger">Banish</button>
-          </div>
-        </div>
-        <RecipeDetailsIngredients/>
-        <RecipeDetailsInstructions/>
+        < RecipeDetailsLinks />
+        < RecipeDetailsIngredients />
+        < RecipeDetailsInstructions />
       </div>
     );
   }
