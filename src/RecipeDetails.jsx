@@ -10,7 +10,7 @@ class RecipeDetails extends Component {
         </div> */}
         <div className="row">
           <div className="col-sm-6">
-            <img className="img-thumbnail" src={'./docs/grilledcheese.jpg'} alt="Card image cap"></img>
+            <img className="img-thumbnail" src={'../docs/grilledcheese.jpg'} alt="Card image cap"></img>
          </div>
         </div>
         <div className="row">
