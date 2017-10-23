@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class RecipeCard extends Component {
 
   render() {
     return (
 
-        <div className="recipe-card col-sm-6">
+      // Change link to be dynamic:
+      <div className="recipe-card col-sm-6">
+        <Link to='/recipes/1' className="recipe-card-link">
           <div className="card">
             <div className="card-block">
               <div className="row">
@@ -38,7 +41,8 @@ class RecipeCard extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </ Link>
+      </div>
 
     );
   }
