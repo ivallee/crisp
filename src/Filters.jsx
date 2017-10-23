@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
-import Filter from './filters/Filter.jsx';
+import Filter from './Filter.jsx';
 import filterData from './filter-data.js';
 
 class Filters extends Component {
@@ -12,10 +12,9 @@ class Filters extends Component {
     updateFilter: PropTypes.func
   }
 
-  addFilter = (filter) => {
+  addFilter = (type) => {
     return () => {
-      filter.value = '';
-      this.props.addFilter(filter);
+      this.props.addFilter({type, value: ''});
     };
   }
 
@@ -35,7 +34,7 @@ class Filters extends Component {
                   })
                 }
                 <li className="list-group-item active">
-                  {filterData.map(filter => <span className="col" key={filter.key} onClick={this.addFilter(filter)}>{filter.displayName}</span> )}
+                  {Object.keys(filterData).map(filterName => <span className="col" key={filterName} onClick={this.addFilter(filterName)}>{filterName}</span> )}
                 </li>
               </ul>
             </div>

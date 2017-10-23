@@ -61,12 +61,18 @@ const mealTypeList = [
   { key: 'drink', display: 'Drink' },
 ];
 
-const filterData = [
-  { key: 'includeIngredients', displayName: 'Ingredient', btn: { text: 'With', style: 'btn-success' }, altKey: 'excludeIngredients', altBtn: { text: 'Without', style: 'btn-danger' }, text: true },
-  { key: 'cuisine', displayName: 'Cuisine', dropdown: cuisineList },
-  { key: 'diet', displayName: 'Diet', dropdown: dietList, unique: true },
-  { key: 'intolerances', displayName: 'Allergy', dropdown: allergyList },
-  { key: 'type', displayName: 'Meal Type', dropdown: mealTypeList, unique: true },
-];
+const filterData = {
+  Ingredient: {
+    key: 'includeIngredients',
+    btn: { text: 'With', style: 'btn-success' },
+    altKey: 'excludeIngredients',
+    altBtn: { text: 'Without', style: 'btn-danger' },
+    text: true
+  },
+  Cuisine: { key: 'cuisine', dropdown: cuisineList },
+  Diet: { key: 'diet', dropdown: dietList, unique: true },
+  Allergy: { key: 'intolerances', dropdown: allergyList },
+  Type: { key: 'type', dropdown: mealTypeList, unique: true },
+};
 
 module.exports = filterData;

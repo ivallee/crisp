@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
+import filterData from './filter-data.js';
 
 class Filter extends Component {
   static propTypes = {
@@ -20,18 +21,18 @@ class Filter extends Component {
   }
 
   switchType = () => {
-    let newData = this.props.data;
-    let old = { key: this.props.data.key, btn: this.props.data.btn };
+    // let newData = this.props.data;
+    // let old = { key: this.props.data.key, btn: this.props.data.btn };
 
-    newData.type = this.props.data.altType;
-    newData.btn = this.props.data.altBtn;
-    newData.altType = old.type;
-    newData.altBtn = old.btn;
-    this.props.update(newData, this.props.index);
+    // newData.type = this.props.data.altType;
+    // newData.btn = this.props.data.altBtn;
+    // newData.altType = old.type;
+    // newData.altBtn = old.btn;
+    // this.props.update(newData, this.props.index);
   }
 
   buildBtn = () => {
-    const btn = this.props.data.btn;
+    const btn = filterData[this.props.data.type].btn;
     if(!btn) return '';
     return <input className={`btn btn-sc ${btn.style}`}
       type="button"
@@ -40,12 +41,12 @@ class Filter extends Component {
   }
 
   buildText = () => {
-    if(this.props.data.text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} />;
+    if(filterData[this.props.data.type].text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} />;
     return '';
   }
 
   buildDropdown = () => {
-    const dropdown = this.props.data.dropdown;
+    const dropdown = filterData[this.props.data.type].dropdown;
     if(!dropdown) return '';
     return <select className='form-control' value={this.props.data.value} onChange={this.update} >{dropdown.map(option => {
       return <option value={option.key} key={option.key}>{option.display}</option>;
@@ -59,7 +60,7 @@ class Filter extends Component {
           <span aria-hidden="true">&times;</span>
         </button>
         <div className="form-group row">
-          <label htmlFor="example-text-input" className="col-2 col-form-label">{this.props.data.displayName}</label>
+          <label htmlFor="example-text-input" className="col-2 col-form-label">{this.props.data.type}</label>
           <div className="col-10">
             <div className="row">
               {this.buildBtn()}
