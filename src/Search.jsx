@@ -13,20 +13,20 @@ class Search extends Component {
     request += '&limitLicense=true&instructionsRequired=true&number=8';
 
     const cuisineFilters = this.getFilterString('cuisine');
-    request += cuisineFilters && `&cuisine=${cuisineFilters}`;
+    request += cuisineFilters && `&cuisine=${encodeURIComponent(cuisineFilters)}`;
 
     //TODO: diet filter should be unique
     const dietFilters = this.getFilterString('diet');
-    request += dietFilters && `&diet=${dietFilters}`;
+    request += dietFilters && `&diet=${encodeURIComponent(dietFilters)}`;
 
     const allergyFilters = this.getFilterString('allergy');
-    request += allergyFilters && `&intolerances=${allergyFilters}`;
+    request += allergyFilters && `&intolerances=${encodeURIComponent(allergyFilters)}`;
 
     //TODO: mealType filter should be unique
     const mealTypeFilters = this.getFilterString('mealType');
-    request += mealTypeFilters && `&type=${mealTypeFilters}`;
+    request += mealTypeFilters && `&type=${encodeURIComponent(mealTypeFilters)}`;
 
-    console.log(encodeURI(request));
+    console.log(request);
   }
 
   setQuery = (query) => {
@@ -53,7 +53,7 @@ class Search extends Component {
 
   getFilterString = (type) => {
     const filterList =  this.state.filters.filter((filter) => {
-      return filter.type === type;
+      return filter && filter.type === type;
     }).map(filter => filter.value);
 
     if(!filterList) return '';

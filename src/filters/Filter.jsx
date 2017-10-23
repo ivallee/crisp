@@ -10,7 +10,8 @@ class Filter extends Component {
   }
 
   static displayNames = {
-    'ingredient': 'Ingredients',
+    'ingredient': 'Ingredient',
+    'ingredientWithout': 'Ingredient',
     'cuisine': 'Cuisine',
     'diet': 'Diet',
     'allergy': 'Allergy',
@@ -90,14 +91,39 @@ class Filter extends Component {
     this.props.update(newData, this.props.index);
   }
 
+  switchType = () => {
+    let newData = this.props.data;
+    newData.type = (newData.type === 'ingredient')? 'ingredientWithout' : 'ingredient';
+    this.props.update(newData, this.props.index);
+  }
+
   buildInputs = () => {
     const commonProps = { className: 'form-control', value: this.props.data.value, onChange: this.update };
 
     switch(this.props.data.type) {
     case 'ingredient':
-      return <div>
-
-          <input type="text" {...commonProps} />
+      return <div className="row">
+        <div className="col-md-auto">
+          <input className="btn btn-sc btn-success"
+            type="button"
+            value="With"
+            onClick={this.switchType} />
+          </div>
+          <div className="col">
+            <input type="text" {...commonProps} />
+          </div>
+        </div>;
+    case 'ingredientWithout':
+      return <div className="row">
+        <div className="col-md-auto">
+          <input className="btn btn-sc btn-danger"
+            type="button"
+            value="Without"
+            onClick={this.switchType} />
+          </div>
+          <div className="col">
+            <input type="text" {...commonProps} />
+          </div>
         </div>;
     case 'cuisine':
       return <select {...commonProps}>{Filter.cuisineList.map(cuisine => {
