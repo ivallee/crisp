@@ -12,7 +12,7 @@ class Main extends Component {
       <Switch>
         <Route exact path='/' component={Home}/>
         <Route exact path='/results' component={SearchResults}/>
-        <Route exact path='/recipes/:id' component={RecipeDetails}/>
+        <Route path='/recipes/:id' component={RecipeDetails}/>
 
         {/* Handles 404s client-side */}
         {<Route path="*" component={NotFound}/>}
