@@ -21,18 +21,14 @@ class Filter extends Component {
   }
 
   switchType = () => {
-    // let newData = this.props.data;
-    // let old = { key: this.props.data.key, btn: this.props.data.btn };
-
-    // newData.type = this.props.data.altType;
-    // newData.btn = this.props.data.altBtn;
-    // newData.altType = old.type;
-    // newData.altBtn = old.btn;
-    // this.props.update(newData, this.props.index);
+    let newData = this.props.data;
+    newData.exclude = !newData.exclude;
+    this.props.update(newData, this.props.index);
   }
 
   buildBtn = () => {
-    const btn = filterData[this.props.data.type].btn;
+    const filter = filterData[this.props.data.type];
+    const btn = this.props.data.exclude? filter.excludeBtn : filter.btn;
     if(!btn) return '';
     return <input className={`btn btn-sc ${btn.style}`}
       type="button"

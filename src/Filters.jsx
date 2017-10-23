@@ -14,7 +14,7 @@ class Filters extends Component {
 
   addFilter = (type) => {
     return () => {
-      this.props.addFilter({type, value: ''});
+      this.props.addFilter({type, value: '', exclude: false});
     };
   }
 

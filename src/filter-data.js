@@ -65,14 +65,14 @@ const filterData = {
   Ingredient: {
     key: 'includeIngredients',
     btn: { text: 'With', style: 'btn-success' },
-    altKey: 'excludeIngredients',
-    altBtn: { text: 'Without', style: 'btn-danger' },
+    excludeKey: 'excludeIngredients',
+    excludeBtn: { text: 'Without', style: 'btn-danger' },
     text: true
   },
   Cuisine: { key: 'cuisine', dropdown: cuisineList },
   Diet: { key: 'diet', dropdown: dietList, unique: true },
   Allergy: { key: 'intolerances', dropdown: allergyList },
-  Type: { key: 'type', dropdown: mealTypeList, unique: true },
+  'Meal Type': { key: 'type', dropdown: mealTypeList, unique: true },
 };
 
 module.exports = filterData;
