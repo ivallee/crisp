@@ -9,78 +9,6 @@ class Filter extends Component {
     update: PropTypes.func
   }
 
-  static displayNames = {
-    'ingredient': 'Ingredient',
-    'ingredientWithout': 'Ingredient',
-    'cuisine': 'Cuisine',
-    'diet': 'Diet',
-    'allergy': 'Allergy',
-    'mealType': 'Meal Type'
-  };
-
-  static cuisineList = [
-    { key: '', display: '' },
-    { key: 'african', display: 'African' },
-    { key: 'chinese', display: 'Chinese' },
-    { key: 'korean', display: 'Korean' },
-    { key: 'vietnamese', display: 'Vietnamese' },
-    { key: 'thai', display: 'Thai' },
-    { key: 'british', display: 'British' },
-    { key: 'irish', display: 'Irish' },
-    { key: 'french', display: 'French' },
-    { key: 'italian', display: 'Italian' },
-    { key: 'mexican', display: 'Mexican' },
-    { key: 'spanish', display: 'Spanish' },
-    { key: 'middle eastern', display: 'Middle Eastern' },
-    { key: 'jewish', display: 'Jewish' },
-    { key: 'american', display: 'American' },
-    { key: 'cajun', display: 'Cajun' },
-    { key: 'southern', display: 'Southern' },
-    { key: 'greek', display: 'Greek' },
-    { key: 'german', display: 'German' },
-    { key: 'nordic', display: 'Nordic' },
-    { key: 'eastern european', display: 'Eastern European' },
-    { key: 'caribbean', display: 'Caribbean' },
-    { key: 'latin american', display: 'Latin American' },
-  ];
-
-  static dietList = [
-    { key: '', display: '' },
-    { key: 'vegan', display: 'Vegan' },
-    { key: 'lacto vegetarian', display: 'No Eggs' },
-    { key: 'ovo vegetarian', display: 'No Dairy' },
-  ];
-
-  static allergyList = [
-    { key: '', display: '' },
-    { key: 'dairy', display: 'Dairy' },
-    { key: 'egg', display: 'Egg' },
-    { key: 'gluten', display: 'Gluten' },
-    { key: 'peanut', display: 'Peanut' },
-    { key: 'sesame', display: 'Sesame' },
-    { key: 'seafood', display: 'Seafood' },
-    { key: 'shellfish', display: 'Shellfish' },
-    { key: 'soy', display: 'Soy' },
-    { key: 'sulfite', display: 'Sulfite' },
-    { key: 'tree nut', display: 'Tree Nut' },
-    { key: 'wheat', display: 'Wheat' },
-  ];
-
-  static mealTypeList = [
-    { key: '', display: '' },
-    { key: 'main course', display: 'Main Course' },
-    { key: 'side dish', display: 'Side Dish' },
-    { key: 'dessert', display: 'Dessert' },
-    { key: 'appetizer', display: 'Appetizer' },
-    { key: 'salad', display: 'Salad' },
-    { key: 'bread', display: 'Bread' },
-    { key: 'breakfast', display: 'Breakfast' },
-    { key: 'soup', display: 'Soup' },
-    { key: 'beverage', display: 'Beverage' },
-    { key: 'sauce', display: 'Sauce' },
-    { key: 'drink', display: 'Drink' },
-  ];
-
   remove = () => {
     this.props.remove(this.props.index);
   }
@@ -93,55 +21,35 @@ class Filter extends Component {
 
   switchType = () => {
     let newData = this.props.data;
-    newData.type = (newData.type === 'ingredient')? 'ingredientWithout' : 'ingredient';
+    let old = { key: this.props.data.key, btn: this.props.data.btn };
+
+    newData.type = this.props.data.altType;
+    newData.btn = this.props.data.altBtn;
+    newData.altType = old.type;
+    newData.altBtn = old.btn;
     this.props.update(newData, this.props.index);
   }
 
-  buildInputs = () => {
-    const commonProps = { className: 'form-control', value: this.props.data.value, onChange: this.update };
+  buildBtn = () => {
+    const btn = this.props.data.btn;
+    if(!btn) return '';
+    return <input className={`btn btn-sc ${btn.style}`}
+      type="button"
+      value={btn.text}
+      onClick={this.switchType} />;
+  }
 
-    switch(this.props.data.type) {
-    case 'ingredient':
-      return <div className="row">
-        <div className="col-md-auto">
-          <input className="btn btn-sc btn-success"
-            type="button"
-            value="With"
-            onClick={this.switchType} />
-          </div>
-          <div className="col">
-            <input type="text" {...commonProps} />
-          </div>
-        </div>;
-    case 'ingredientWithout':
-      return <div className="row">
-        <div className="col-md-auto">
-          <input className="btn btn-sc btn-danger"
-            type="button"
-            value="Without"
-            onClick={this.switchType} />
-          </div>
-          <div className="col">
-            <input type="text" {...commonProps} />
-          </div>
-        </div>;
-    case 'cuisine':
-      return <select {...commonProps}>{Filter.cuisineList.map(cuisine => {
-        return <option value={cuisine.key} key={cuisine.key}>{cuisine.display}</option>;
-      })}</select>;
-    case 'diet':
-      return <select {...commonProps}>{Filter.dietList.map(diet => {
-        return <option value={diet.key} key={diet.key}>{diet.display}</option>;
-      })}</select>;
-    case 'allergy':
-      return <select {...commonProps}>{Filter.allergyList.map(allergy => {
-        return <option value={allergy.key} key={allergy.key}>{allergy.display}</option>;
-      })}</select>;
-    case 'mealType':
-      return <select {...commonProps}>{Filter.mealTypeList.map(mealType => {
-        return <option value={mealType.key} key={mealType.key}>{mealType.display}</option>;
-      })}</select>;
-    }
+  buildText = () => {
+    if(this.props.data.text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} />;
+    return '';
+  }
+
+  buildDropdown = () => {
+    const dropdown = this.props.data.dropdown;
+    if(!dropdown) return '';
+    return <select className='form-control' value={this.props.data.value} onChange={this.update} >{dropdown.map(option => {
+      return <option value={option.key} key={option.key}>{option.display}</option>;
+    })}</select>;
   }
 
   render() {
@@ -151,9 +59,15 @@ class Filter extends Component {
           <span aria-hidden="true">&times;</span>
         </button>
         <div className="form-group row">
-          <label htmlFor="example-text-input" className="col-2 col-form-label">{Filter.displayNames[this.props.data.type]}</label>
+          <label htmlFor="example-text-input" className="col-2 col-form-label">{this.props.data.displayName}</label>
           <div className="col-10">
-            {this.buildInputs()}
+            <div className="row">
+              {this.buildBtn()}
+              <div className="col">
+                {this.buildText()}
+                {this.buildDropdown()}
+              </div>
+            </div>
           </div>
         </div>
       </li>
