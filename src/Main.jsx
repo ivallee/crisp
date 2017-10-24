@@ -5,6 +5,7 @@ import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
 import NotFound from './error-pages/NotFound.jsx';
+// delete this when fetch to api is functional
 import dummyResults from './dummyresults.js';
 
 
@@ -26,7 +27,7 @@ class Main extends Component {
   
   sendQuery = (query) => {
 
-
+    // Replace this with fetch to API:
     let searchResponse = dummyResults.results;
 
     this.setState({ searchResponse });
@@ -37,12 +38,12 @@ class Main extends Component {
   }
   
   render() {
-    console.log(this.state);
     return (
       <Switch>
         {/* <Route exact path='/' component={Home}/> */}
         <Route exact path="/" render={()=><Home sendQuery={this.sendQuery}/>}/>
         <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
+        {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
         <Route path='/recipes/:id' component={RecipeDetails}/>
 
         {/* Handles 404s client-side */}
