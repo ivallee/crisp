@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'proptypes';
 import { Link } from 'react-router-dom';
 
 class RecipeCard extends Component {
+
+  static propTypes = {
+    recipes: PropTypes.array
+  }
 
   render() {
     console.log('Recipe Card:', this.props.recipes[0].title);

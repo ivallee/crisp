@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'proptypes';
 import Search from './Search.jsx';
 import RecipeList from './RecipeList.jsx';
 
 class SearchResults extends Component {
+
+  static propTypes = {
+    searchResponse: PropTypes.array
+  }
 
   render() {
     const recipes = this.props.searchResponse;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import PropTypes from 'proptypes';
 import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
@@ -10,6 +11,10 @@ import dummyResults from './dummyresults.js';
 
 
 class Main extends Component {
+
+  static propTypes = {
+    history: PropTypes.func
+  }
 
   constructor(props) {
     super(props);

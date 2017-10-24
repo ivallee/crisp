@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'proptypes';
 import RecipeCard from './RecipeCard.jsx';
 
 class RecipeList extends Component {
+
+  static propTypes = {
+    recipes: PropTypes.array
+  }
   
   // Function to generate list of cards should probably go here
 
