@@ -13,7 +13,7 @@ import dummyResults from './dummyresults.js';
 class Main extends Component {
 
   static propTypes = {
-    history: PropTypes.func
+    history: PropTypes.function
   }
 
   constructor(props) {
