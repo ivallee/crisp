@@ -15,22 +15,23 @@ class Search extends Component {
     let request = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?query=${this.state.query}`;
     request += '&limitLicense=true&instructionsRequired=true&number=8';
 
-    // const cuisineFilters = this.getFilterString('cuisine');
-    // request += cuisineFilters && `&cuisine=${encodeURIComponent(cuisineFilters)}`;
-
-    // //TODO: diet filter should be unique
-    // const dietFilters = this.getFilterString('diet');
-    // request += dietFilters && `&diet=${encodeURIComponent(dietFilters)}`;
-
-    // const allergyFilters = this.getFilterString('allergy');
-    // request += allergyFilters && `&intolerances=${encodeURIComponent(allergyFilters)}`;
-
-    // //TODO: mealType filter should be unique
-    // const mealTypeFilters = this.getFilterString('mealType');
-    // request += mealTypeFilters && `&type=${encodeURIComponent(mealTypeFilters)}`;
+    for(const type in filterData) {
+      let filterString = this.buildFilterString(type);
+      if(filterData[type].excludeKey) {
+        filterString += this.buildFilterString(type, true);
+      }
+      request += filterString;
+    }
 
     console.log(request);
-    console.log(this.state.filters);
+  }
+
+  buildFilterString = (type, exclude = false) => {
+    const filtersOfType = this.state.filters
+      .filter(filter => filter && filter.type === type && filter.exclude === exclude)
+      .map(filter => encodeURIComponent(filter.value));
+    const key = exclude? filterData[type].excludeKey : filterData[type].key;
+    return `&${key}=${filtersOfType.join('%2C+')}`;
   }
 
   setQuery = (query) => {
@@ -40,23 +41,23 @@ class Search extends Component {
   addFilter = (newFilter) => {
     let filters = this.state.filters;
     filters.push(newFilter);
-    this.setState({filters});
+    this.setState({ filters });
   }
 
   removeFilter = (filterID) => {
     let filters = this.state.filters;
     filters[filterID] = undefined;
-    this.setState({filters});
+    this.setState({ filters });
   }
 
   updateFilter = (filterID, newFilter) => {
     let filters = this.state.filters;
     filters[filterID] = newFilter;
-    this.setState({filters});
+    this.setState({ filters });
   }
 
   getFilterString = (type) => {
-    const filterList =  this.state.filters.filter((filter) => {
+    const filterList = this.state.filters.filter((filter) => {
       return filter && filter.type === type;
     }).map(filter => filter.value);
 
@@ -70,8 +71,8 @@ class Search extends Component {
       <div>
         <div className="row marketing">
           <div className="col">
-            <SearchBar query={this.state.query} setQuery= {this.setQuery} doSearch={this.doSearch}/>
-            <Filters filters={this.state.filters} addFilter={this.addFilter} removeFilter={this.removeFilter} updateFilter={this.updateFilter}/>
+            <SearchBar query={this.state.query} setQuery={this.setQuery} doSearch={this.doSearch} />
+            <Filters filters={this.state.filters} addFilter={this.addFilter} removeFilter={this.removeFilter} updateFilter={this.updateFilter} />
           </div>
         </div>
       </div>
