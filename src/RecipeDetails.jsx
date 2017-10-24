@@ -4,40 +4,31 @@ import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
 import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
 
 // delete when api calls functioning
-import dummyResults from './_dummyresults.js';
+import dummyRecipeData from './_dummyRecipeData';
 
 class RecipeDetails extends Component {
 
   constructor(props) {
     super(props);
     this.state = { 
-      response: [] 
+      recipeData: {} 
     };
   }
 
   componentWillMount() {
 
   // Replace this with fetch to API:
-    let response = dummyResults.results.filter((recipe) => {
-      return recipe.id == this.props.match.params.id;
-    });
 
-    this.setState({ response });
+  this.setState({recipeData: dummyRecipeData})
 
 
   }
 
 
   render() {
-  /////////////////////////
 
-  // const recipeById = this.props.searchResponse.filter((recipe) => {
-  //   return recipe.id == 658674;
-
-  // });
-
-    const recipe = this.state.response[0];
-    console.log(this.state);
+    const recipe = this.state.recipeData;
+    console.log(recipe);
     return (
     <div>
       <div className="row">
@@ -56,7 +47,7 @@ class RecipeDetails extends Component {
       </div>
       < RecipeDetailsLinks />
       < RecipeDetailsIngredients />
-      < RecipeDetailsInstructions instructions={ recipe.analyzedInstructions } />
+      {< RecipeDetailsInstructions instructions={ recipe.analyzedInstructions[0] } />}
     </div>
   );
 }

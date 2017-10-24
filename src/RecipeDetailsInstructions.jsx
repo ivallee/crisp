@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class RecipeDetailsInstructions extends Component {
   
   render() {
-    const instructions = this.props.instructions[0].steps.map(step => {
+    const instructions = this.props.instructions.steps.map(step => {
       return (<li>{step.number}. {step.step}</li>);
     });
 
