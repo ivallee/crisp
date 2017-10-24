@@ -6,11 +6,15 @@ const ENV = process.env.ENV || 'development';
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const config = require('../webpack.config');
+const webpackConfig = require('../webpack.config');
+
 const express = require('express');
 
-new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
+const knexConfig = require('./knexfile');
+const knex = require('knex')(knexConfig[ENV]);
+
+new WebpackDevServer(webpack(webpackConfig), {
+  publicPath: webpackConfig.output.publicPath,
   historyApiFallback: true,
   watchOptions: {
     aggregateTimeout: 300,
@@ -18,11 +22,10 @@ new WebpackDevServer(webpack(config), {
     ignored: /node_modules/
   }
 })
-  .listen(WEBPACK_PORT, HOST, function(err, result) {
+  .listen(WEBPACK_PORT, HOST, (err) => {
     if(err) {
       console.log(err);
     }
-
     console.log(`Webpack running at http://${HOST}:${WEBPACK_PORT}`);
   });
 
