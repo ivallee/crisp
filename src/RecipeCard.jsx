@@ -27,13 +27,13 @@ class RecipeCard extends Component {
                 </div>
                 <div className="col-sm-6">
                   <ul className="list-unstyled">
-                    <li className="">
+                    <li>
                       <small>Time: {this.props.time}</small>
                     </li>
-                    <li className="">
-                      <small>rating: 5</small>
+                    <li>
+                      <small>From: {this.props.sourceName}</small>
                     </li>
-                    <li className="">
+                    <li>
                       <small>Servings: {this.props.servings}</small>
                     </li>
                   </ul>

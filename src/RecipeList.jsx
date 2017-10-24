@@ -12,12 +12,14 @@ class RecipeList extends Component {
 
   render() {
     console.log('Recipe List:', this.props.recipes);
-    const recipeList = this.props.recipes.map(recipe => {
+  
+    const recipeList = this.props.recipes.slice(0, 4).map(recipe => {
       return <RecipeCard 
         title={recipe.title}
         image={recipe.image}
         time={recipe.readyInMinutes}
         servings={recipe.servings}
+        sourceName={recipe.sourceName}
         key={recipe.id}
       />;
     });
@@ -25,14 +27,11 @@ class RecipeList extends Component {
       <div className="recipe-list">
 
 
-        {/* Need to implement way of generating results into bootstrap columns */}
+
         <div className="row">
           {recipeList}
         </div>
-        <div className="row">
-          {/* <RecipeCard />
-          <RecipeCard /> */}
-        </div>
+  
 
       </div>
 
