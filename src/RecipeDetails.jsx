@@ -20,8 +20,6 @@ class RecipeDetails extends Component {
   // Replace this with fetch to API:
 
   this.setState({recipeData: dummyRecipeData})
-
-
   }
 
 
