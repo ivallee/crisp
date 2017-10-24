@@ -20,7 +20,7 @@ class NavBar extends Component {
             </li>
           </ul>
         </nav>
-        <h3 className="text-muted">Gronsak</h3>
+        <h3 className="text-muted">Crisp</h3>
       </div>
     );
   }
