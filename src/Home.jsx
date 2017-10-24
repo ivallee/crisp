@@ -17,7 +17,7 @@ class Home extends Component {
         </div>
 
 
-        <Search />
+        <Search sendQuery={this.props.sendQuery}/>
       </div>
 
 
