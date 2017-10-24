@@ -3,18 +3,17 @@ import React, { Component } from 'react';
 class RecipeDetailsInstructions extends Component {
   
   render() {
+    const instructions = this.props.instructions[0].steps.map(step => {
+      console.log(`${step.number}. ${step.step}`)
+      return (<li>{step.number}. {step.step}</li>);
+    })
+    // console.log(instructions);
+
     return (
     <div className="recipe-details-instructions">
       <h5>Instructions:</h5>
       <ul>
-        {/* For each step from api... */}
-        <li>Turn on oven and set to 350F</li>
-        <li>Slice tomato</li>
-        <li>Slice cheese</li>
-        <li>Butter your bread and cover in cheese</li>
-        <li>Bake for 5 minutes? </li>
-        <li>Remove from oven and add tomato and basil</li>
-        <li>Consume</li>
+        {instructions}
       </ul>
     </div>
     );
