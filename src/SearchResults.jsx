@@ -11,7 +11,6 @@ class SearchResults extends Component {
 
   render() {
     const recipes = this.props.searchResponse;
-    console.log('SearchResults:', recipes);
     return (
       <div className="results">
         <Search />
@@ -19,17 +18,6 @@ class SearchResults extends Component {
           <h3 id="search-result-list-header">Results</h3>
           <p>Here are some recipes based on your search criteria.</p>
         </div>
-
-
-        
-        {/* <div className="row marketing">
-          <div className="col">
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Start a new search</label>
-              <input type="text" className="form-control" placeholder="What would you like?"></input>
-            </div>
-          </div>
-        </div> */}
 
 
         <RecipeList recipes={recipes} />

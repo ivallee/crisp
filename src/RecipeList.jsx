@@ -11,7 +11,6 @@ class RecipeList extends Component {
 
 
   render() {
-    console.log('Recipe List:', this.props.recipes);
   
     const recipeList = this.props.recipes.slice(0, 4).map(recipe => {
       return <RecipeCard 

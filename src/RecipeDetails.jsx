@@ -39,8 +39,6 @@ class RecipeDetails extends Component {
                                        key={ingredient.id} />;
     });
 
-    // console.log(recipe);
-    // console.log(recipe.extendedIngredients);
     return (
     <div>
       <div className="row">

@@ -9,7 +9,6 @@ class RecipeCard extends Component {
   }
 
   render() {
-    console.log('Recipe Card:', this.props.title);
     return (
       // Change link to be dynamic:
       <div className="recipe-card col-sm-6">
