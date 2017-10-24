@@ -15,6 +15,7 @@ class RecipeList extends Component {
   
     const recipeList = this.props.recipes.slice(0, 4).map(recipe => {
       return <RecipeCard 
+        id={recipe.id}
         title={recipe.title}
         image={recipe.image}
         time={recipe.readyInMinutes}
