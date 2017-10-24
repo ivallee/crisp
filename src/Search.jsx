@@ -40,7 +40,7 @@ class Search extends Component {
 
   addFilter = (newFilter) => {
     let filters = this.state.filters;
-    filters.push(newFilter);
+    filters.unshift(newFilter);
     this.setState({ filters });
   }
 
