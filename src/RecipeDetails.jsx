@@ -4,7 +4,7 @@ import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
 import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
 
 // delete when api calls functioning
-import dummyResults from './dummyresults.js';
+import dummyResults from './_dummyresults.js';
 
 class RecipeDetails extends Component {
 
@@ -29,12 +29,6 @@ class RecipeDetails extends Component {
 
 
 render() {
-  /////////////////////////
-
-  // const recipeById = this.props.searchResponse.filter((recipe) => {
-  //   return recipe.id == 658674;
-
-  // });
 
   const recipe = this.state.response[0];
   console.log(this.state);
@@ -56,7 +50,7 @@ render() {
         </div>
       </div>
       < RecipeDetailsLinks />
-      < RecipeDetailsIngredients />
+      < RecipeDetailsIngredients ingredients={recipe.} />
       < RecipeDetailsInstructions />
     </div>
   );

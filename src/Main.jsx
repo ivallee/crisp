@@ -6,7 +6,7 @@ import SearchResults from './SearchResults.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
 import NotFound from './error-pages/NotFound.jsx';
 // delete this when fetch to api is functional
-import dummyResults from './dummyresults.js';
+import dummyResults from './_dummyresults.js';
 
 
 
