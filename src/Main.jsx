@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
@@ -14,7 +14,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      searchResults: [] 
+      searchResponse: [] 
     };
   }
 
@@ -25,15 +25,16 @@ class Main extends Component {
 
     console.log("query", query);
 
-    let searchResults = dummyResults.results;
+    let searchResponse = dummyResults.results;
 
-    this.setState({ searchResults });
-
+    this.setState({ searchResponse });
+    
+    this.props.history.push('/results');
     
   }
   
   render() {
-    // console.log(dummyResults.results[0])
+    console.log(this.props);
     return (
 
       <Switch>
@@ -49,4 +50,4 @@ class Main extends Component {
     );
   }
 }
-export default Main;
+export default withRouter(Main);
