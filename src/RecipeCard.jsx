@@ -13,7 +13,7 @@ class RecipeCard extends Component {
     return (
       // Change link to be dynamic:
       <div className="recipe-card col-sm-6">
-        <Link to='/recipes/1' className="recipe-card-link">
+        <Link to={`/recipes/${this.props.id}`} className="recipe-card-link">
           <div className="card">
             <div className="card-block">
               <div className="row">
