@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-function RecipeDetailsInstructions({ stepcount, stepdesc }) {
+function RecipeDetailsInstructions({ stepCount, stepDesc }) {
   return (
-      <li>{stepcount}. {stepdesc}</li>
+      <li>{stepCount}. {stepDesc}</li>
   );
 }
 export default RecipeDetailsInstructions;

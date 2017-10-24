@@ -1,21 +1,9 @@
 import React, { Component } from 'react';
 
-class RecipeDetailsIngredients extends Component {
+function RecipeDetailsIngredients({ ingredient }) {
   
-  render() {
-    return (
-      <div className="recipe-details-ingredients">
-        <h5>Ingredients:</h5>
-        <ul>
-          {/* For reach ingredient from api... */}
-          <li>Basil</li>
-          <li>Tomato</li>
-          <li>Cheese</li>
-          <li>White Bread</li>
-          <li>Butter</li>
-        </ul>
-      </div>
-    );
-  }
+  return (
+    <li>{ingredient}</li>
+  );
 }
 export default RecipeDetailsIngredients;

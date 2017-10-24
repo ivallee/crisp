@@ -29,12 +29,16 @@ class RecipeDetails extends Component {
     const recipe = this.state.recipeData;
 
     const instructions = recipe.analyzedInstructions[0].steps.map(step => {
-      return <RecipeDetailsInstructions stepcount={ step.number }
-                                        stepdesc={ step.step } />;
+      return <RecipeDetailsInstructions stepCount={ step.number }
+                                        stepDesc={ step.step } />;
+    });
+
+    const ingredients = recipe.extendedIngredients.map(ingredient => {
+      return <RecipeDetailsIngredients ingredient={ingredient.originalString} />;
     });
 
     console.log(recipe);
-    console.log(recipe.analyzedInstructions);
+    console.log(recipe.extendedIngredients);
     return (
     <div>
       <div className="row">
@@ -52,7 +56,12 @@ class RecipeDetails extends Component {
         </div>
       </div>
       < RecipeDetailsLinks />
-      < RecipeDetailsIngredients ingredients={ recipe.extendedIngredients[0] }/>
+      <div className="recipe-details-ingredients">
+        <h5>Ingredients:</h5>
+        <ul>
+          {ingredients}
+        </ul>
+      </div>
       <div className="recipe-details-instructions">
       <h5>Instructions:</h5>
         <ul>
