@@ -5,12 +5,21 @@ import SearchResults from './SearchResults.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
 import NotFound from './error-pages/NotFound.jsx';
 
+
+
+
 class Main extends Component {
+
+  sendQuery = (query) => {
+    console.log("query", query)
+  }
+
   render() {
     return (
 
       <Switch>
-        <Route exact path='/' component={Home}/>
+        {/* <Route exact path='/' component={Home}/> */}
+        <Route exact path="/" render={()=><Home sendQuery={this.sendQuery}/>}/>
         <Route exact path='/results' component={SearchResults}/>
         <Route path='/recipes/:id' component={RecipeDetails}/>
 

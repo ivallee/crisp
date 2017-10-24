@@ -5,6 +5,7 @@ import PropTypes from 'proptypes';
 class Home extends Component {
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <div className="jumbotron">
@@ -17,7 +18,7 @@ class Home extends Component {
         </div>
 
 
-        <Search />
+        <Search sendQuery={this.props.sendQuery}/>
       </div>
 
 
