@@ -26,14 +26,14 @@ class Filters extends Component {
         </a>
         <div className="collapse" id="collapseExample">
           <ul className="list-group">
-          {
-            this.props.filters.map((filter, index) => {
-              return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter}/>;
-            })
-          }
           <li className="list-group-item active">
             {Object.keys(filterData).map(filterName => <span className="col" key={filterName} onClick={this.addFilter(filterName)}>{filterName}</span> )}
           </li>
+          {
+            this.props.filters.reverse().map((filter, index) => {
+              return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter}/>;
+            })
+          }
         </ul>
         </div>
       </div>
