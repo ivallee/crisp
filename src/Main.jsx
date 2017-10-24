@@ -4,17 +4,36 @@ import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
 import NotFound from './error-pages/NotFound.jsx';
+import dummyResults from './dummyresults.js';
 
 
 
 
 class Main extends Component {
 
-  sendQuery = (query) => {
-    console.log("query", query)
+  constructor(props) {
+    super(props);
+    this.state = { 
+      searchResults: [] 
+    };
   }
 
+  
+  
+  
+  sendQuery = (query) => {
+
+    console.log("query", query);
+
+    let searchResults = dummyResults.results;
+
+    this.setState({ searchResults });
+
+    
+  }
+  
   render() {
+    // console.log(dummyResults.results[0])
     return (
 
       <Switch>
