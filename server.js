@@ -6,12 +6,16 @@ const ENV = process.env.ENV || 'development';
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const webpackConfig = require('../webpack.config');
+const webpackConfig = require('./webpack.config');
 
 const express = require('express');
 
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
+const db = require('./lib/data-helpers')(knex);
+
+const filtersRoutes = require('./routes/filters');
+const usersRoutes = require('./routes/users');
 
 new WebpackDevServer(webpack(webpackConfig), {
   publicPath: webpackConfig.output.publicPath,
@@ -31,6 +35,8 @@ new WebpackDevServer(webpack(webpackConfig), {
 
 
 const app = express();
+app.use('/filters', filtersRoutes(db));
+app.use('/users', usersRoutes(db));
 
 app.get('/', (req, res) => {
   return res.send('Hello World!');
