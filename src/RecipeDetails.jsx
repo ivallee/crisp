@@ -30,15 +30,17 @@ class RecipeDetails extends Component {
 
     const instructions = recipe.analyzedInstructions[0].steps.map(step => {
       return <RecipeDetailsInstructions stepCount={ step.number }
-                                        stepDesc={ step.step } />;
+                                        stepDesc={ step.step }
+                                        key={ step.number } />;
     });
 
     const ingredients = recipe.extendedIngredients.map(ingredient => {
-      return <RecipeDetailsIngredients ingredient={ingredient.originalString} />;
+      return <RecipeDetailsIngredients ingredient={ingredient.originalString}
+                                       key={ingredient.id} />;
     });
 
-    console.log(recipe);
-    console.log(recipe.extendedIngredients);
+    // console.log(recipe);
+    // console.log(recipe.extendedIngredients);
     return (
     <div>
       <div className="row">
