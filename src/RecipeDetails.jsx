@@ -18,22 +18,27 @@ class RecipeDetails extends Component {
   componentWillMount() {
 
   // Replace this with fetch to API:
-  let response = dummyResults.results.filter((recipe) => {
-    return recipe.id == this.props.match.params.id;
-  });
+    let response = dummyResults.results.filter((recipe) => {
+      return recipe.id == this.props.match.params.id;
+    });
 
-  this.setState({ response });
-
-
-}
+    this.setState({ response });
 
 
-render() {
+  }
 
-  const recipe = this.state.response[0];
-  console.log(this.state);
 
-  return (
+  render() {
+  /////////////////////////
+
+  // const recipeById = this.props.searchResponse.filter((recipe) => {
+  //   return recipe.id == 658674;
+
+  // });
+
+    const recipe = this.state.response[0];
+    console.log(this.state);
+    return (
     <div>
       <div className="row">
         <div className="col-sm-6">
@@ -50,8 +55,8 @@ render() {
         </div>
       </div>
       < RecipeDetailsLinks />
-      < RecipeDetailsIngredients ingredients={recipe.} />
-      < RecipeDetailsInstructions />
+      < RecipeDetailsIngredients />
+      < RecipeDetailsInstructions instructions={ recipe.analyzedInstructions } />
     </div>
   );
 }
