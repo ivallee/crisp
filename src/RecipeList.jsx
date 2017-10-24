@@ -7,27 +7,33 @@ class RecipeList extends Component {
   static propTypes = {
     recipes: PropTypes.array
   }
-  
-  // Function to generate list of cards should probably go here
+
 
 
   render() {
-    const recipes = this.props.recipes;
-    console.log('Recipe List:', recipes)
+    console.log('Recipe List:', this.props.recipes);
+    const recipeList = this.props.recipes.map(recipe => {
+      return <RecipeCard 
+        title={recipe.title}
+        image={recipe.image}
+        time={recipe.readyInMinutes}
+        servings={recipe.servings}
+        key={recipe.id}
+      />;
+    });
     return (
       <div className="recipe-list">
 
 
         {/* Need to implement way of generating results into bootstrap columns */}
         <div className="row">
-          <RecipeCard recipes={recipes}/>
-          {/* <RecipeCard /> */}
+          {recipeList}
         </div>
         <div className="row">
           {/* <RecipeCard />
           <RecipeCard /> */}
         </div>
-        
+
       </div>
 
 

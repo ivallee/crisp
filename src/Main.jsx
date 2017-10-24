@@ -12,9 +12,7 @@ import dummyResults from './dummyresults.js';
 
 class Main extends Component {
 
-  static propTypes = {
-    history: PropTypes.function
-  }
+
 
   constructor(props) {
     super(props);
@@ -28,7 +26,6 @@ class Main extends Component {
   
   sendQuery = (query) => {
 
-    console.log("query", query);
 
     let searchResponse = dummyResults.results;
 

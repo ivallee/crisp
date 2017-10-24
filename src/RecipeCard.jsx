@@ -9,7 +9,7 @@ class RecipeCard extends Component {
   }
 
   render() {
-    console.log('Recipe Card:', this.props.recipes[0].title);
+    console.log('Recipe Card:', this.props.title);
     return (
       // Change link to be dynamic:
       <div className="recipe-card col-sm-6">
@@ -18,23 +18,23 @@ class RecipeCard extends Component {
             <div className="card-block">
               <div className="row">
                 <div className="col">
-                  <h4 className="card-title">Recipe name</h4>
+                  <h4 className="card-title">{this.props.title}</h4>
                 </div>
               </div>
               <div className="row">
                 <div className="col-sm-6">
-                  <img className="img-thumbnail" src={'./docs/grilledcheese.jpg'} alt="Card image cap"></img>
+                  <img className="img-thumbnail" src={this.props.image} alt="recipe thumbnail"></img>
                 </div>
                 <div className="col-sm-6">
                   <ul className="list-unstyled">
                     <li className="">
-                      <small>Time: 60m</small>
+                      <small>Time: {this.props.time}</small>
                     </li>
                     <li className="">
                       <small>rating: 5</small>
                     </li>
                     <li className="">
-                      <small>something else:</small>
+                      <small>Servings: {this.props.servings}</small>
                     </li>
                   </ul>
                 </div>
