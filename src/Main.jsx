@@ -29,7 +29,7 @@ class Main extends Component {
 
     this.setState({ searchResponse });
     
-    this.props.history.push('/results');
+    this.props.history.push('/results', this.state);
     
   }
   
@@ -51,3 +51,5 @@ class Main extends Component {
   }
 }
 export default withRouter(Main);
+
+
