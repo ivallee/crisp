@@ -13,7 +13,7 @@ class Search extends Component {
 
   doSearch = () => {
     let request = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?query=${this.state.query}`;
-    request += '&limitLicense=true&instructionsRequired=true&number=8';
+    request += '&addRecipeInformation=true&limitLicense=true&instructionsRequired=true&number=8';
 
     for(const type in filterData) {
       let filterString = this.buildFilterString(type);
