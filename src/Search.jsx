@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar.jsx';
 import Filters from './Filters.jsx';
+import filterData from './filter-data.js';
 
 class Search extends Component {
   constructor(props) {
@@ -8,9 +9,29 @@ class Search extends Component {
     this.state = { query: '', filters: [] };
   }
 
+
+
   doSearch = () => {
-    console.log(`Searching for ${this.state.query}`);
-    console.log(JSON.stringify(this.state.filters));
+    let request = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?query=${this.state.query}`;
+    request += '&limitLicense=true&instructionsRequired=true&number=8';
+
+    for(const type in filterData) {
+      let filterString = this.buildFilterString(type);
+      if(filterData[type].excludeKey) {
+        filterString += this.buildFilterString(type, true);
+      }
+      request += filterString;
+    }
+
+    console.log(request);
+  }
+
+  buildFilterString = (type, exclude = false) => {
+    const filtersOfType = this.state.filters
+      .filter(filter => filter && filter.type === type && filter.exclude === exclude)
+      .map(filter => encodeURIComponent(filter.value));
+    const key = exclude? filterData[type].excludeKey : filterData[type].key;
+    return `&${key}=${filtersOfType.join('%2C+')}`;
   }
 
   setQuery = (query) => {
@@ -20,37 +41,38 @@ class Search extends Component {
   addFilter = (newFilter) => {
     let filters = this.state.filters;
     filters.push(newFilter);
-    this.setState({filters});
+    this.setState({ filters });
   }
 
   removeFilter = (filterID) => {
     let filters = this.state.filters;
     filters[filterID] = undefined;
-    this.setState({filters});
+    this.setState({ filters });
   }
 
   updateFilter = (filterID, newFilter) => {
     let filters = this.state.filters;
     filters[filterID] = newFilter;
-    this.setState({filters});
+    this.setState({ filters });
+  }
+
+  getFilterString = (type) => {
+    const filterList = this.state.filters.filter((filter) => {
+      return filter && filter.type === type;
+    }).map(filter => filter.value);
+
+    if(!filterList) return '';
+
+    return filterList.join(', ');
   }
 
   render() {
     return (
       <div>
-        {/* <div className="jumbotron">
-          <h3 className="display-3">Gronsak</h3>
-          <p className="lead">PLant-based cooking blah blah blah Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus
-            ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p>
-            <a className="btn btn-lg btn-success" href="#" role="button">Get started</a>
-          </p>
-        </div> */}
-
         <div className="row marketing">
           <div className="col">
-            <SearchBar query={this.state.query} setQuery= {this.setQuery} doSearch={this.doSearch}/>
-            <Filters filters={this.state.filters} addFilter={this.addFilter} removeFilter={this.removeFilter} updateFilter={this.updateFilter}/>
+            <SearchBar query={this.state.query} setQuery={this.setQuery} doSearch={this.doSearch} />
+            <Filters filters={this.state.filters} addFilter={this.addFilter} removeFilter={this.removeFilter} updateFilter={this.updateFilter} />
           </div>
         </div>
       </div>

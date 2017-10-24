@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
-import Filter from './filters/Filter.jsx';
-
+import Filter from './Filter.jsx';
+import filterData from './filter-data.js';
 
 class Filters extends Component {
 
@@ -12,8 +12,10 @@ class Filters extends Component {
     updateFilter: PropTypes.func
   }
 
-  addFilter = () => {
-    this.props.addFilter({type: 'cuisine', value: ''});
+  addFilter = (type) => {
+    return () => {
+      this.props.addFilter({type, value: '', exclude: false});
+    };
   }
 
   render() {
@@ -23,16 +25,16 @@ class Filters extends Component {
          Filter Menu
         </a>
         <div className="collapse" id="collapseExample">
-          <p></p>
-          <p className="list-group-item active" onClick={this.addFilter}>Add a filter</p>
-          <p></p>
           <ul className="list-group">
-            {
-              this.props.filters.map((filter, index) => {
-                return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter}/>;
-              })
-            }
-          </ul>
+          {
+            this.props.filters.map((filter, index) => {
+              return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter}/>;
+            })
+          }
+          <li className="list-group-item active">
+            {Object.keys(filterData).map(filterName => <span className="col" key={filterName} onClick={this.addFilter(filterName)}>{filterName}</span> )}
+          </li>
+        </ul>
         </div>
       </div>
     );
