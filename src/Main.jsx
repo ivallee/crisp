@@ -28,19 +28,20 @@ class Main extends Component {
     let searchResponse = dummyResults.results;
 
     this.setState({ searchResponse });
+    console.log(searchResponse);
     
-    this.props.history.push('/results', this.state);
+    this.props.history.push('/results');
+
     
   }
   
   render() {
-    console.log(this.props);
+    console.log(this.state);
     return (
-
       <Switch>
         {/* <Route exact path='/' component={Home}/> */}
         <Route exact path="/" render={()=><Home sendQuery={this.sendQuery}/>}/>
-        <Route exact path='/results' component={SearchResults}/>
+        <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
         <Route path='/recipes/:id' component={RecipeDetails}/>
 
         {/* Handles 404s client-side */}

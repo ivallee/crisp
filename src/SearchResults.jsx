@@ -5,6 +5,8 @@ import RecipeList from './RecipeList.jsx';
 class SearchResults extends Component {
 
   render() {
+    const recipes = this.props.searchResponse;
+    // console.log(this.props.searchResponse[0].title);
     return (
       <div className="results">
         <Search />
@@ -25,7 +27,7 @@ class SearchResults extends Component {
         </div> */}
 
 
-        <RecipeList />
+        <RecipeList recipes={recipes} />
       </div>
     );
   }

@@ -7,18 +7,20 @@ class RecipeList extends Component {
 
 
   render() {
+    const recipes = this.props.recipes;
+    console.log(recipes)
     return (
       <div className="recipe-list">
 
 
         {/* Need to implement way of generating results into bootstrap columns */}
         <div className="row">
-          <RecipeCard />
-          <RecipeCard />
+          <RecipeCard recipes={recipes}/>
+          {/* <RecipeCard /> */}
         </div>
         <div className="row">
-          <RecipeCard />
-          <RecipeCard />
+          {/* <RecipeCard />
+          <RecipeCard /> */}
         </div>
         
       </div>
