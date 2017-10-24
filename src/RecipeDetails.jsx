@@ -38,7 +38,6 @@ class RecipeDetails extends Component {
 
     const recipe = this.state.response[0];
     console.log(this.state);
-    console.log(recipe.analyzedInstructions)
     return (
     <div>
       <div className="row">
