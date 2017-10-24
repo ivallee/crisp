@@ -46,8 +46,8 @@ class RecipeDetails extends Component {
         </div>
       </div>
       < RecipeDetailsLinks />
-      < RecipeDetailsIngredients />
-      {< RecipeDetailsInstructions instructions={ recipe.analyzedInstructions[0] } />}
+      < RecipeDetailsIngredients ingredients={ recipe.extendedIngredients[0] }/>
+      < RecipeDetailsInstructions instructions={ recipe.analyzedInstructions[0] } />
     </div>
   );
 }
