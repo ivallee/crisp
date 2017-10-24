@@ -28,7 +28,6 @@ class Main extends Component {
     let searchResponse = dummyResults.results;
 
     this.setState({ searchResponse });
-    console.log(searchResponse);
     
     this.props.history.push('/results');
 

@@ -6,7 +6,7 @@ class SearchResults extends Component {
 
   render() {
     const recipes = this.props.searchResponse;
-    // console.log(this.props.searchResponse[0].title);
+    console.log('SearchResults:', recipes);
     return (
       <div className="results">
         <Search />

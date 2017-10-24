@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class RecipeCard extends Component {
 
   render() {
-    console.log(this.props.recipes[0].title);
+    console.log('Recipe Card:', this.props.recipes[0].title);
     return (
       // Change link to be dynamic:
       <div className="recipe-card col-sm-6">

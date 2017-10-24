@@ -8,7 +8,7 @@ class RecipeList extends Component {
 
   render() {
     const recipes = this.props.recipes;
-    console.log(recipes)
+    console.log('Recipe List:', recipes)
     return (
       <div className="recipe-list">
 
