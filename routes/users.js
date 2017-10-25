@@ -13,5 +13,12 @@ module.exports = (db) => {
       .catch(next);
   });
 
+  router.post('/login', (req, res, next) => {
+    const { name, password } = req.body;
+    db.isValidLogin(name, password)
+      .then(id => res.send(`This is user ${id}`))
+      .catch(next);
+  });
+
   return router;
 };
