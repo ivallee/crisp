@@ -16,6 +16,7 @@ const db = require('./lib/data-helpers')(knex);
 
 const filtersRoutes = require('./routes/filters');
 const usersRoutes = require('./routes/users');
+const recipesRoutes = require('./routes/recipes');
 
 new WebpackDevServer(webpack(webpackConfig), {
   publicPath: webpackConfig.output.publicPath,
@@ -35,12 +36,16 @@ new WebpackDevServer(webpack(webpackConfig), {
 
 
 const app = express();
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 app.use('/filters', filtersRoutes(db));
 app.use('/users', usersRoutes(db));
-
-app.get('/', (req, res) => {
-  return res.send('Hello World!');
-});
+app.use('/recipes', recipesRoutes);
 
 app.listen(EXPRESS_PORT, () => {
   console.log(`Express running at http://${HOST}:${EXPRESS_PORT}`);
