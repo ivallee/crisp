@@ -37,11 +37,9 @@ class Main extends Component {
       this.props.history.push('/results');
     });
 
-    // DUMMY DATA
+    // FOR DUMMY DATA - DELETE LATER
     // let searchResponse = dummyResults.results;
-
     // this.setState({ searchResponse });
-    
     // this.props.history.push('/results');
 
   }
