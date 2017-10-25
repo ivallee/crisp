@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import axios from 'axios';
 import PropTypes from 'proptypes';
 import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
 import NotFound from './error-pages/NotFound.jsx';
+import axios from 'axios';
 // delete this when fetch to api is functional
 import dummyResults from './_dummyresults.js';
 
@@ -27,23 +27,23 @@ class Main extends Component {
   
   
   sendQuery = (query) => {
-    
-    const encodedQuery = btoa(query);
 
-    axios.get(`http://localhost:8080/recipes/search/${encodedQuery}`)
+    // REAL API CALL FUNCTION
+    axios.get(`http://localhost:8080/recipes/search/${query}`)
     .then(response => {
       console.log(response.data);
-      // this.setState( { recipeData:response.data } )
+      const searchResponse = response.data.results;
+      this.setState( { searchResponse} );
+      this.props.history.push('/results');
     });
 
-    // // Replace this with fetch to API:
+    // DUMMY DATA
     // let searchResponse = dummyResults.results;
 
     // this.setState({ searchResponse });
     
     // this.props.history.push('/results');
 
-    
   }
   
   render() {
