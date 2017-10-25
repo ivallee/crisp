@@ -11,14 +11,12 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res, next) => {
   const options = {
     uri: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${req.params.id}/information`,
-    headers: {
-      'X-Mashape-Key': process.env.MASHAPE_KEY,
-    }
+    headers: {'X-Mashape-Key': process.env.MASHAPE_KEY }
   };
   rp(options)
     .then(data => res.send(data))
     .catch(error => {
-      if(error.status === 404) next(new errors.RecipeNotFound(req.params.id));
+      if(error.statusCode === 404) next(new errors.RecipeNotFound(req.params.id));
       else next(error);
     });
 });
