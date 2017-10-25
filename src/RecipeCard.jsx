@@ -7,7 +7,7 @@ class RecipeCard extends Component {
   static propTypes = {
     id: PropTypes.number,
     index: PropTypes.number,
-    image: PropTypes.image,
+    image: PropTypes.img,
     recipes: PropTypes.array,
     removeRecipe: PropTypes.func,
     servings: PropTypes.number,
@@ -27,12 +27,12 @@ class RecipeCard extends Component {
       <div className="recipe-card col-sm-6">
           <div className="card">
             <div className="card-block">
+              <Link to={`/recipes/${this.props.id}`} className="recipe-card-link">
               <div className="row">
                 <div className="col">
                   <h4 className="card-title">{this.props.title}</h4>
                 </div>
               </div>
-        <Link to={`/recipes/${this.props.id}`} className="recipe-card-link">
               <div className="row">
                 <div className="col-sm-6">
                   <img className="img-thumbnail" src={this.props.image} alt="recipe thumbnail"></img>
@@ -51,7 +51,7 @@ class RecipeCard extends Component {
                   </ul>
                 </div>
               </div>
-        </ Link>
+              </ Link>
               <div className="btn-group btn-group-sm" role="group">
               <button type="button" className="close" aria-label="Remove" onClick={e => this.remove(e)}>
                 <span aria-hidden="true">&times;</span>
