@@ -27,7 +27,7 @@ new WebpackDevServer(webpack(webpackConfig), {
   }
 })
   .listen(WEBPACK_PORT, HOST, (err) => {
-    if(err) {
+    if (err) {
       console.log(err);
     }
     console.log(`Webpack running at http://${HOST}:${WEBPACK_PORT}`);
@@ -37,6 +37,12 @@ new WebpackDevServer(webpack(webpackConfig), {
 const app = express();
 app.use('/filters', filtersRoutes(db));
 app.use('/users', usersRoutes(db));
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get('/', (req, res) => {
   return res.send('Hello World!');

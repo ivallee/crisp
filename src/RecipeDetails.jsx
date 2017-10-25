@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RecipeDetailsLinks from './RecipeDetailsLinks.jsx';
 import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
 import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
+import axios from 'axios';
 
 // delete when api calls functioning
 import dummyRecipeData from './_dummyRecipeData';
@@ -15,15 +16,27 @@ class RecipeDetails extends Component {
     };
   }
 
+
+
+
   componentWillMount() {
 
   // Replace this with fetch to API:
 
+  
+  
+  
     this.setState({recipeData: dummyRecipeData});
 
 
   }
 
+  componentDidMount(){
+    axios.get('http://localhost:8080/')
+    .then(response => {
+      console.log(response.data);
+    });
+  }
 
   render() {
     const recipe = this.state.recipeData;
