@@ -17,6 +17,8 @@ const db = require('./lib/data-helpers')(knex);
 const filtersRoutes = require('./routes/filters');
 const usersRoutes = require('./routes/users');
 
+const dummyRecipeData = require('./src/_dummyRecipeData.js');
+
 new WebpackDevServer(webpack(webpackConfig), {
   publicPath: webpackConfig.output.publicPath,
   historyApiFallback: true,
@@ -38,7 +40,7 @@ const app = express();
 app.use('/filters', filtersRoutes(db));
 app.use('/users', usersRoutes(db));
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -46,6 +48,11 @@ app.use(function (req, res, next) {
 
 app.get('/', (req, res) => {
   return res.send('Hello World!');
+});
+
+app.get('/recipes/:id', (req, res) => {
+  console.log(req.params.id);
+  return res.send(dummyRecipeData);
 });
 
 app.listen(EXPRESS_PORT, () => {

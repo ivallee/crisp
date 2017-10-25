@@ -12,7 +12,7 @@ class RecipeDetails extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      recipeData: {} 
+      recipeData: {},
     };
   }
 
@@ -24,30 +24,33 @@ class RecipeDetails extends Component {
   // Replace this with fetch to API:
 
   
+    // console.log(dummyRecipeData);
   
-  
-    this.setState({recipeData: dummyRecipeData});
+    // this.setState({recipeData: dummyRecipeData});
 
-
-  }
-
-  componentDidMount(){
-    axios.get('http://localhost:8080/')
+    axios.get(`http://localhost:8080/recipes/${this.props.match.params.id}`)
     .then(response => {
-      console.log(response.data);
+      // console.log(response.data);
+      this.setState( { recipeData:response.data } )
     });
+    
+  }
+  
+  componentDidMount(){
   }
 
   render() {
     const recipe = this.state.recipeData;
+    if (recipe) {
+      
 
-    const instructions = recipe.analyzedInstructions[0].steps.map(step => {
+    const instructions = recipe.analyzedInstructions && recipe.analyzedInstructions[0].steps.map(step => {
       return <RecipeDetailsInstructions stepCount={ step.number }
                                         stepDesc={ step.step }
                                         key={ step.number } />;
     });
 
-    const ingredients = recipe.extendedIngredients.map(ingredient => {
+    const ingredients = recipe.extendedIngredients && recipe.extendedIngredients.map(ingredient => {
       return <RecipeDetailsIngredients ingredient={ingredient.originalString}
                                        key={ingredient.id} />;
     });
@@ -84,6 +87,7 @@ class RecipeDetails extends Component {
     </div>
   );
 }
+  }
 }
 export default RecipeDetails;
 
