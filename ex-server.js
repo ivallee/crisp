@@ -4,10 +4,12 @@ const HOST = process.env.HOST || '0.0.0.0';
 const ENV = process.env.ENV || 'development';
 
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
 const db = require('./lib/data-helpers')(knex);
+const knexLogger = require('knex-logger');
 
 const filtersRoutes = require('./routes/filters');
 const usersRoutes = require('./routes/users');
@@ -15,6 +17,9 @@ const recipesRoutes = require('./routes/recipes');
 const errorHandler = require('./routes/error-handler.js');
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(knexLogger(knex));
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
