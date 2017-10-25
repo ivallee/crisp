@@ -7,6 +7,7 @@ import RecipeDetails from './RecipeDetails.jsx';
 import NotFound from './error-pages/NotFound.jsx';
 // delete this when fetch to api is functional
 import dummyResults from './_dummyresults.js';
+import UserPage from './UserPage.jsx';
 
 
 
@@ -32,7 +33,7 @@ class Main extends Component {
 
     this.setState({ searchResponse });
     
-    this.props.history.push('/results');
+    this.props.history.push('/user/1');
 
     
   }
@@ -45,6 +46,7 @@ class Main extends Component {
         <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
         {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
         <Route path='/recipes/:id' component={RecipeDetails}/>
+        <Route path='/user/:id' render={()=><UserPage searchResponse={this.state.searchResponse}/>}/>  
 
         {/* Handles 404s client-side */}
         {<Route path="*" component={NotFound}/>}
