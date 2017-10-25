@@ -30,7 +30,7 @@ class RecipeDetails extends Component {
 
     axios.get(`http://localhost:8080/recipes/${this.props.match.params.id}`)
     .then(response => {
-      // console.log(response.data);
+      console.log(response.data);
       this.setState( { recipeData:response.data } )
     });
     

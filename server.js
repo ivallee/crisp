@@ -13,6 +13,7 @@ const express = require('express');
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
 const db = require('./lib/data-helpers')(knex);
+const rp = require('request-promise-native');
 
 const filtersRoutes = require('./routes/filters');
 const usersRoutes = require('./routes/users');
@@ -52,7 +53,21 @@ app.get('/', (req, res) => {
 
 app.get('/recipes/:id', (req, res) => {
   console.log(req.params.id);
-  return res.send(dummyRecipeData);
+  // return res.send(dummyRecipeData);
+  const options = {
+    uri: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${req.params.id}/information`,
+    headers: {
+      'X-Mashape-Key': process.env.MASHAPE_KEY,
+    }
+  };
+ rp(options)
+  .then(function (data) {
+    console.log(data);
+   res.send(data);
+  })
+  .catch((err) => {
+      // Crawling failed...
+  });
 });
 
 app.listen(EXPRESS_PORT, () => {
