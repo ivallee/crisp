@@ -46,7 +46,7 @@ class Main extends Component {
         <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
         {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
         <Route path='/recipes/:id' component={RecipeDetails}/>
-        <Route path='/user/:id' component={UserPage}/>  
+        <Route path='/users/:id' component={UserPage}/>  
 
         {/* Handles 404s client-side */}
         {<Route path="*" component={NotFound}/>}
