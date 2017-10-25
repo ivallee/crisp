@@ -7,7 +7,7 @@ class RecipeCard extends Component {
   static propTypes = {
     id: PropTypes.number,
     index: PropTypes.number,
-    image: PropTypes.img,
+    // image: PropTypes.image, FIX THIS PROPTYPE. Complains for PropTypes.image/PropTypes.img. Says it must be a function?
     recipes: PropTypes.array,
     removeRecipe: PropTypes.func,
     servings: PropTypes.number,
@@ -23,7 +23,6 @@ class RecipeCard extends Component {
 
   render() {
     return (
-      // Change link to be dynamic:
       <div className="recipe-card col-sm-6">
           <div className="card">
             <div className="card-block">

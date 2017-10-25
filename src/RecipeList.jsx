@@ -9,7 +9,6 @@ class RecipeList extends Component {
     this.state = {
       recipes: this.props.recipes
     };
-    console.log(this.state.recipes);
   }
 
   static propTypes = {
@@ -17,8 +16,6 @@ class RecipeList extends Component {
   }
 
   removeRecipe = (index) => {
-
-    console.log(this.state.recipes);
     this.state.recipes.splice(index, 1, this.state.recipes[4]);
     this.state.recipes.splice(4,1);
     this.setState({
@@ -29,7 +26,6 @@ class RecipeList extends Component {
 
   renderRecipes = () => { 
     return this.state.recipes.slice(0, 4).map((recipe, index) => {
-      console.log(index);
       return <RecipeCard
       id={recipe.id}
       index={index}
