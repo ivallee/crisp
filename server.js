@@ -17,6 +17,7 @@ const db = require('./lib/data-helpers')(knex);
 const filtersRoutes = require('./routes/filters');
 const usersRoutes = require('./routes/users');
 const recipesRoutes = require('./routes/recipes');
+const errorHandler = require('./routes/error-handler.js');
 
 new WebpackDevServer(webpack(webpackConfig), {
   publicPath: webpackConfig.output.publicPath,
@@ -46,6 +47,8 @@ app.use((req, res, next) => {
 app.use('/filters', filtersRoutes(db));
 app.use('/users', usersRoutes(db));
 app.use('/recipes', recipesRoutes);
+
+app.use(errorHandler);
 
 app.listen(EXPRESS_PORT, () => {
   console.log(`Express running at http://${HOST}:${EXPRESS_PORT}`);
