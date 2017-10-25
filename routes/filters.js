@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = () => {
+module.exports = (db) => {
   router.get('/', (req, res) => {
-    res.send('This is the part where we have filters');
+    db.getFilters()
+      .then(filters => res.send(JSON.stringify(filters)));
   });
 
   return router;
