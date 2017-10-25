@@ -16,7 +16,43 @@ class SearchResults extends Component {
           <h3 className="user-recipes-list-header">Your favourite recipes</h3>
         </div>
         <div className="user-recipe-list-card">
-        <RecipeList recipes={recipes} />
+        <div className="card">
+            <div className="card-block">
+              {/* <Link to={`/recipes/${this.props.id}`} className="recipe-card-link"> */}
+              <div className="row">
+                <div className="col">
+                  <h4 className="card-title">Yummy</h4>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm-6">
+                  <img className="img-thumbnail" src={this.props.image} alt="recipe thumbnail"></img>
+                </div>
+                <div className="col-sm-6">
+                  <ul className="list-unstyled">
+                    <li>
+                      <small>Time: Short</small>
+                    </li>
+                    <li>
+                      <small>From: Home</small>
+                    </li>
+                    <li>
+                      <small>Servings: plenty</small>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {/* </ Link> */}
+              <div className="btn-group btn-group-sm" role="group">
+              <button type="button" className="close" aria-label="Remove" onClick={e => this.remove(e)}>
+                <span aria-hidden="true">&times;</span>
+              </button>
+                <button type="button" className="btn btn-danger">Never</button>
+                <button type="button" className="btn btn-success">Try later</button>
+              </div>
+            </div>
+          </div>
+        {/* <RecipeList recipes={recipes} /> */}
         </div>
           <nav aria-label="...">
             <ul className="pager">
