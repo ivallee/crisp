@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import axios from 'axios';
 import PropTypes from 'proptypes';
 import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
@@ -26,13 +27,21 @@ class Main extends Component {
   
   
   sendQuery = (query) => {
-
-    // Replace this with fetch to API:
-    let searchResponse = dummyResults.results;
-
-    this.setState({ searchResponse });
     
-    this.props.history.push('/results');
+    const encodedQuery = btoa(query);
+
+    axios.get(`http://localhost:8080/recipes/search/${encodedQuery}`)
+    .then(response => {
+      console.log(response.data);
+      // this.setState( { recipeData:response.data } )
+    });
+
+    // // Replace this with fetch to API:
+    // let searchResponse = dummyResults.results;
+
+    // this.setState({ searchResponse });
+    
+    // this.props.history.push('/results');
 
     
   }
