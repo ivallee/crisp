@@ -12,9 +12,13 @@ class Search extends Component {
 
 
   doSearch = () => {
-    let request = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?query=${this.state.query}`;
-    request += '&addRecipeInformation=true&limitLicense=true&instructionsRequired=true&number=8';
-
+    
+    // THIS IS BEING HANDLED ON SERVER NOW. DELETE LATER
+    // let request = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?query=${this.state.query}`;
+    // request += '&addRecipeInformation=true&limitLicense=true&instructionsRequired=true&number=8';
+    
+    let request = this.state.query;
+    
     for(const type in filterData) {
       let filterString = this.buildFilterString(type);
       if(filterData[type].excludeKey) {
@@ -22,7 +26,6 @@ class Search extends Component {
       }
       request += filterString;
     }
-
     this.props.sendQuery(request);
   }
 

@@ -12,6 +12,11 @@ class SearchBar extends Component {
     this.props.setQuery(event.target.value);
   }
 
+  handleSearchButton = (event) => {
+    event.preventDefault();
+    this.props.doSearch();
+  }
+
   render() {
     return (
       <div className="form-group">
@@ -24,7 +29,7 @@ class SearchBar extends Component {
           id="search-button"
           type="button"
           value="Search"
-          onClick={this.props.doSearch} />
+          onClick={this.handleSearchButton} />
       </div>
     );
   }
