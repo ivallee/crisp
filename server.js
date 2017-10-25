@@ -13,12 +13,10 @@ const express = require('express');
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
 const db = require('./lib/data-helpers')(knex);
-const rp = require('request-promise-native');
 
 const filtersRoutes = require('./routes/filters');
 const usersRoutes = require('./routes/users');
-
-const dummyRecipeData = require('./src/_dummyRecipeData.js');
+const recipesRoutes = require('./routes/recipes');
 
 new WebpackDevServer(webpack(webpackConfig), {
   publicPath: webpackConfig.output.publicPath,
@@ -30,7 +28,7 @@ new WebpackDevServer(webpack(webpackConfig), {
   }
 })
   .listen(WEBPACK_PORT, HOST, (err) => {
-    if (err) {
+    if(err) {
       console.log(err);
     }
     console.log(`Webpack running at http://${HOST}:${WEBPACK_PORT}`);
@@ -38,37 +36,16 @@ new WebpackDevServer(webpack(webpackConfig), {
 
 
 const app = express();
-app.use('/filters', filtersRoutes(db));
-app.use('/users', usersRoutes(db));
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
-app.get('/', (req, res) => {
-  return res.send('Hello World!');
-});
-
-app.get('/recipes/:id', (req, res) => {
-  console.log(req.params.id);
-  // return res.send(dummyRecipeData);
-  const options = {
-    uri: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${req.params.id}/information`,
-    headers: {
-      'X-Mashape-Key': process.env.MASHAPE_KEY,
-    }
-  };
- rp(options)
-  .then(function (data) {
-    console.log(data);
-   res.send(data);
-  })
-  .catch((err) => {
-      // Crawling failed...
-  });
-});
+app.use('/filters', filtersRoutes(db));
+app.use('/users', usersRoutes(db));
+app.use('/recipes', recipesRoutes);
 
 app.listen(EXPRESS_PORT, () => {
   console.log(`Express running at http://${HOST}:${EXPRESS_PORT}`);
