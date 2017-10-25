@@ -10,8 +10,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/search/:query', (req, res) => {
-  console.log(req.params.query);
-  res.send('i got this!');
+  res.send(`Searching for ${req.params.query}`);
 });
 
 router.get('/:id', (req, res, next) => {
