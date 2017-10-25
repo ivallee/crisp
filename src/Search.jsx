@@ -23,7 +23,6 @@ class Search extends Component {
       request += filterString;
     }
 
-    // console.log(request);
     this.props.sendQuery(request);
   }
 

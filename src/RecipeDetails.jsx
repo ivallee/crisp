@@ -19,7 +19,7 @@ class RecipeDetails extends Component {
 
   // Replace this with fetch to API:
 
-    this.setState({recipeData: dummyRecipeData})
+    this.setState({recipeData: dummyRecipeData});
 
 
   }
