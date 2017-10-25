@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import Filter from './Filter.jsx';
-import filterData from './filter-data.js';
+import axios from 'axios';
 
 class Filters extends Component {
+
+  componentWillMount = () => {
+    this.setState({ filterTypes: [] });
+    axios.get('http://localhost:8080/filters')
+      .then(({ data }) => {
+        this.setState({ filterTypes: data });
+      });
+  }
 
   static propTypes = {
     filters: PropTypes.array,
@@ -23,7 +31,7 @@ class Filters extends Component {
       <div id="filter-div">
         <ul className="list-group">
           <li className="list-group-item active">
-            {Object.keys(filterData).map(filterName => <span className="col" key={filterName} onClick={this.addFilter(filterName)}>{filterName}</span>)}
+            {this.state.filterTypes.map(filter => <span className="col" key={filter.id} onClick={this.addFilter(filter.type)}>{filter.type}</span>)}
           </li>
           {
             this.props.filters.map((filter, index) => {
