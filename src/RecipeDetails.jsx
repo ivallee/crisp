@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RecipeDetailsLinks from './RecipeDetailsLinks.jsx';
 import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
 import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
+import axios from 'axios';
 
 // delete when api calls functioning
 import dummyRecipeData from './_dummyRecipeData';
@@ -11,30 +12,45 @@ class RecipeDetails extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      recipeData: {} 
+      recipeData: {},
     };
   }
+
+
+
 
   componentWillMount() {
 
   // Replace this with fetch to API:
 
-    this.setState({recipeData: dummyRecipeData});
+  
+    // console.log(dummyRecipeData);
+  
+    // this.setState({recipeData: dummyRecipeData});
 
-
+    axios.get(`http://localhost:8080/recipes/${this.props.match.params.id}`)
+    .then(response => {
+      console.log(response.data);
+      this.setState( { recipeData:response.data } )
+    });
+    
   }
-
+  
+  componentDidMount(){
+  }
 
   render() {
     const recipe = this.state.recipeData;
+    if (recipe) {
+      
 
-    const instructions = recipe.analyzedInstructions[0].steps.map(step => {
+    const instructions = recipe.analyzedInstructions && recipe.analyzedInstructions[0].steps.map(step => {
       return <RecipeDetailsInstructions stepCount={ step.number }
                                         stepDesc={ step.step }
                                         key={ step.number } />;
     });
 
-    const ingredients = recipe.extendedIngredients.map(ingredient => {
+    const ingredients = recipe.extendedIngredients && recipe.extendedIngredients.map(ingredient => {
       return <RecipeDetailsIngredients ingredient={ingredient.originalString}
                                        key={ingredient.id} />;
     });
@@ -71,6 +87,7 @@ class RecipeDetails extends Component {
     </div>
   );
 }
+  }
 }
 export default RecipeDetails;
 

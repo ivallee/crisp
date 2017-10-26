@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
-import filterData from './filter-data.js';
 
 class Filter extends Component {
   static propTypes = {
@@ -27,22 +26,22 @@ class Filter extends Component {
   }
 
   buildBtn = () => {
-    const filter = filterData[this.props.data.type];
-    const btn = this.props.data.exclude? filter.excludeBtn : filter.btn;
-    if(!btn) return '';
-    return <input className={`btn btn-sc ${btn.style}`}
+    const btnText = this.props.data.exclude? this.props.data.exclude_btn : this.props.data.btn;
+    const btnStyle = this.props.data.exclude? 'btn-danger' : 'btn-success';
+    if(!btnText) return '';
+    return <input className={`btn btn-sc ${btnStyle}`}
       type="button"
-      value={btn.text}
+      value={btnText}
       onClick={this.switchType} />;
   }
 
   buildText = () => {
-    if(filterData[this.props.data.type].text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} />;
+    if(this.props.data.text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} />;
     return '';
   }
 
   buildDropdown = () => {
-    const dropdown = filterData[this.props.data.type].dropdown;
+    const dropdown = this.props.data.dropdown;
     if(!dropdown) return '';
     return <select className='form-control' value={this.props.data.value} onChange={this.update} >{dropdown.map(option => {
       return <option value={option.key} key={option.key}>{option.display}</option>;

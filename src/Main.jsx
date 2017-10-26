@@ -5,6 +5,7 @@ import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
 import NotFound from './error-pages/NotFound.jsx';
+import axios from 'axios';
 // delete this when fetch to api is functional
 import dummyResults from './_dummyresults.js';
 import UserPage from './UserPage.jsx';
@@ -13,8 +14,6 @@ import UserPage from './UserPage.jsx';
 
 
 class Main extends Component {
-
-
 
   constructor(props) {
     super(props);
@@ -28,14 +27,20 @@ class Main extends Component {
   
   sendQuery = (query) => {
 
-    // Replace this with fetch to API:
-    let searchResponse = dummyResults.results;
+    // REAL API CALL FUNCTION
+    axios.get(`http://localhost:8080/recipes/search/${query}`)
+    .then(response => {
+      console.log(response.data.results);
+      const searchResponse = response.data.results;
+      this.setState( { searchResponse} );
+      this.props.history.push('/results');
+    });
 
-    this.setState({ searchResponse });
-    
-    this.props.history.push('/results');
+    // FOR DUMMY DATA - DELETE LATER
+    // let searchResponse = dummyResults.results;
+    // this.setState({ searchResponse });
+    // this.props.history.push('/results');
 
-    
   }
   
   render() {
