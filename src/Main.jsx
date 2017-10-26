@@ -25,7 +25,13 @@ class Main extends Component {
 
   newUser = (data) => {
     console.log(data);
-    console.log('HELLO');
+    // axios.get(`http://localhost:8080/users/${data}`)
+    // .then(response => {
+    //   console.log(response.data.results);
+    //   const searchResponse = response.data.results;
+    //   this.setState( { searchResponse} );
+    //   this.props.history.push('/');
+    // });
   }
   
   

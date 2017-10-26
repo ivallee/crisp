@@ -16,7 +16,7 @@ class NavBar extends Component {
               <NavLink className="nav-link" activeClassName="nav-link" to='/results'>Results</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Log in</a>
+            <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
             </li>
           </ul>
         </nav>

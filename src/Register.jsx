@@ -33,19 +33,17 @@ export default class Login extends Component {
   render() {
     console.log('hello world')
     return (
-        <form id="login">
+        <form id="Register">
             <h1>Log In</h1>
             <fieldset id="inputs">
                 <input id="user"
-                        type="text" 
+                        type="email" 
                         placeholder="Username"
-                        onChange={this.onUserChanged}
-                        />
+                        onChange={this.onUserChanged}/>
                 <input id="password" 
                        type="password" 
                        placeholder="Password"
-                       onChange={this.onPasswordChanged}
-                       />
+                       onChange={this.onPasswordChanged}/>
             </fieldset>
             <fieldset id="actions">
                 <input type="submit" id="submit" onClick={this.onSubmit} value="Log in"/>
