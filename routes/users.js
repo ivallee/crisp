@@ -7,11 +7,15 @@ module.exports = (db) => {
   });
 
   router.post('/new', (req, res, next) => {
-    console.log(req.body);
+    console.log('body:', req.body);
     const { name, password } = req.body;
-    // db.createUser(name, password)
-    //   .then(id => res.send(`Created user ${id}`))
-    //   .catch(next);
+    db.createUser(name, password)
+      .then(id => res.send(`Created user ${id}`))
+      .catch(next);
+      // .catch((err)=>{
+      //   console.error('ERROR:', err);
+      //   return next();
+      // });
   });
 
   router.post('/login', (req, res, next) => {
