@@ -1,16 +1,36 @@
 import React, {Component} from 'react';
-
+import {Redirect} from 'react-router-dom';
+import axios from 'axios';
 
 export default class Login extends Component {
   constructor(props) {
     super();
-    this.data = {
-      name: '',
-      password: ''
+    this.state = {
+      data: {
+        name: '',
+        password: '',
+        redirect: false,
+      }
     };
   }
   
   
+  newUser = (data) => {
+    console.log(this.state.data);
+    
+    axios.post('http://localhost:8080/users/new', {
+      name: this.state.data.name,
+      password: this.state.data.password
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .then(() => this.setState({ redirect: true }))
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   onUser = (event) => {
     this.setState({
       name: event.target.value,
@@ -18,19 +38,24 @@ export default class Login extends Component {
   }
   
   onUserChanged = event => {
-    this.data.name = event.target.value;
+    this.setState({ name: event.target.value});
   }
   
   onPasswordChanged = event => {
-    this.data.password = event.target.value;
+    this.setState({ password: event.target.value });
   }
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.newUser(this.data);
+    this.newUser(this.state);
   }
   
   render() {
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/'/>;
+    }
     return (
         <form id="Register">
             <h1>Log In</h1>
@@ -53,14 +78,3 @@ export default class Login extends Component {
   }
 }
 
-// <footer className='chatbar'>
-// <input className='chatbar-name'
-//   onChange={this.onUser}
-//   onKeyDown={this.onUserChanged}
-//   defaultValue={this.state.name} />
-// <input className='chatbar-message'
-//   onChange={this.onMessage}
-//   onKeyDown={this.onMessageChanged}
-//   value={this.state.content}
-//   placeholder='Type a message and hit ENTER' />
-// </footer>
