@@ -14,8 +14,6 @@ import dummyResults from './_dummyresults.js';
 
 class Main extends Component {
 
-
-
   constructor(props) {
     super(props);
     this.state = { 
@@ -31,7 +29,7 @@ class Main extends Component {
     // REAL API CALL FUNCTION
     axios.get(`http://localhost:8080/recipes/search/${query}`)
     .then(response => {
-      console.log(response.data);
+      console.log(response.data.results);
       const searchResponse = response.data.results;
       this.setState( { searchResponse} );
       this.props.history.push('/results');
