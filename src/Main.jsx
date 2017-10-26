@@ -8,6 +8,7 @@ import NotFound from './error-pages/NotFound.jsx';
 import axios from 'axios';
 // delete this when fetch to api is functional
 import dummyResults from './_dummyresults.js';
+import Register from './Register.jsx';
 
 
 
@@ -17,11 +18,15 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      searchResponse: [] 
+      searchResponse: [],
+      user: ''
     };
   }
 
-  
+  newUser = (data) => {
+    console.log(data);
+    console.log('HELLO');
+  }
   
   
   sendQuery = (query) => {
@@ -50,6 +55,7 @@ class Main extends Component {
         <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
         {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
         <Route path='/recipes/:id' component={RecipeDetails}/>
+        <Route path='/register' render={()=><Register newUser={this.newUser}/>}/>
 
         {/* Handles 404s client-side */}
         {<Route path="*" component={NotFound}/>}
