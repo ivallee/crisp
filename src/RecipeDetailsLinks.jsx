@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class RecipeDetailsLinks extends Component {
   
@@ -6,7 +7,7 @@ class RecipeDetailsLinks extends Component {
     return (
       <div className="recipe-details-links">
         <div className="row">
-          <a className="nav-link" href="#">Back to Search</a>
+          <Link to='/results' className='nav-link'>Back to results</Link>
         </div>
         <div className="row" id='recipe-details-toolbar'>                                     
           <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
