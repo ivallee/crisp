@@ -12,10 +12,6 @@ module.exports = (db) => {
     db.createUser(name, password)
       .then(id => res.send(`Created user ${id}`))
       .catch(next);
-      // .catch((err)=>{
-      //   console.error('ERROR:', err);
-      //   return next();
-      // });
   });
 
   router.post('/login', (req, res, next) => {
