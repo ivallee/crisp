@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import PropTypes from 'proptypes';
 import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
@@ -19,7 +19,8 @@ class Main extends Component {
     super(props);
     this.state = { 
       searchResponse: [],
-      Currentuser: ''
+      Currentuser: '',
+      redirect: false,
     };
   }
 
@@ -33,6 +34,7 @@ class Main extends Component {
     .then(function (response) {
       console.log(response);
     })
+    .then(() => this.setState({ redirect: true }))
     .catch(function (error) {
       console.log(error);
     });
@@ -59,20 +61,26 @@ class Main extends Component {
   }
   
   render() {
-    return (
-      <Switch>
-        {/* <Route exact path='/' component={Home}/> */}
-        <Route exact path="/" render={()=><Home sendQuery={this.sendQuery}/>}/>
-        <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
-        {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
-        <Route path='/recipes/:id' component={RecipeDetails}/>
-        <Route path='/register' render={()=><Register newUser={this.newUser}/>}/>
+    const { redirect } = this.state;
+    
+    if (redirect) {
+      return <Route path='/'render={()=><Home sendQuery={this.sendQuery}/>}/>;
+    }
+    else {
+      return (
+        <Switch>
+          {/* <Route exact path='/' component={Home}/> */}
+          <Route exact path="/" render={()=><Home sendQuery={this.sendQuery}/>}/>
+          <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
+          {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
+          <Route path='/recipes/:id' component={RecipeDetails}/>
+          <Route path='/register' render={()=><Register newUser={this.newUser}/>}/>
 
-        {/* Handles 404s client-side */}
-        {<Route path="*" component={NotFound}/>}
-      </Switch>
-
-    );
+          {/* Handles 404s client-side */}
+          {<Route path="*" component={NotFound}/>}
+        </Switch> 
+      );
+    } 
   }
 }
 export default withRouter(Main);
