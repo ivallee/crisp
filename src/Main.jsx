@@ -19,22 +19,27 @@ class Main extends Component {
     super(props);
     this.state = { 
       searchResponse: [],
-      user: ''
+      Currentuser: ''
     };
   }
 
   newUser = (data) => {
     console.log(data);
-    // axios.get(`http://localhost:8080/users/${data}`)
-    // .then(response => {
-    //   console.log(response.data.results);
-    //   const searchResponse = response.data.results;
-    //   this.setState( { searchResponse} );
-    //   this.props.history.push('/');
-    // });
+    console.log(data.name);
+    axios.post('http://localhost:8080/users/new', {
+      name: data.name,
+      password: data.password
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
   
-  
+
+
   sendQuery = (query) => {
 
     // REAL API CALL FUNCTION

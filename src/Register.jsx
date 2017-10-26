@@ -5,7 +5,7 @@ export default class Login extends Component {
   constructor(props) {
     super();
     this.data = {
-      user: '',
+      name: '',
       password: ''
     };
   }
@@ -13,12 +13,12 @@ export default class Login extends Component {
   
   onUser = (event) => {
     this.setState({
-      user: event.target.value,
+      name: event.target.value,
     });
   }
   
   onUserChanged = event => {
-    this.data.user = event.target.value;
+    this.data.name = event.target.value;
   }
   
   onPasswordChanged = event => {
@@ -31,12 +31,11 @@ export default class Login extends Component {
   }
   
   render() {
-    console.log('hello world')
     return (
         <form id="Register">
             <h1>Log In</h1>
             <fieldset id="inputs">
-                <input id="user"
+                <input id="name"
                         type="email" 
                         placeholder="Username"
                         onChange={this.onUserChanged}/>
@@ -55,10 +54,10 @@ export default class Login extends Component {
 }
 
 // <footer className='chatbar'>
-// <input className='chatbar-user'
+// <input className='chatbar-name'
 //   onChange={this.onUser}
 //   onKeyDown={this.onUserChanged}
-//   defaultValue={this.state.user} />
+//   defaultValue={this.state.name} />
 // <input className='chatbar-message'
 //   onChange={this.onMessage}
 //   onKeyDown={this.onMessageChanged}

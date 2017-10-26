@@ -7,10 +7,11 @@ module.exports = (db) => {
   });
 
   router.post('/new', (req, res, next) => {
+    console.log(req.body);
     const { name, password } = req.body;
-    db.createUser(name, password)
-      .then(id => res.send(`Created user ${id}`))
-      .catch(next);
+    // db.createUser(name, password)
+    //   .then(id => res.send(`Created user ${id}`))
+    //   .catch(next);
   });
 
   router.post('/login', (req, res, next) => {
