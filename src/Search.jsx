@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar.jsx';
 import Filters from './Filters.jsx';
-import filterData from './filter-data.js';
+import PropTypes from 'proptypes';
+import axios from 'axios';
 
 class Search extends Component {
   constructor(props) {
@@ -9,31 +10,31 @@ class Search extends Component {
     this.state = { query: '', filters: [] };
   }
 
-
-
-  doSearch = () => {
-    
-    // THIS IS BEING HANDLED ON SERVER NOW. DELETE LATER
-    // let request = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?query=${this.state.query}`;
-    // request += '&addRecipeInformation=true&limitLicense=true&instructionsRequired=true&number=8';
-    
-    let request = this.state.query;
-    
-    for(const type in filterData) {
-      let filterString = this.buildFilterString(type);
-      if(filterData[type].excludeKey) {
-        filterString += this.buildFilterString(type, true);
-      }
-      request += filterString;
-    }
-    this.props.sendQuery(request);
+  static propTypes = {
+    sendQuery: PropTypes.func
   }
 
-  buildFilterString = (type, exclude = false) => {
+  doSearch = () => {
+    let request = this.state.query;
+
+    axios.get('http://localhost:8080/filters')
+      .then(({ data }) => {
+        for(const filter of data) {
+          let filterString = this.buildFilterString(filter.id, filter.key);
+          if(filter.exclude_key) {
+            filterString += this.buildFilterString(filter.id, filter.exclude_key, true);
+          }
+          request += filterString;
+        }
+        this.props.sendQuery(request);
+      });
+  }
+
+  buildFilterString = (id, key, exclude = false) => {
     const filtersOfType = this.state.filters
-      .filter(filter => filter && filter.type === type && filter.exclude === exclude)
+      .filter(filter => filter && filter.id === id && filter.exclude === exclude)
       .map(filter => encodeURIComponent(filter.value));
-    const key = exclude? filterData[type].excludeKey : filterData[type].key;
+    if(filtersOfType.length === 0) return '';
     return `&${key}=${filtersOfType.join('%2C+')}`;
   }
 
