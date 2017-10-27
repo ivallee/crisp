@@ -16,8 +16,7 @@ class SearchResults extends Component {
         <Search />
         
         <div id="search-result-list" className='jumbotron content-blocks'>
-          <h3 id="search-result-list-header">Results</h3>
-          <p>Here are some recipes based on your search criteria.</p>
+          <h3 id="search-result-list-header" className="text-center">Reccomendations:</h3>
         <RecipeList recipes={recipes} />
         </div>
 

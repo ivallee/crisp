@@ -53,9 +53,9 @@ class RecipeCard extends Component {
               </ Link>
               <div className="btn-group btn-group-sm" role="group">
               <button type="button" className="close" aria-label="Remove" onClick={e => this.remove(e)}>
-                <span aria-hidden="true">&times;</span>
+                {/* <span aria-hidden="true">&times;</span> */}
               </button>
-                <button type="button" className="btn btn-danger">Never</button>
+                <button type="button" className="btn btn-danger" onClick={e => this.remove(e)}>Never</button>
                 <button type="button" className="btn btn-success">Try later</button>
               </div>
             </div>
