@@ -15,7 +15,7 @@ class Home extends Component {
         </div>
 
         <div className='jumbotron content-blocks'>
-        <h5>Get some recommendations:</h5>
+        <h5>Add some filters or search for an item:</h5>
         <Search sendQuery={this.props.sendQuery}/>
         </div>
       </div>
