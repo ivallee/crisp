@@ -20,7 +20,7 @@ class Main extends Component {
     super(props);
     this.state = { 
       searchResponse: [],
-      Currentuser: '',
+      Currentuser: '',          // To be implemented
     };
   }
 
