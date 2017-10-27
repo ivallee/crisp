@@ -14,7 +14,7 @@ class NavBar extends Component {
         <nav>
           <ul className="nav nav-pills float-right">
             <li className="nav-item">
-              <NavLink activeClassName="nav-link" to='/'>Home</NavLink>
+              <NavLink className='nav-link' activeClassName="nav-link" to='/'>Home</NavLink>
               {/* <a className="nav-link" href="#">Home
               </a> */}
             </li>
@@ -32,7 +32,7 @@ class NavBar extends Component {
             </li>
           </ul>
         </nav>
-        <h3 className="text-muted">Crisp</h3>
+        <h3 className='nav-logo'>Crisp</h3>
       </div>
     );
   }
