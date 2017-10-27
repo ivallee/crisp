@@ -25,6 +25,7 @@ class Main extends Component {
   
   
   sendQuery = (query) => {
+    query = query || '%20';
 
     // REAL API CALL FUNCTION
     axios.get(`http://localhost:8080/recipes/search/${query}`)
@@ -35,6 +36,7 @@ class Main extends Component {
       this.props.history.push('/results');
     });
 
+  
     // FOR DUMMY DATA - DELETE LATER
     // let searchResponse = dummyResults.results;
     // this.setState({ searchResponse });
