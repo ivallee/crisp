@@ -15,7 +15,7 @@ export default class Login extends Component {
   }
   
   
-  newUser = () => {
+  newUser = (data) => {
     console.log(this.state.data);
     
     axios.post('http://localhost:8080/users/new', {
