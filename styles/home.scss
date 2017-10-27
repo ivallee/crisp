@@ -1,76 +1,98 @@
 
-h1 {
-  color: tomato;
-}
+// h1 {
+//   color: tomato;
+// }
 
 
-#recipe-details-toolbar {
-  width: 100%;
-  max-width: 700px;
-  // margin: 10px;
-  border: 1px hidden black;
-  padding-left: 10px;
-  // padding-top: 15px;
-  padding-bottom: 15px;
-}
+// #recipe-details-toolbar {
+//   width: 100%;
+//   max-width: 700px;
+//   // margin: 10px;
+//   border: 1px hidden black;
+//   padding-left: 10px;
+//   // padding-top: 15px;
+//   padding-bottom: 15px;
+// }
 
 
-#toolbar .wrapper {
-}
+// #toolbar .wrapper {
+// }
 
-.btn-secondary {
-  color: black;
-  background-color: white;
+// .btn-secondary {
+//   color: black;
+//   background-color: white;
+// }
+
+// body {
+//   background-image: url('http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg');
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   font-family: 'Lora', serif;
+// }
+// .heading {
+//   font-weight: 700;
+// }
+// .subheading {
+//   font-weight: 400;
+// }
+
+// #react-root {
+//   // background: lightgoldenrodyellow;
+// }
+
+// .container {
+//   background: white;
+// }
+
+// .nav-link {
+//   padding: 1em 0.75em;
+// }
+
+// h3.text-muted {
+//   margin-bottom: 0em;
+//   padding-top: 0.33em;
+// }
+
+// #search-button {
+//   margin-top: 0.5em;
+// }
+
+// #filter-div {
+//   margin-bottom: 0.5em;
+// }
+
+// #search-result-list {
+//   margin: 0.5em 0em;  
+// }
+
+// #search-result-list-header {
+//   margin: 0em;
+// }
+
+// footer {
+//   padding: 1em 0em;
+// }
+
+@media (min-width: 1200px) {
+  .container {
+      width: 960px;
+  }
 }
 
 body {
-  background-image: url('http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  font-family: 'Lora', serif;
-}
-.heading {
-  font-weight: 700;
-}
-.subheading {
-  font-weight: 400;
+  background-color: #379863;
 }
 
-#react-root {
-  // background: lightgoldenrodyellow;
+.content-blocks {
+  background-color: #EDF5E1;
 }
 
 .container {
-  background: white;
+  height: 100vh;
 }
 
-.nav-link {
-  padding: 1em 0.75em;
-}
+.filter-options:hover {
 
-h3.text-muted {
-  margin-bottom: 0em;
-  padding-top: 0.33em;
-}
-
-#search-button {
-  margin-top: 0.5em;
-}
-
-#filter-div {
-  margin-bottom: 0.5em;
-}
-
-#search-result-list {
-  margin: 0.5em 0em;  
-}
-
-#search-result-list-header {
-  margin: 0em;
-}
-
-footer {
-  padding: 1em 0em;
 }
 
 .recipe-card-link {

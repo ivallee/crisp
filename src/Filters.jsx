@@ -38,7 +38,7 @@ class Filters extends Component {
     return (
       <div id="filter-div">
         <ul className="list-group">
-          <li className="list-group-item active">
+        <li className="list-group-item d-flex justify-content-between">
             {this.state.filterTypes.map(filter => <span className="col" key={filter.id} onClick={this.addFilter(filter.id)}>{filter.type}</span>)}
           </li>
           {
