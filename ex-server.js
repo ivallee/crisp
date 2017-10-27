@@ -1,25 +1,24 @@
 require('dotenv').config();
-const EXPRESS_PORT = process.env.EXPRESS_PORT || 8080;
-const HOST = process.env.HOST || '0.0.0.0';
-const ENV = process.env.ENV || 'development';
+const EXPRESS_PORT = process.env.EXPRESS_PORT || 8080,
+  HOST = process.env.HOST || '0.0.0.0',
+  ENV = process.env.ENV || 'development';
 
-const express = require('express');
-const bodyParser = require('body-parser');
-
-const knexConfig = require('./knexfile');
-const knex = require('knex')(knexConfig[ENV]);
-const db = require('./lib/data-helpers')(knex);
-const knexLogger = require('knex-logger');
-
-const filtersRoutes = require('./routes/filters');
-const usersRoutes = require('./routes/users');
-const recipesRoutes = require('./routes/recipes');
-const errorHandler = require('./routes/error-handler.js');
+const express = require('express'),
+  bodyParser = require('body-parser'),
+  cookieSession = require('cookie-session'),
+  knexLogger = require('knex-logger'),
+  knexConfig = require('./knexfile'),
+  knex = require('knex')(knexConfig[ENV]),
+  db = require('./lib/data-helpers')(knex);
 
 const app = express();
+<<<<<<< HEAD
 
 app.use(bodyParser.json());
+=======
+>>>>>>> feature/login
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieSession({ name: process.env.SESSION_NAME, secret: process.env.SESSION_KEY }));
 app.use(knexLogger(knex));
 
 app.use((req, res, next) => {
@@ -28,11 +27,16 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/filters', filtersRoutes(db));
-app.use('/users', usersRoutes(db));
-app.use('/recipes', recipesRoutes);
+app.use((req, res, next) => {
+  res.locals.user = db.getUserByID(req.session.user_id);
+  next();
+});
 
-app.use(errorHandler);
+app.use('/filters', require('./routes/filters')(db));
+app.use('/users', require('./routes/users')(db));
+app.use('/recipes', require('./routes/recipes'));
+
+app.use(require('./routes/error-handler.js'));
 
 app.listen(EXPRESS_PORT, () => {
   console.log(`Express running at http://${HOST}:${EXPRESS_PORT}`);

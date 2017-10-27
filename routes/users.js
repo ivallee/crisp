@@ -1,24 +1,25 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express'),
+  router = express.Router();
 
 module.exports = (db) => {
-  router.get('/', (req, res) => {
-    res.send('This is the part where we have users');
-  });
+  const check = require('../lib/route-helpers')(db);
 
-  router.post('/new', (req, res, next) => {
+  router.post('/new', async (req, res, next) => {
     console.log('body:', req.body);
     const { name, password } = req.body;
-    db.createUser(name, password)
-      .then(id => res.send(`Created user ${id}`))
-      .catch(next);
+    const id = await db.createUser(name, password).catch(next);
+    res.send(`Created user ${id}`);
   });
 
-  router.post('/login', (req, res, next) => {
-    const { name, password } = req.body;
-    db.isValidLogin(name, password)
-      .then(id => res.send(`This is user ${id}`))
-      .catch(next);
+  router.post('/login', check.isValidLogin, async (req, res, next) => {
+    const user = await db.getUserByName(req.body.name).catch(next);
+    req.session.user_id = user.id;
+    res.send('Login successful');
+  });
+
+  router.post('/logout', (req, res) => {
+    req.session = null;
+    res.send('Logout successful');
   });
 
   return router;
