@@ -36,11 +36,11 @@ export default class LoginControl extends React.Component {
 }
 
 function UserGreeting(props) {
-  return <h1>Welcome back!</h1>;
+  return <p>Welcome back!</p>;
 }
 
 function GuestGreeting(props) {
-  return <h1>Please sign up.</h1>;
+  return <p>Please sign up.</p>;
 }
 
 function Greeting(props) {
