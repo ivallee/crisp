@@ -20,33 +20,8 @@ class Main extends Component {
     super(props);
     this.state = { 
       searchResponse: [],
-<<<<<<< HEAD
-<<<<<<< HEAD
-      Currentuser: '',          // To be implemented
-=======
-      Currentuser: ''
->>>>>>> parent of 4408dd1... moved registration logic to Register.jsx
-=======
-      Currentuser: '',
->>>>>>> parent of 0391e13... Added comment in Main.jsx, changed button class for modal in NavBar.jsx
     };
   }
-
-  newUser = (data) => {
-    console.log(data);
-    console.log(data.name);
-    axios.post('http://localhost:8080/users/new', {
-      name: data.name,
-      password: data.password
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-  
 
 
   sendQuery = (query) => {
