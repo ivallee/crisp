@@ -25,8 +25,17 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  res.locals.user = db.getUserByID(req.session.user_id);
-  next();
+  console.log(req.session);
+  try {
+    if(req.session.user_id) {
+      res.locals.user = db.getUserByID(req.session.user_id);
+      console.log(`Logged in as ${res.locals.user.name} (${res.locals.user.id})`);
+    }
+    next();
+  }
+  catch (err) {
+    next(err);
+  }
 });
 
 app.use('/filters', require('./routes/filters')(db));
