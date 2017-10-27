@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/noahlotzer/react-simple-boilerplate",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "devDependencies": {
     "babel-core": "6.23.1",
@@ -44,7 +44,7 @@
     "eslint-plugin-react": "6.9.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^21.2.1",
-    "node-sass": "4.5.0",
+    "node-sass": "4.5.2",
     "nodemon": "^1.12.1",
     "sass-loader": "6.0.0",
     "sockjs-client": "^1.1.2",
