@@ -69,18 +69,15 @@ const filterOptions = {
   ]
 };
 
-function saveFilter(knex, Promise) {
-  return filter => {
-    return knex('filters').insert(filter).returning('id')
-      .then(([id]) => {
-        if(filter.dropdown) {
-          const options = filterOptions[filter.type];
-          return Promise.all(options.map(saveFilterOption(knex, id)));
-        }
-        else return Promise.resolve;
-      });
+const saveFilter = (knex, Promise) => {
+  return async filter => {
+    const [id] = await knex('filters').insert(filter).returning('id');
+    if(filter.dropdown) {
+      const options = filterOptions[filter.type];
+      await Promise.all(options.map(saveFilterOption(knex, id)));
+    }
   };
-}
+};
 
 function saveFilterOption(knex, filter_id) {
   return ({ key, display }) => {
@@ -88,13 +85,7 @@ function saveFilterOption(knex, filter_id) {
   };
 }
 
-
-exports.seed = function(knex, Promise) {
-  return Promise.all([
-    knex('filters').del(),
-    knex('filter_options').del()
-  ])
-    .then(() => {
-      return Promise.all(filters.map(saveFilter(knex, Promise)));
-    });
+exports.seed = async (knex, Promise) => {
+  await Promise.all([knex('filters').del(), knex('filter_options').del()]);
+  await Promise.all(filters.map(saveFilter(knex, Promise)));
 };
