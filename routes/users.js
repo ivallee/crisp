@@ -6,11 +6,10 @@ module.exports = (db) => {
     res.send('This is the part where we have users');
   });
 
-  router.post('/new', (req, res, next) => {
+  router.post('/new', async (req, res, next) => {
     const { name, password } = req.body;
-    db.createUser(name, password)
-      .then(id => res.send(`Created user ${id}`))
-      .catch(next);
+    const id = await db.createUser(name, password).catch(next);
+    res.send(`Created user ${id}`);
   });
 
   router.post('/login', (req, res, next) => {
