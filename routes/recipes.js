@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 router.get('/search/:query', (req, res, next) => {
   // builds api request for search
   let request = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?query=${req.params.query}`;
-  request += '&addRecipeInformation=true&limitLicense=true&instructionsRequired=true&number=25';
+  request += '&addRecipeInformation=true&limitLicense=true&instructionsRequired=true&number=50';
   console.log('query param: ',req.params.query);
   const options = {
     uri: request,
