@@ -14,13 +14,14 @@ class SearchResults extends Component {
     return (
       <div className="results">
         <Search />
-        <div id="search-result-list">
+        
+        <div id="search-result-list" className='jumbotron content-blocks'>
           <h3 id="search-result-list-header">Results</h3>
           <p>Here are some recipes based on your search criteria.</p>
+        <RecipeList recipes={recipes} />
         </div>
 
 
-        <RecipeList recipes={recipes} />
       </div>
     );
   }
