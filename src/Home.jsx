@@ -14,10 +14,7 @@ class Home extends Component {
           <p className="lead">Registered users can save their favourite recipes!</p>
         </div>
 
-        <div className='jumbotron content-blocks'>
-        <h5>Add some filters or search for an item:</h5>
         <Search sendQuery={this.props.sendQuery}/>
-        </div>
       </div>
 
 

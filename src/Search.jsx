@@ -19,9 +19,9 @@ class Search extends Component {
 
     axios.get('http://localhost:8080/filters')
       .then(({ data }) => {
-        for(const filter of data) {
+        for (const filter of data) {
           let filterString = this.buildFilterString(filter.id, filter.key);
-          if(filter.exclude_key) {
+          if (filter.exclude_key) {
             filterString += this.buildFilterString(filter.id, filter.exclude_key, true);
           }
           request += filterString;
@@ -34,7 +34,7 @@ class Search extends Component {
     const filtersOfType = this.state.filters
       .filter(filter => filter && filter.id === id && filter.exclude === exclude)
       .map(filter => encodeURIComponent(filter.value));
-    if(filtersOfType.length === 0) return '';
+    if (filtersOfType.length === 0) return '';
     return `&${key}=${filtersOfType.join('%2C+')}`;
   }
 
@@ -65,14 +65,15 @@ class Search extends Component {
       return filter && filter.type === type;
     }).map(filter => filter.value);
 
-    if(!filterList) return '';
+    if (!filterList) return '';
 
     return filterList.join(', ');
   }
 
   render() {
     return (
-      <div>
+      <div className='jumbotron content-blocks'>
+        <h5>Add some filters or search for an item:</h5>
         <div className="row marketing">
           <div className="col">
             <SearchBar query={this.state.query} setQuery={this.setQuery} doSearch={this.doSearch} />
