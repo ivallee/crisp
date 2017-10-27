@@ -21,10 +21,14 @@ class Main extends Component {
     this.state = { 
       searchResponse: [],
 <<<<<<< HEAD
+<<<<<<< HEAD
       Currentuser: '',          // To be implemented
 =======
       Currentuser: ''
 >>>>>>> parent of 4408dd1... moved registration logic to Register.jsx
+=======
+      Currentuser: '',
+>>>>>>> parent of 0391e13... Added comment in Main.jsx, changed button class for modal in NavBar.jsx
     };
   }
 

@@ -24,7 +24,7 @@ class NavBar extends Component {
             <li className="nav-item">
             <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
             </li>
-            <button type="button" className="btn" data-toggle="modal" data-target="#exampleModalLong">
+            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
               Launch demo modal
             </button>
           </ul>
