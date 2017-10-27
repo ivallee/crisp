@@ -7,18 +7,19 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div className="jumbotron">
-          <h3 className="display-3">Gronsak</h3>
-          <p className="lead">PLant-based cooking blah blah blah Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus
-            ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p>
-            <a className="btn btn-lg btn-success" href="#" role="button">Get started</a>
-          </p>
+        <div className="jumbotron content-blocks">
+          <h5 className="display-4">Welcome to Crisp</h5>
+          <p className="lead">Crisp is a recipe recommendation engine for people who are looking to try cooking more meatless and plant-based meals.</p>
+          <p className="lead">To get started, enter some criteria and get your reccomendations.</p>
+          <p className="lead">Registered users can save their favourite recipes!</p>
         </div>
 
-
+        <div className='jumbotron content-blocks'>
+        <h5>Get some recommendations:</h5>
         <Search sendQuery={this.props.sendQuery}/>
+        </div>
       </div>
+
 
 
     );
