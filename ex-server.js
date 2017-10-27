@@ -12,11 +12,8 @@ const express = require('express'),
   db = require('./lib/data-helpers')(knex);
 
 const app = express();
-<<<<<<< HEAD
 
 app.use(bodyParser.json());
-=======
->>>>>>> feature/login
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieSession({ name: process.env.SESSION_NAME, secret: process.env.SESSION_KEY }));
 app.use(knexLogger(knex));
