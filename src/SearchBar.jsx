@@ -19,7 +19,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="form-group">
+      <div className="form-group d-flex justify-content-between">
         <input className="form-control"
           type="text"
           placeholder="What would you like?"
