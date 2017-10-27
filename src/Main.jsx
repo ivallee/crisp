@@ -24,7 +24,6 @@ class Main extends Component {
     this.shuffleResults = this.shuffleResults.bind(this);
   }
 
-<<<<<<< HEAD
   
   shuffleResults = (a) => {
     for (let i = a.length - 1; i > 0; i--) {
@@ -33,9 +32,6 @@ class Main extends Component {
     }
   }
   
-=======
-
->>>>>>> feature/register-setup
   sendQuery = (query) => {
     query = query || '%20';
 

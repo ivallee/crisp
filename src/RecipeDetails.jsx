@@ -41,6 +41,7 @@ class RecipeDetails extends Component {
 
   render() {
     const recipe = this.state.recipeData;
+    console.log(recipe);
     if (recipe) {
       
 
@@ -54,6 +55,7 @@ class RecipeDetails extends Component {
       return <RecipeDetailsIngredients ingredient={ingredient.originalString}
                                        key={ingredient.id} />;
     });
+  }
 
     return (
     <div>
@@ -85,8 +87,7 @@ class RecipeDetails extends Component {
         </ul>
     </div>
     </div>
-  );
-}
+    );
   }
 }
 export default RecipeDetails;
