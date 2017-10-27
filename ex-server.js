@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  console.log(req.session);
+  console.log('server.js opinion on session:', req.session);
   try {
     if(req.session.user_id) {
       res.locals.user = db.getUserByID(req.session.user_id);
@@ -38,9 +38,9 @@ app.use((req, res, next) => {
   }
 });
 
-app.use('/filters', require('./routes/filters')(db));
-app.use('/users', require('./routes/users')(db));
-app.use('/recipes', require('./routes/recipes'));
+app.use('/api/filters', require('./routes/filters')(db));
+app.use('/api/users', require('./routes/users')(db));
+app.use('/api/recipes', require('./routes/recipes'));
 
 app.use(require('./routes/error-handler.js'));
 

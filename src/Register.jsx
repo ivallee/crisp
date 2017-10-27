@@ -18,7 +18,7 @@ export default class Register extends Component {
   newUser = (data) => {
     console.log(this.state.data);
 
-    axios.post('http://localhost:8080/users/new', {
+    axios.post('http://localhost:3000/api/users/new', {
       name: this.state.data.name,
       password: this.state.data.password
     })
