@@ -8,6 +8,7 @@ import NotFound from './error-pages/NotFound.jsx';
 import axios from 'axios';
 // delete this when fetch to api is functional
 import dummyResults from './_dummyresults.js';
+import Register from './Register.jsx';
 import UserPage from './UserPage.jsx';
 
 
@@ -18,11 +19,12 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      searchResponse: [] 
+      searchResponse: [],
     };
     this.shuffleResults = this.shuffleResults.bind(this);
   }
 
+<<<<<<< HEAD
   
   shuffleResults = (a) => {
     for (let i = a.length - 1; i > 0; i--) {
@@ -31,6 +33,9 @@ class Main extends Component {
     }
   }
   
+=======
+
+>>>>>>> feature/register-setup
   sendQuery = (query) => {
     query = query || '%20';
 
@@ -54,18 +59,18 @@ class Main extends Component {
   
   render() {
     return (
-      <Switch>
-        {/* <Route exact path='/' component={Home}/> */}
-        <Route exact path="/" render={()=><Home sendQuery={this.sendQuery}/>}/>
-        <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
-        {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
-        <Route path='/recipes/:id' component={RecipeDetails}/>
-        <Route path='/users/:id' component={UserPage}/>  
+        <Switch>
+          {/* <Route exact path='/' component={Home}/> */}
+          <Route exact path="/" render={()=><Home sendQuery={this.sendQuery}/>}/>
+          <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
+          {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
+          <Route path='/recipes/:id' component={RecipeDetails}/>
+          <Route path='/register' render={()=><Register newUser={this.newUser}/>}/>
+          <Route path='/users/:id' component={UserPage}/>  
 
-        {/* Handles 404s client-side */}
-        {<Route path="*" component={NotFound}/>}
-      </Switch>
-
+          {/* Handles 404s client-side */}
+          {<Route path="*" component={NotFound}/>}
+        </Switch>
     );
   }
 }

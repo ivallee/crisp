@@ -7,6 +7,7 @@ module.exports = (db) => {
   });
 
   router.post('/new', (req, res, next) => {
+    console.log('body:', req.body);
     const { name, password } = req.body;
     db.createUser(name, password)
       .then(id => res.send(`Created user ${id}`))

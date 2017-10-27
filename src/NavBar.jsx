@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import Register from './Register.jsx';
+import Modal from './Modal.jsx';
+import LoginControl from './LoginControl.jsx';
 
 class NavBar extends Component {
   render() {
     return (
-      <div className="header clearfix">
+      <div>
+        {/* <Modal >
+          <Register />
+        </Modal > */}
         <nav>
           <ul className="nav nav-pills float-right">
             <li className="nav-item">
@@ -16,8 +22,13 @@ class NavBar extends Component {
               <NavLink className="nav-link" activeClassName="nav-link" to='/results'>Results</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Log in</a> 
-              {/* if/case logged in -> display user.email */}
+            <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
+            </li>
+            <li>
+            <LoginControl />
+            {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+              Launch demo modal
+            </button> */}
             </li>
           </ul>
         </nav>

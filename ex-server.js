@@ -18,6 +18,7 @@ const errorHandler = require('./routes/error-handler.js');
 
 const app = express();
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(knexLogger(knex));
 
