@@ -1,20 +1,31 @@
 import React, {Component} from 'react';
+<<<<<<< HEAD
 // import {Redirect} from 'react-router-dom';
 import axios from 'axios';
+=======
+
+>>>>>>> parent of 4408dd1... moved registration logic to Register.jsx
 
 export default class Login extends Component {
   constructor(props) {
     super();
+<<<<<<< HEAD
     this.state = {
       data: {
         name: '',
         password: '',
         // redirect: false,
       }
+=======
+    this.data = {
+      name: '',
+      password: ''
+>>>>>>> parent of 4408dd1... moved registration logic to Register.jsx
     };
   }
   
   
+<<<<<<< HEAD
   newUser = (data) => {
     console.log(this.state.data);
     
@@ -31,6 +42,8 @@ export default class Login extends Component {
     });
   }
 
+=======
+>>>>>>> parent of 4408dd1... moved registration logic to Register.jsx
   onUser = (event) => {
     this.setState({
       name: event.target.value,
@@ -38,24 +51,27 @@ export default class Login extends Component {
   }
   
   onUserChanged = event => {
-    this.setState({ name: event.target.value});
+    this.data.name = event.target.value;
   }
   
   onPasswordChanged = event => {
-    this.setState({ password: event.target.value });
+    this.data.password = event.target.value;
   }
 
   onSubmit = event => {
     event.preventDefault();
-    this.newUser(this.state);
+    this.props.newUser(this.data);
   }
   
   render() {
+<<<<<<< HEAD
     // const { redirect } = this.state;
 
     // if (redirect) {
     //   return <Redirect to='/'/>;
     // }
+=======
+>>>>>>> parent of 4408dd1... moved registration logic to Register.jsx
     return (
     <form id="Register">
         <h1>Log In</h1>
@@ -78,3 +94,14 @@ export default class Login extends Component {
   }
 }
 
+// <footer className='chatbar'>
+// <input className='chatbar-name'
+//   onChange={this.onUser}
+//   onKeyDown={this.onUserChanged}
+//   defaultValue={this.state.name} />
+// <input className='chatbar-message'
+//   onChange={this.onMessage}
+//   onKeyDown={this.onMessageChanged}
+//   value={this.state.content}
+//   placeholder='Type a message and hit ENTER' />
+// </footer>

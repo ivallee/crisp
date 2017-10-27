@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import PropTypes from 'proptypes';
 import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
@@ -20,9 +20,29 @@ class Main extends Component {
     super(props);
     this.state = { 
       searchResponse: [],
+<<<<<<< HEAD
       Currentuser: '',          // To be implemented
+=======
+      Currentuser: ''
+>>>>>>> parent of 4408dd1... moved registration logic to Register.jsx
     };
   }
+
+  newUser = (data) => {
+    console.log(data);
+    console.log(data.name);
+    axios.post('http://localhost:8080/users/new', {
+      name: data.name,
+      password: data.password
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  
 
 
   sendQuery = (query) => {
@@ -44,7 +64,6 @@ class Main extends Component {
   }
   
   render() {
-
     return (
         <Switch>
           {/* <Route exact path='/' component={Home}/> */}
