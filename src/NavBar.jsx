@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import Register from './Register.jsx';
-import Modal from './Modal.jsx';
+// import Register from './Register.jsx';
+// import Modal from './Modal.jsx';
+import LoginControl from './LoginControl.jsx';
 
 class NavBar extends Component {
   render() {
@@ -20,6 +21,7 @@ class NavBar extends Component {
             <li className="nav-item">
             <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
             </li>
+            <LoginControl />
           </ul>
         </nav>
         <h3 className="text-muted">Crisp</h3>
