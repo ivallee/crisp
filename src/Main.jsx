@@ -9,6 +9,7 @@ import axios from 'axios';
 // delete this when fetch to api is functional
 import dummyResults from './_dummyresults.js';
 import Register from './Register.jsx';
+import UserPage from './UserPage.jsx';
 
 
 
@@ -45,18 +46,18 @@ class Main extends Component {
   render() {
 
     return (
-      <Switch>
-        {/* <Route exact path='/' component={Home}/> */}
-        <Route exact path="/" render={()=><Home sendQuery={this.sendQuery}/>}/>
-        <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
-        {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
-        <Route path='/recipes/:id' component={RecipeDetails}/>
-        <Route path='/register' render={()=><Register newUser={this.newUser}/>}/>
+        <Switch>
+          {/* <Route exact path='/' component={Home}/> */}
+          <Route exact path="/" render={()=><Home sendQuery={this.sendQuery}/>}/>
+          <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
+          {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
+          <Route path='/recipes/:id' component={RecipeDetails}/>
+          <Route path='/register' render={()=><Register newUser={this.newUser}/>}/>
+          <Route path='/users/:id' component={UserPage}/>  
 
-        {/* Handles 404s client-side */}
-        {<Route path="*" component={NotFound}/>}
-      </Switch>
-
+          {/* Handles 404s client-side */}
+          {<Route path="*" component={NotFound}/>}
+        </Switch>
     );
   }
 }

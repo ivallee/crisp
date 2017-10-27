@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import Register from './Register.jsx';
+import Modal from './Modal.jsx';
 
 class NavBar extends Component {
   render() {
     return (
-      <div className="header clearfix">
+      <div>
+        <Modal>
+          <Register />
+        </Modal>
+
         <nav>
           <ul className="nav nav-pills float-right">
             <li className="nav-item">
@@ -18,6 +24,9 @@ class NavBar extends Component {
             <li className="nav-item">
             <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
             </li>
+            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+              Launch demo modal
+            </button>
           </ul>
         </nav>
         <h3 className="text-muted">Crisp</h3>

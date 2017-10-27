@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom';
+// import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 export default class Login extends Component {
@@ -9,7 +9,7 @@ export default class Login extends Component {
       data: {
         name: '',
         password: '',
-        redirect: false,
+        // redirect: false,
       }
     };
   }
@@ -25,7 +25,7 @@ export default class Login extends Component {
     .then(function (response) {
       console.log(response);
     })
-    .then(() => this.setState({ redirect: true }))
+    // .then(() => this.setState({ redirect: true }))
     .catch(function (error) {
       console.log(error);
     });
@@ -51,28 +51,28 @@ export default class Login extends Component {
   }
   
   render() {
-    const { redirect } = this.state;
+    // const { redirect } = this.state;
 
-    if (redirect) {
-      return <Redirect to='/'/>;
-    }
+    // if (redirect) {
+    //   return <Redirect to='/'/>;
+    // }
     return (
-        <form id="Register">
-            <h1>Log In</h1>
-            <fieldset id="inputs">
-                <input id="name"
-                        type="email" 
-                        placeholder="Username"
-                        onChange={this.onUserChanged}/>
-                <input id="password" 
-                       type="password" 
-                       placeholder="Password"
-                       onChange={this.onPasswordChanged}/>
-            </fieldset>
-            <fieldset id="actions">
-                <input type="submit" id="submit" onClick={this.onSubmit} value="Log in"/>
-            </fieldset>
-        </form>
+    <form id="Register">
+        <h1>Log In</h1>
+        <fieldset id="inputs">
+            <input id="name"
+                    type="email" 
+                    placeholder="Username"
+                    onChange={this.onUserChanged}/>
+            <input id="password" 
+                   type="password" 
+                   placeholder="Password"
+                   onChange={this.onPasswordChanged}/>
+        </fieldset>
+        <fieldset id="actions">
+            <input type="submit" id="submit" onClick={this.props.onComplete} value="Log in"/>
+        </fieldset>
+    </form>
 
     );
   }
