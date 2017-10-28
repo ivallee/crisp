@@ -41,11 +41,12 @@ class RecipeList extends Component {
   };
   
   render() {
-    const recipeList = this.renderRecipes();
+    const recipeCards = this.renderRecipes();
     return (
+
       <div className="recipe-list">
         <div className="row">
-          {recipeList}
+          {recipeCards}
         </div>
       </div>
 

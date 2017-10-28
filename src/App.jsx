@@ -7,15 +7,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="container">
-          <NavBar />
-        </div>
-        <div className="container">
-          <Main />
-        </div>
-        <div className="container">
-          <Footer />
-        </div>
+         <div className="container">
+         <NavBar />
+       {/* </div> */}
+       {/* <div className="container"> */}
+         <Main />
+       {/* </div> */}
+       {/* <div className="container"> */}
+         <Footer />
+       </div>
       </div>
     );
   }

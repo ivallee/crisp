@@ -19,13 +19,13 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="form-group">
+      <div className="form-group d-flex justify-content-between">
         <input className="form-control"
           type="text"
           placeholder="What would you like?"
           value={this.props.query}
           onChange={this.handleQueryChange} />
-        <input className="btn btn-lg btn-success"
+        <input className="btn btn-success"
           id="search-button"
           type="button"
           value="Search"
