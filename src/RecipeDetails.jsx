@@ -41,8 +41,7 @@ class RecipeDetails extends Component {
 
   render() {
     const recipe = this.state.recipeData;
-    console.log(recipe);
-    if (recipe) {
+   
       
 
     const instructions = recipe.analyzedInstructions && recipe.analyzedInstructions[0].steps.map(step => {
@@ -55,7 +54,6 @@ class RecipeDetails extends Component {
       return <RecipeDetailsIngredients ingredient={ingredient.originalString}
                                        key={ingredient.id} />;
     });
-  }
 
     return (
     <div>
