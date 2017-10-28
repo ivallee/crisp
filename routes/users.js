@@ -37,6 +37,8 @@ module.exports = (db) => {
   });
 
   router.use('/categories', require('./categories')(db));
+  router.use('/recipes', require('./saved-recipes')(db));
+  router.use('/filters', require('./saved-filters')(db));
 
   return router;
 };
