@@ -18,7 +18,6 @@ module.exports = (db) => {
 
   router.post('/login', check.hasParams('name', 'password'), check.isValidLogin, async (req, res, next) => {
     try {
-      console.log('here');
       const user = await db.getUserByName(req.body.name);
       req.session.user_id = user.id;
       res.send({ message: 'Login successful', success: true });
@@ -33,8 +32,9 @@ module.exports = (db) => {
     res.send({ message: 'Logout successful' });
   });
 
-  router.get('/current', check.isAuthenticated, (req, res) => {
-    res.send(res.locals.user);
+  router.get('/current', check.isAuthenticated, async (req, res) => {
+    const user = await db.getUserByID(req.session.user_id);
+    res.send(user);
   });
 
   router.use('/categories', require('./categories')(db));

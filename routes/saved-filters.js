@@ -5,10 +5,10 @@ module.exports = (db) => {
   const check = require('../lib/route-helpers')(db);
   router.use(check.isAuthenticated);
 
-  router.route('/').post(check.hasParams('filter', 'value', 'exclude'), async (req, res, next) => {
+  router.route('/').post(check.hasParams('type', 'value', 'exclude'), async (req, res, next) => {
     try {
-      const { filter, value, exclude } = req.body;
-      const id = await db.saveFilter(req.session.user_id, filter, value, exclude);
+      const { type, value, exclude } = req.body;
+      const id = await db.saveFilter(req.session.user_id, type, value, exclude);
       res.status(201).send({ message: 'Filter saved', id });
     } catch(err) {
       next(err);

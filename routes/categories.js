@@ -5,14 +5,15 @@ module.exports = (db) => {
   const check = require('../lib/route-helpers')(db);
   router.use(check.isAuthenticated);
 
-  router.route('/').post(async (req, res, next) => {
-    try {
-      const id = await db.createCategory(check.hasParams('name'), req.session.user_id, req.body.name);
-      res.status(201).send({ message: `Category ${id} created`, id });
-    } catch(err) {
-      next(err);
-    }
-  })
+  router.route('/')
+    .post(check.hasParams('name'), async (req, res, next) => {
+      try {
+        const id = await db.createCategory(req.session.user_id, req.body.name);
+        res.status(201).send({ message: `Category ${id} created`, id });
+      } catch(err) {
+        next(err);
+      }
+    })
     .get(async (req, res, next) => {
       try {
         const categories = await db.getUserCategories(req.session.user_id);

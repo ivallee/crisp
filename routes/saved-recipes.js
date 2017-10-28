@@ -6,18 +6,18 @@ module.exports = (db) => {
   router.use(check.isAuthenticated);
 
   router.route('/')
-    .post(check.hasParams('recipe', 'category'), async (req, res, next) => {
+    .post(check.hasParams('recipe_id'), async (req, res, next) => {
       try {
-        const { recipe, category } = req.body;
-        const id = await db.saveRecipe(req.session.user_id, recipe, category);
-        res.status(201).send({ message: `Recipe ${recipe} saved`, id });
+        const { recipe_id, category } = req.body;
+        const id = await db.saveRecipe(req.session.user_id, recipe_id, category);
+        res.status(201).send({ message: `Recipe ${recipe_id} saved`, id });
       } catch(err) {
         next(err);
       }
     })
     .get(async (req, res, next) => {
       try {
-        const recipes = await db.getUserRecipes(req.session.user_id, req.body.category);
+        const recipes = await db.getUserRecipes(req.session.user_id);
         res.send(recipes);
       } catch(err) {
         next(err);
@@ -40,6 +40,15 @@ module.exports = (db) => {
         next(err);
       }
     });
+
+  router.get('/:category', async(req, res, next) => {
+    try {
+      const recipes = await db.getUserRecipes(req.session.user_id, req.params.category);
+      res.send(recipes);
+    } catch(err) {
+      next(err);
+    }
+  });
 
   return router;
 };
