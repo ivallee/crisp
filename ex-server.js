@@ -24,12 +24,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
   console.log('server.js opinion on session:', req.session);
   try {
     if(req.session.user_id) {
-      res.locals.user = db.getUserByID(req.session.user_id);
-      console.log(`Logged in as ${res.locals.user.name} (${res.locals.user.id})`);
+      res.locals.user = await db.getUserByID(req.session.user_id);
+      console.log(res.locals.user);
     }
     next();
   }
