@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 // import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-export default class Login extends Component {
+export default class Register extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       data: {
         name: '',
@@ -13,12 +13,12 @@ export default class Login extends Component {
       }
     };
   }
-  
-  
+
+
   newUser = (data) => {
     console.log(this.state.data);
-    
-    axios.post('http://localhost:8080/users/new', {
+
+    axios.post('http://localhost:3000/api/users/new', {
       name: this.state.data.name,
       password: this.state.data.password
     })
@@ -36,11 +36,11 @@ export default class Login extends Component {
   //     name: event.target.value,
   //   });
   // }
-  
+
   onUserChanged = event => {
     this.state.data.name = event.target.value;
   }
-  
+
   onPasswordChanged = event => {
     this.state.data.password = event.target.value;
   }
@@ -49,18 +49,18 @@ export default class Login extends Component {
     event.preventDefault();
     this.newUser(this.state.data);
   }
-  
+
   render() {
     return (
     <form id="Register">
         <h1>Log In</h1>
         <fieldset id="inputs">
             <input id="name"
-                    type="email" 
+                    type="email"
                     placeholder="Username"
                     onChange={this.onUserChanged}/>
-            <input id="password" 
-                   type="password" 
+            <input id="password"
+                   type="password"
                    placeholder="Password"
                    onChange={this.onPasswordChanged}/>
         </fieldset>

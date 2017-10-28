@@ -18,55 +18,55 @@ class Main extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       searchResponse: [],
     };
     this.shuffleResults = this.shuffleResults.bind(this);
   }
 
-  
+
   shuffleResults = (a) => {
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
+    for(let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
     }
   }
-  
+
   sendQuery = (query) => {
     query = query || '%20';
 
     // REAL API CALL FUNCTION
-    axios.get(`http://localhost:8080/recipes/search/${query}`)
-    .then(response => {
-      console.log(response.data.results);
-      const searchResponse = response.data.results;
-      this.shuffleResults(searchResponse);
-      this.setState( { searchResponse} );
-      this.props.history.push('/results');
-    });
+    axios.get(`http://localhost:3000/api/recipes/search/${query}`)
+      .then(response => {
+        console.log(response.data.results);
+        const searchResponse = response.data.results;
+        this.shuffleResults(searchResponse);
+        this.setState({ searchResponse });
+        this.props.history.push('/results');
+      });
 
-  
+
     // FOR DUMMY DATA - DELETE LATER
     // let searchResponse = dummyResults.results;
     // this.setState({ searchResponse });
     // this.props.history.push('/results');
 
   }
-  
+
   render() {
     return (
-        <Switch>
-          {/* <Route exact path='/' component={Home}/> */}
-          <Route exact path="/" render={()=><Home sendQuery={this.sendQuery}/>}/>
-          <Route exact path='/results' render={()=><SearchResults searchResponse={this.state.searchResponse}/>}/>        
-          {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
-          <Route path='/recipes/:id' component={RecipeDetails}/>
-          <Route path='/register' render={()=><Register newUser={this.newUser}/>}/>
-          <Route path='/users/:id' component={UserPage}/>  
+      <Switch>
+        {/* <Route exact path='/' component={Home}/> */}
+        <Route exact path="/" render={() => <Home sendQuery={this.sendQuery} />} />
+        <Route exact path='/results' render={() => <SearchResults searchResponse={this.state.searchResponse} />} />
+        {/* <Route path='/recipes/:id' render={()=><RecipeDetails searchResponse={this.state.searchResponse}/>}/> */}
+        <Route path='/recipes/:id' component={RecipeDetails} />
+        <Route path='/register' render={() => <Register newUser={this.newUser} />} />
+        <Route path='/users/:id' component={UserPage} />
 
-          {/* Handles 404s client-side */}
-          {<Route path="*" component={NotFound}/>}
-        </Switch>
+        {/* Handles 404s client-side */}
+        {<Route path="*" component={NotFound} />}
+      </Switch>
     );
   }
 }
