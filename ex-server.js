@@ -24,20 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(async (req, res, next) => {
-  console.log('server.js opinion on session:', req.session);
-  try {
-    if(req.session.user_id) {
-      res.locals.user = await db.getUserByID(req.session.user_id);
-      console.log(res.locals.user);
-    }
-    next();
-  }
-  catch (err) {
-    next(err);
-  }
-});
-
 app.use('/api/filters', require('./routes/filters')(db));
 app.use('/api/users', require('./routes/users')(db));
 app.use('/api/recipes', require('./routes/recipes'));

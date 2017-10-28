@@ -5,15 +5,16 @@ module.exports = (db) => {
   const check = require('../lib/route-helpers')(db);
   router.use(check.isAuthenticated);
 
-  router.route('/').post(check.hasParams('recipe', 'category'), async (req, res, next) => {
-    try {
-      const { recipe, category } = req.body;
-      const id = await db.saveRecipe(req.session.user_id, recipe, category);
-      res.status(201).send({ message: `Recipe ${recipe} saved`, id });
-    } catch(err) {
-      next(err);
-    }
-  })
+  router.route('/')
+    .post(check.hasParams('recipe', 'category'), async (req, res, next) => {
+      try {
+        const { recipe, category } = req.body;
+        const id = await db.saveRecipe(req.session.user_id, recipe, category);
+        res.status(201).send({ message: `Recipe ${recipe} saved`, id });
+      } catch(err) {
+        next(err);
+      }
+    })
     .get(async (req, res, next) => {
       try {
         const recipes = await db.getUserRecipes(req.session.user_id, req.body.category);
@@ -22,7 +23,7 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .putcheck.hasParams('recipe', 'category'), (async (req, res, next) => {
+    .put(check.hasParams('recipe', 'category'), async (req, res, next) => {
       try {
         const { recipe, category } = req.body;
         await db.categorizeRecipe(recipe, req.session.user_id, category);

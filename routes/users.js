@@ -4,7 +4,7 @@ const express = require('express'),
 module.exports = (db) => {
   const check = require('../lib/route-helpers')(db);
 
-  router.post('/new', async (req, res, next) => {
+  router.post('/new', check.hasParams('name', 'password'), async (req, res, next) => {
     try {
       const { name, password } = req.body;
       const id = await db.createUser(name, password).catch(next);
@@ -16,8 +16,9 @@ module.exports = (db) => {
     }
   });
 
-  router.post('/login', check.isValidLogin, async (req, res, next) => {
+  router.post('/login', check.hasParams('name', 'password'), check.isValidLogin, async (req, res, next) => {
     try {
+      console.log('here');
       const user = await db.getUserByName(req.body.name);
       req.session.user_id = user.id;
       res.send({ message: 'Login successful', success: true });
