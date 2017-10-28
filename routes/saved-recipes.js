@@ -5,7 +5,7 @@ module.exports = (db) => {
   const check = require('../lib/route-helpers')(db);
   router.use(check.isAuthenticated);
 
-  router.route('/').post(async (req, res, next) => {
+  router.route('/').post(check.hasParams('recipe', 'category'), async (req, res, next) => {
     try {
       const { recipe, category } = req.body;
       const id = await db.saveRecipe(req.session.user_id, recipe, category);
@@ -22,7 +22,7 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .put(async (req, res, next) => {
+    .putcheck.hasParams('recipe', 'category'), (async (req, res, next) => {
       try {
         const { recipe, category } = req.body;
         await db.categorizeRecipe(recipe, req.session.user_id, category);
@@ -31,7 +31,7 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .delete(async (req, res, next) => {
+    .delete(check.hasParams('recipe'), async (req, res, next) => {
       try {
         await db.deleteRecipe(req.body.recipe, req.session.user_id);
         res.send({ message: `Recipe ${req.body.recipe} deleted` });

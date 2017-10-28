@@ -7,7 +7,7 @@ module.exports = (db) => {
 
   router.route('/').post(async (req, res, next) => {
     try {
-      const id = await db.createCategory(req.session.user_id, req.body.name);
+      const id = await db.createCategory(check.hasParams('name'), req.session.user_id, req.body.name);
       res.status(201).send({ message: `Category ${id} created`, id });
     } catch(err) {
       next(err);
@@ -21,7 +21,7 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .put(async (req, res, next) => {
+    .put(check.hasParams('category', 'name'), async (req, res, next) => {
       try {
         const { category, name } = req.body;
         await db.renameCategory(category, req.session.user_id, name);
@@ -30,7 +30,7 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .delete(async (req, res, next) => {
+    .delete(check.hasParams('category'), async (req, res, next) => {
       try {
         await db.deleteCategory(req.body.category, req.session.user_id);
         res.send({ message: `Category ${req.body.category} deleted` });
