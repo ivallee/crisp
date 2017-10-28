@@ -24,14 +24,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.locals.user = db.getUserByID(req.session.user_id);
-  next();
-});
-
-app.use('/filters', require('./routes/filters')(db));
-app.use('/users', require('./routes/users')(db));
-app.use('/recipes', require('./routes/recipes'));
+app.use('/api/filters', require('./routes/filters')(db));
+app.use('/api/users', require('./routes/users')(db));
+app.use('/api/recipes', require('./routes/recipes'));
 
 app.use(require('./routes/error-handler.js'));
 
