@@ -5,7 +5,7 @@ module.exports = (db) => {
   const check = require('../lib/route-helpers')(db);
   router.use(check.isAuthenticated);
 
-  router.route('/').post(async (req, res, next) => {
+  router.route('/').post(check.hasParams('filter', 'value', 'exclude'), async (req, res, next) => {
     try {
       const { filter, value, exclude } = req.body;
       const id = await db.saveFilter(req.session.user_id, filter, value, exclude);
@@ -22,7 +22,7 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .put(async (req, res, next) => {
+    .put(check.hasParams('filter', 'value', 'exclude'), async (req, res, next) => {
       try {
         const { filter, value, exclude } = req.body;
         await db.updateFilter(filter, req.session.user_id, value, exclude);
@@ -31,7 +31,7 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .delete(async (req, res, next) => {
+    .delete(check.hasParams('filter'), async (req, res, next) => {
       try {
         await db.deleteFilter(req.body.filter, req.session.user_id);
         res.send({ message: `Filter ${req.body.filter} deleted` });

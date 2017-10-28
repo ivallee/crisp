@@ -11,5 +11,8 @@ module.exports = (err, req, res, next) => {
   if(err instanceof errors.NotLoggedIn) {
     return res.status(err.status).send(err.message);
   }
+  if(err instanceof errors.MissingParam) {
+    return res.status(err.status).send(err.message);
+  }
   return res.status(500).send('An internal error occured');
 };
