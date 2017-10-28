@@ -17,7 +17,7 @@ class Search extends Component {
   doSearch = () => {
     let request = this.state.query;
 
-    axios.get('http://localhost:8080/filters')
+    axios.get('http://localhost:3000/api/filters')
       .then(({ data }) => {
         for(const filter of data) {
           let filterString = this.buildFilterString(filter.id, filter.key);

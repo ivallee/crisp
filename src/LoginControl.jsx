@@ -27,9 +27,6 @@ export default class LoginControl extends React.Component {
       // .then(() => this.setState({ redirect: true }))
       .catch((error) => {
         console.log(error);
-      })
-      .then(() => {
-        axios.get('http://localhost:3000/api/users/jeremy');
       });
   }
 

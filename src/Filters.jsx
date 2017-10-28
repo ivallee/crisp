@@ -10,7 +10,7 @@ class Filters extends Component {
   }
 
   componentWillMount = () => {
-    axios.get('http://localhost:8080/filters')
+    axios.get('http://localhost:3000/api/filters')
       .then(({ data }) => {
         this.setState({ filterTypes: data });
       });
@@ -25,7 +25,7 @@ class Filters extends Component {
 
   addFilter = (id) => {
     return () => {
-      axios.get(`http://localhost:8080/filters/${id}`)
+      axios.get(`http://localhost:3000/api/filters/${id}`)
         .then(({ data }) => {
           data.value = '';
           data.exclude = false;

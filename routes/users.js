@@ -32,5 +32,10 @@ module.exports = (db) => {
     res.send({ message: 'Logout successful' });
   });
 
+  router.get('/current', check.isAuthenticated, async (req, res, next) => {
+    console.log('Authenticated!');
+    res.send('Authenticated!');
+  });
+
   return router;
 };
