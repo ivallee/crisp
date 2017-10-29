@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
-import SearchRecipes from './SearchRecipes.jsx';
+import RecipeContainer from './RecipeContainer.jsx';
 
 class SearchResults extends Component {
 
   static propTypes = {
-    searchResponse: PropTypes.array
+    searchResponse: PropTypes.array,
+    savedRecipes: PropTypes.array,
+    userUpdated: PropTypes.func
   }
 
   render() {
@@ -13,7 +15,7 @@ class SearchResults extends Component {
       <div className="results">
         <div id="search-result-list" className='jumbotron content-blocks'>
           <h3 id="search-result-list-header" className="text-center">Recommendations:</h3>
-          <SearchRecipes {...this.props} />
+          <RecipeContainer recipes = {this.props.searchResponse} savedRecipes = {this.props.savedRecipes} userUpdated = {this.props.userUpdated} />
           <div className='d-flex justify-content-center'>
             <a className='back-btn' href='/'><button className="btn btn-success">Do a different search</button></a>
           </div>

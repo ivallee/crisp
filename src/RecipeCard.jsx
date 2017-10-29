@@ -33,7 +33,6 @@ class RecipeCard extends Component {
   }
 
   render() {
-    console.log('Rendering card: ', this.props.saved);
     return (
       <div className="recipe-card col-sm-6">
           <div className="card">

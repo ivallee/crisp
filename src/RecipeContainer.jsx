@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeList from './RecipeList.jsx';
 
-class SearchRecipes extends Component {
+class RecipeContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { recipes: this.buildRecipes(this.props) };
   }
 
+  static propTypes = {
+    recipes: PropTypes.array,
+    savedRecipes: PropTypes.array,
+    userUpdated: PropTypes.func
+  }
+
   buildRecipes = (props) => {
-    const recipes = props.searchResponse;
+    const { recipes, savedRecipes } = props;
     recipes.map(recipe => {
-      recipe.saved = props.savedRecipes.some(user => user.recipe_id === recipe.id);
+      recipe.saved = savedRecipes.some(user => user.recipe_id === recipe.id);
       return recipe;
     });
     return recipes;
@@ -21,14 +27,8 @@ class SearchRecipes extends Component {
     this.state = { recipes: this.buildRecipes(props) };
   }
 
-  static propTypes = {
-    searchResponse: PropTypes.array,
-    savedRecipes: PropTypes.array,
-    userUpdated: PropTypes.func
-  }
-
   render() {
     return (<RecipeList recipes={this.state.recipes} recipeCount={4} userUpdated={this.props.userUpdated}/>);
   }
 }
-export default SearchRecipes;
+export default RecipeContainer;
