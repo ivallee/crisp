@@ -9,7 +9,7 @@ function RecipeDetailsIngredients({ ingredient }) {
 
   
   return (
-    <li>{ingredient}</li>
+    <li><small>{ingredient}</small></li>
   );
 }
 export default RecipeDetailsIngredients;
