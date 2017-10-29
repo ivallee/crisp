@@ -37,10 +37,15 @@ class Filters extends Component {
   render() {
     return (
       <div id="filter-div">
+
+
+        <div className="d-flex justify-content-between">
+          {this.state.filterTypes.map(filter => <button className="btn btn-sm btn-success" key={filter.id} onClick={this.addFilter(filter.id)}>{filter.type}</button>)}
+        </div>
         <ul className="list-group">
-        <li className="list-group-item d-flex justify-content-between">
+          {/* <li className="list-group-item d-flex justify-content-between">
             {this.state.filterTypes.map(filter => <span className="col" key={filter.id} onClick={this.addFilter(filter.id)}>{filter.type}</span>)}
-          </li>
+          </li> */}
           {
             this.props.filters.map((filter, index) => {
               return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter} />;
