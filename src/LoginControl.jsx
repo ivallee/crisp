@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { login, logout } from './api.js';
 
 export default class LoginControl extends React.Component {
@@ -7,11 +6,10 @@ export default class LoginControl extends React.Component {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.state = { isLoggedIn: false };
   }
 
   handleLoginClick() {
-    login('test', 'test').then((response) => {
+    login('test', 'test', this.props.userUpdated).then((response) => {
       if(response.success) {
         console.log('successful login!');
         this.setState({ isLoggedIn: true });
@@ -23,17 +21,17 @@ export default class LoginControl extends React.Component {
   }
 
   handleLogoutClick() {
-    logout().then(() => {
+    logout(this.props.userUpdated).then(() => {
       console.log('logout');
       this.setState({ isLoggedIn: false });
     });
   }
 
   render() {
-    const isLoggedIn = this.state.isLoggedIn;
+    const { loggedIn } = this.props;
 
     let button = null;
-    if(isLoggedIn) {
+    if(loggedIn) {
       button = <LogoutButton onClick={this.handleLogoutClick} />;
     } else {
       button = <LoginButton onClick={this.handleLoginClick} />;
@@ -41,7 +39,7 @@ export default class LoginControl extends React.Component {
 
     return (
       <div>
-        <Greeting isLoggedIn={isLoggedIn} />
+        <Greeting loggedIn={loggedIn} />
         {button}
       </div>
     );
@@ -56,9 +54,8 @@ function GuestGreeting() {
   return <p>Please sign up.</p>;
 }
 
-function Greeting(props) {
-  const isLoggedIn = props.isLoggedIn;
-  if(isLoggedIn) {
+function Greeting(loggedIn) {
+  if(loggedIn) {
     return <UserGreeting />;
   }
   return <GuestGreeting />;

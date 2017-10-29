@@ -16,21 +16,25 @@ class UserDataContainer extends Component {
     children: PropTypes.node
   }
 
+  loadUserData = async () => {
+    const user = await getUser();
+    if(user) {
+      const savedRecipes = await getUserRecipes();
+      this.setState({ username: user.name, loggedIn: true, savedRecipes });
+    }
+    else {
+      this.setState({ username: '', loggedIn: false, savedRecipes: [] });
+    }
+  }
+
   componentDidMount() {
-    async () => {
-      const user = await getUser();
-      if(user) {
-        const savedRecipes = await getUserRecipes();
-        this.setState({ username: user.name, loggedIn: true , savedRecipes});
-      }
-      else {
-        this.setState({ username: '', loggedIn: false, savedRecipes: []});
-      }
-    };
+    this.loadUserData();
   }
 
   render() {
-    let children = React.Children.map(this.props.children, child => React.cloneElement(child, this.state));
+    const userData = this.state;
+    userData.userUpdated = this.loadUserData;
+    let children = React.Children.map(this.props.children, child => React.cloneElement(child, userData));
     return <div>{children}</div>;
   }
 }

@@ -1,11 +1,10 @@
 import axios from 'axios';
 const ENDPOINT = 'http://localhost:3000/api';
 
-const saveRecipe = async (recipe_id) => {
-  console.log('saving recipe_id', recipe_id);
+const saveRecipe = async (recipe_id, userUpdated) => {
   try {
-    const response = await axios.post(`${ENDPOINT}/users/recipes/`, {recipe_id});
-    console.log(response);
+    await axios.post(`${ENDPOINT}/users/recipes/`, {recipe_id});
+    userUpdated();
   } catch (error) {
     console.log(error);
   }
@@ -72,9 +71,10 @@ const getUser = async () => {
   }
 };
 
-const login = async (name, password) => {
+const login = async (name, password, userUpdated) => {
   try {
     const response = await axios.post(`${ENDPOINT}/users/login`, { name, password, withCredentials: true});
+    userUpdated();
     return response.data;
   } catch (err) {
     console.error(err);
@@ -82,17 +82,19 @@ const login = async (name, password) => {
   }
 };
 
-const logout = async () => {
+const logout = async (userUpdated) => {
   try {
-    return await axios.post(`${ENDPOINT}/users/logout`, {withCredentials: true});
+    await axios.post(`${ENDPOINT}/users/logout`, {withCredentials: true});
+    userUpdated();
   } catch (err) {
     console.error(err);
   }
 };
 
-const register = async (name, password) => {
+const register = async (name, password, userUpdated) => {
   try {
-    return await axios.post(`${ENDPOINT}/users/new`, {name, password });
+    await axios.post(`${ENDPOINT}/users/new`, {name, password });
+    userUpdated();
   } catch (err) {
     console.error(err);
   }

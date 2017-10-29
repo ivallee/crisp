@@ -25,7 +25,7 @@ class NavBar extends Component {
             <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
             </li>
             <li>
-            <LoginControl />
+            <LoginControl {...this.props}/>
             {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
               Launch demo modal
             </button> */}
