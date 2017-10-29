@@ -106,17 +106,14 @@ body {
 
 }
 
-.recipe-details-img-container {
-  max-width: 300px;
-  max-height: 200px;
-  border-radius: 30px;
-  text-align: center;
-  overflow: hidden;
-}
 
 .recipe-details-img {
   max-width: 300px;
   max-height: 200px;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 1px;
+  
 }
 
 .recipe-info {
