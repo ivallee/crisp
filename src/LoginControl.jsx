@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { login, logout } from './api.js';
 
 export default class LoginControl extends React.Component {
   constructor(props) {
@@ -10,36 +11,22 @@ export default class LoginControl extends React.Component {
   }
 
   handleLoginClick() {
-    axios.post('http://localhost:3000/api/users/login', {
-      name: 'test',
-      password: 'test',
-      withCredentials: true
-    })
-      .then((response) => {
-        console.log(response);
-        if(response.data.success) {
-          this.setState({ isLoggedIn: true });
-        }
-        else {
-          console.log('failed login!');
-        }
-      })
-      // .then(() => this.setState({ redirect: true }))
-      .catch((error) => {
-        console.log(error);
-      });
+    login('test', 'test').then((response) => {
+      if(response.success) {
+        console.log('successful login!');
+        this.setState({ isLoggedIn: true });
+      }
+      else {
+        console.log('failed login!');
+      }
+    });
   }
 
   handleLogoutClick() {
-    axios.post('http://localhost:3000/api/users/logout', {withCredentials: true})
-      .then((response) => {
-        console.log(response);
-        this.setState({ isLoggedIn: false });
-      })
-      // .then(() => this.setState({ redirect: true }))
-      .catch((error) => {
-        console.log(error);
-      });
+    logout().then(() => {
+      console.log('logout');
+      this.setState({ isLoggedIn: false });
+    });
   }
 
   render() {

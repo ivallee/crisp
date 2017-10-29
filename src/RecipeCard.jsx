@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { saveRecipe } from './api.js';
 
 class RecipeCard extends Component {
 
@@ -20,18 +20,6 @@ class RecipeCard extends Component {
   remove = (e) => {
     e.stopPropagation();
     this.props.removeRecipe(this.props.index);
-  }
-
-  saveRecipe = (recipe_id) => {
-    console.log('saving recipe_id', recipe_id);
-    axios.post(`http://localhost:3000/api/users/recipes/`, {recipe_id})
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  
   }
 
   render() {
@@ -70,7 +58,7 @@ class RecipeCard extends Component {
               </button>
                 <button type="button" className="btn btn-danger" onClick={e => this.remove(e)}>Show another one</button>
               </div>
-                <button type="button" className="btn btn-success" onClick={() => this.saveRecipe(this.props.id)}>Save Recipe</button>
+                <button type="button" className="btn btn-success" onClick={() => saveRecipe(this.props.id)}>Save Recipe</button>
             </div>
           </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeCard from './RecipeCard.jsx';
-import axios from 'axios';
+import { getUserRecipes } from './api.js';
 
 class RecipeList extends Component {
 
@@ -18,42 +18,32 @@ class RecipeList extends Component {
 
   removeRecipe = (index) => {
     this.state.recipes.splice(index, 1, this.state.recipes[4]);
-    this.state.recipes.splice(4,1);
+    this.state.recipes.splice(4, 1);
     this.setState({
       recipes: this.state.recipes
     });
-  
+
   }
 
-  renderRecipes = () => { 
+  renderRecipes = () => {
     return this.state.recipes.slice(0, 4).map((recipe, index) => {
       return <RecipeCard
-      id={recipe.id}
-      index={index}
-      title={recipe.title}
-      image={recipe.image}
-      time={recipe.readyInMinutes}
-      servings={recipe.servings}
-      sourceName={recipe.sourceName}
-      key={recipe.id}
-      removeRecipe={this.removeRecipe}
-    />;
+        id={recipe.id}
+        index={index}
+        title={recipe.title}
+        image={recipe.image}
+        time={recipe.readyInMinutes}
+        servings={recipe.servings}
+        sourceName={recipe.sourceName}
+        key={recipe.id}
+        removeRecipe={this.removeRecipe}
+      />;
     });
   };
 
-
-  getUserRecipes = () => {
-    axios.get('http://localhost:3000/api/users/recipes')
-    .then((recipes) => console.log(recipes))
-    .catch(error => {
-      console.log(error);
-    });
-  }
-
-  
   render() {
     const recipeCards = this.renderRecipes();
-    this.getUserRecipes();
+    getUserRecipes().then(response => console.log(response));
     return (
 
       <div className="recipe-list">
