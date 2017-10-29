@@ -17,11 +17,12 @@ class SearchRecipes extends Component {
 
   static propTypes = {
     searchResponse: PropTypes.array,
-    savedRecipes: PropTypes.array
+    savedRecipes: PropTypes.array,
+    userUpdated: PropTypes.func
   }
 
   render() {
-    return (<RecipeList recipes={this.state.recipes} recipeCount={7}/>);
+    return (<RecipeList recipes={this.state.recipes} recipeCount={7} userUpdated={this.props.userUpdated}/>);
   }
 }
 export default SearchRecipes;

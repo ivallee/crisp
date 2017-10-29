@@ -13,7 +13,8 @@ class RecipeList extends Component {
 
   static propTypes = {
     recipes: PropTypes.array,
-    recipeCount: PropTypes.number
+    recipeCount: PropTypes.number,
+    userUpdated: PropTypes.func
   }
 
   removeRecipe = (index) => {
@@ -45,6 +46,7 @@ class RecipeList extends Component {
         sourceName={recipe.sourceName}
         key={recipe.id}
         removeRecipe={this.removeRecipe}
+        userUpdated={this.props.userUpdated}
       />;
     });
   };

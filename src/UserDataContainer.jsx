@@ -17,6 +17,7 @@ class UserDataContainer extends Component {
   }
 
   loadUserData = async () => {
+    console.log('loading user data');
     const user = await getUser();
     if(user) {
       const savedRecipes = await getUserRecipes();
