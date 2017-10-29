@@ -106,8 +106,21 @@ body {
 
 }
 
+.recipe-details-img-container {
+  max-width: 300px;
+  max-height: 200px;
+  border-radius: 30px;
+  text-align: center;
+  overflow: hidden;
+}
+
 .recipe-details-img {
   max-width: 300px;
+  max-height: 200px;
+}
+
+.recipe-info {
+  padding-top: 60px;
 }
 
 .recipe-card-link {

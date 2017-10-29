@@ -58,7 +58,7 @@ class RecipeDetails extends Component {
     return (
       <div className='jumbotron content-blocks'>
         <div className="row">
-          <div className="col-sm-6">
+          <div className="col-sm-6 recipe-details-img-container">
             <img className='recipe-details-img' src={recipe.image} alt="Recipe image"></img>
           </div>
           <div className="col-sm-6">
@@ -71,13 +71,15 @@ class RecipeDetails extends Component {
           </div>
           
         </div>
-        <div className="row">
+        <div className="row recipe-info">
           <div className='col-6'>
             <div className="recipe-details-ingredients">
               <h5>Ingredients:</h5>
-              <ul>
-                {ingredients}
-              </ul>
+              <div className='well'>
+                <ul>
+                  {ingredients}
+                </ul>
+              </div>
             </div>
           </div>
           <div className='col-6'>
