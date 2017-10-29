@@ -9,23 +9,22 @@ import { recipeSearch } from './api.js';
 import Register from './Register.jsx';
 import UserPage from './UserPage.jsx';
 
-
-
-
 class Main extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      searchResponse: [],
+      searchResponse: []
     };
     this.shuffleResults = this.shuffleResults.bind(this);
   }
 
   static propTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    loggedIn: PropTypes.bool,
+    username: PropTypes.string,
+    savedRecipes: PropTypes.array
   }
-
 
   shuffleResults = (a) => {
     for(let i = a.length - 1; i > 0; i--) {
@@ -46,11 +45,11 @@ class Main extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" render={() => <Home sendQuery={this.sendQuery} />} />
-        <Route exact path='/results' render={() => <SearchResults searchResponse={this.state.searchResponse} />} />
-        <Route path='/recipes/:id' component={RecipeDetails} />
-        <Route path='/register' render={() => <Register newUser={this.newUser} />} />
-        <Route path='/users/:id' component={UserPage} />
+        <Route exact path="/" render={() => <Home sendQuery={this.sendQuery} {...this.props} />} />
+        <Route exact path='/results' render={() => <SearchResults searchResponse={this.state.searchResponse} {...this.props} />} />
+        <Route path='/recipes/:id' component={RecipeDetails} {...this.props} />
+        <Route path='/register' render={() => <Register newUser={this.newUser} {...this.props} />} />
+        <Route path='/users/:id' component={UserPage} {...this.props} />
 
         {/* Handles 404s client-side */}
         {<Route path="*" component={NotFound} />}
