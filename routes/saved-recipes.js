@@ -9,6 +9,11 @@ module.exports = (db) => {
     .post(check.hasParams('recipe_id'), async (req, res, next) => {
       try {
         const { recipe_id, category } = req.body;
+        const recipes = await db.getUserRecipes(req.session.user_id);
+        console.log(recipes);
+        if(recipes.some(recipe => recipe.recipe_id === parseInt(recipe_id))) {
+          return res.send({ message: `Recipe ${recipe_id} already saved by this user` });
+        }
         const id = await db.saveRecipe(req.session.user_id, recipe_id, category);
         res.status(201).send({ message: `Recipe ${recipe_id} saved`, id });
       } catch(err) {
@@ -41,7 +46,7 @@ module.exports = (db) => {
       }
     });
 
-  router.get('/:category', async(req, res, next) => {
+  router.get('/:category', async (req, res, next) => {
     try {
       const recipes = await db.getUserRecipes(req.session.user_id, req.params.category);
       res.send(recipes);
