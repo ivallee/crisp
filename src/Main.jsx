@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import PropTypes from 'proptypes';
+import UserDataContainer from './UserDataContainer.jsx';
 import Home from './Home.jsx';
 import SearchResults from './SearchResults.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
@@ -45,16 +46,19 @@ class Main extends Component {
 
   render() {
     return (
-      <Switch>
+      <UserDataContainer>
+        <div>are you here?</div>
+      </UserDataContainer>
+      /*<Switch>
         <Route exact path="/" render={() => <Home sendQuery={this.sendQuery} />} />
         <Route exact path='/results' render={() => <SearchResults searchResponse={this.state.searchResponse} />} />
         <Route path='/recipes/:id' component={RecipeDetails} />
         <Route path='/register' render={() => <Register newUser={this.newUser} />} />
         <Route path='/users/:id' component={UserPage} />
 
-        {/* Handles 404s client-side */}
+        {/* Handles 404s client-side /}
         {<Route path="*" component={NotFound} />}
-      </Switch>
+      </Switch> */
     );
   }
 }

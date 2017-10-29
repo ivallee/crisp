@@ -13,7 +13,8 @@ const saveRecipe = async (recipe_id) => {
 
 const getUserRecipes = async () => {
   try {
-    return await axios.get(`${ENDPOINT}/users/recipes`);
+    const response = await axios.get(`${ENDPOINT}/users/recipes`);
+    return response.data;
   } catch (err) {
     console.error(err);
     return [];
@@ -61,6 +62,16 @@ const getFilter = async (id) => {
   }
 };
 
+const getUser = async () => {
+  try {
+    const response = await axios.get(`${ENDPOINT}/users/current`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    return undefined;
+  }
+};
+
 const login = async (name, password) => {
   try {
     const response = await axios.post(`${ENDPOINT}/users/login`, { name, password, withCredentials: true});
@@ -94,6 +105,7 @@ module.exports = {
   getRecipeDetails,
   getFilterTypes,
   getFilter,
+  getUser,
   login,
   logout,
   register,
