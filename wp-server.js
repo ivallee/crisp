@@ -13,7 +13,13 @@ new WebpackDevServer(webpack(webpackConfig), {
     aggregateTimeout: 300,
     poll: 1000,
     ignored: /node_modules/
-  }
+  },
+  proxy: {
+    '/api': {
+      target: 'http://127.0.0.1:8080',
+      changeOrigin: true
+    }
+  },
 })
   .listen(WEBPACK_PORT, HOST, (err) => {
     if(err) {

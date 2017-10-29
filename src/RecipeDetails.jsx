@@ -20,29 +20,19 @@ class RecipeDetails extends Component {
 
 
   componentWillMount() {
-
-    // Replace this with fetch to API:
-
-
-    // console.log(dummyRecipeData);
-
-    // this.setState({recipeData: dummyRecipeData});
-
-    axios.get(`http://localhost:8080/recipes/${this.props.match.params.id}`)
-      .then(response => {
-        console.log(response.data);
-        this.setState({ recipeData: response.data })
-      });
+    axios.get(`http://localhost:3000/api/recipes/${this.props.match.params.id}`)
+    .then(response => {
+      console.log(response.data);
+      this.setState({ recipeData:response.data });
+    });
 
   }
 
-  componentDidMount() {
+  componentDidMount(){
   }
 
   render() {
     const recipe = this.state.recipeData;
-
-
 
     const instructions = recipe.analyzedInstructions && recipe.analyzedInstructions[0].steps.map(step => {
       return <RecipeDetailsInstructions stepCount={step.number}
