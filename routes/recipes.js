@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/search/:query', (req, res, next) => {
   let request = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?query=${req.params.query}`;
-  request += '&addRecipeInformation=true&limitLicense=true&instructionsRequired=true&number=50';
+  request += '&addRecipeInformation=true&limitLicense=true&instructionsRequired=true&number=20';
   const options = {
     uri: request,
     headers: {'X-Mashape-Key': process.env.MASHAPE_KEY }

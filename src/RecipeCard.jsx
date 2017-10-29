@@ -23,6 +23,7 @@ class RecipeCard extends Component {
   }
 
   saveRecipe = (recipe_id) => {
+    console.log('saving recipe_id', recipe_id);
     axios.post(`http://localhost:3000/api/users/recipes/`, {recipe_id})
     .then(function (response) {
       console.log(response);
@@ -68,8 +69,8 @@ class RecipeCard extends Component {
                 {/* <span aria-hidden="true">&times;</span> */}
               </button>
                 <button type="button" className="btn btn-danger" onClick={e => this.remove(e)}>Show another one</button>
-                <button type="button" className="btn btn-success"onClick={this.saveRecipe(this.props.id)}>Save Recipe</button>
               </div>
+                <button type="button" className="btn btn-success" onClick={() => this.saveRecipe(this.props.id)}>Save Recipe</button>
             </div>
           </div>
       </div>

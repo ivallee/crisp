@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeCard from './RecipeCard.jsx';
+import axios from 'axios';
 
 class RecipeList extends Component {
 
@@ -39,9 +40,20 @@ class RecipeList extends Component {
     />;
     });
   };
+
+
+  getUserRecipes = () => {
+    axios.get('http://localhost:3000/api/users/recipes')
+    .then((recipes) => console.log(recipes))
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
   
   render() {
     const recipeCards = this.renderRecipes();
+    this.getUserRecipes();
     return (
 
       <div className="recipe-list">
