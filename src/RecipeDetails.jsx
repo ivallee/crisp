@@ -11,7 +11,7 @@ class RecipeDetails extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       recipeData: {},
     };
   }
@@ -21,70 +21,75 @@ class RecipeDetails extends Component {
 
   componentWillMount() {
 
-  // Replace this with fetch to API:
+    // Replace this with fetch to API:
 
-  
+
     // console.log(dummyRecipeData);
-  
+
     // this.setState({recipeData: dummyRecipeData});
 
     axios.get(`http://localhost:8080/recipes/${this.props.match.params.id}`)
-    .then(response => {
-      console.log(response.data);
-      this.setState( { recipeData:response.data } )
-    });
-    
+      .then(response => {
+        console.log(response.data);
+        this.setState({ recipeData: response.data })
+      });
+
   }
-  
-  componentDidMount(){
+
+  componentDidMount() {
   }
 
   render() {
     const recipe = this.state.recipeData;
-   
-      
+
+
 
     const instructions = recipe.analyzedInstructions && recipe.analyzedInstructions[0].steps.map(step => {
-      return <RecipeDetailsInstructions stepCount={ step.number }
-                                        stepDesc={ step.step }
-                                        key={ step.number } />;
+      return <RecipeDetailsInstructions stepCount={step.number}
+        stepDesc={step.step}
+        key={step.number} />;
     });
 
     const ingredients = recipe.extendedIngredients && recipe.extendedIngredients.map(ingredient => {
       return <RecipeDetailsIngredients ingredient={ingredient.originalString}
-                                       key={ingredient.id} />;
+        key={ingredient.id} />;
     });
 
     return (
-    <div>
-      <div className="row">
-        <div className="col-sm-6">
-          <img className="img-thumbnail" src={recipe.image} alt="Card image cap"></img>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-sm-6">
-          <h4>
-            {recipe.title}
-          </h4>
-          <h5>By {recipe.sourceName}</h5>
+      <div className='jumbotron content-blocks'>
+        <div className="row">
+          <div className="col-sm-6">
+            <img className='recipe-details-img' src={recipe.image} alt="Recipe image"></img>
+          </div>
+          <div className="col-sm-6">
+            <h4>
+              {recipe.title}
+            </h4>
+            <h5>By {recipe.sourceName}</h5>
             <small className="text-muted"> Time required: {recipe.readyInMinutes} minutes</small>
+            < RecipeDetailsLinks />
+          </div>
+          
+        </div>
+        <div className="row">
+          <div className='col-6'>
+            <div className="recipe-details-ingredients">
+              <h5>Ingredients:</h5>
+              <ul>
+                {ingredients}
+              </ul>
+            </div>
+          </div>
+          <div className='col-6'>
+            <div className="recipe-details-instructions">
+              <h5>Instructions:</h5>
+              <ul>
+                {instructions}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-      < RecipeDetailsLinks />
-      <div className="recipe-details-ingredients">
-        <h5>Ingredients:</h5>
-        <ul>
-          {ingredients}
-        </ul>
-      </div>
-      <div className="recipe-details-instructions">
-      <h5>Instructions:</h5>
-        <ul>
-          {instructions}
-        </ul>
-    </div>
-    </div>
     );
   }
 }
