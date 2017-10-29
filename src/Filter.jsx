@@ -27,7 +27,7 @@ class Filter extends Component {
 
   buildBtn = () => {
     const btnText = this.props.data.exclude? this.props.data.exclude_btn : this.props.data.btn;
-    const btnStyle = this.props.data.exclude? 'btn-danger' : 'btn-success';
+    const btnStyle = this.props.data.exclude? 'btn-danger' : 'btn-main';
     if(!btnText) return '';
     return <input className={`btn btn-sc ${btnStyle}`}
       type="button"
