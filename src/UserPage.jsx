@@ -4,10 +4,19 @@ import RecipeContainer from './RecipeContainer.jsx';
 
 class UserPage extends Component {
 
+  static propTypes = {
+    savedRecipes: PropTypes.array,
+    userUpdated: PropTypes.func
+  }
 
   render() {
+    const recipes = this.props.savedRecipes.map(
+      recipe => {
+        recipe.id = recipe.recipe_id;
+        return recipe;
+      });
     return (
-      <RecipeContainer recipes={this.props.savedRecipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
+      <RecipeContainer recipes={recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
       // <div className="col user-recipes">
       //   <div className="row">
       //     <div className="col-4">
