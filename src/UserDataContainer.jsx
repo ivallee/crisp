@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
-import { getUser, getUserRecipes, getUserFilters } from './api.js';
+import { getUser, getUserRecipes, getUserFilters, getUserCategories } from './api.js';
 
 class UserDataContainer extends Component {
   constructor(props) {
@@ -9,7 +9,8 @@ class UserDataContainer extends Component {
       loggedIn: false,
       username: '',
       savedRecipes: [],
-      savedFilters: []
+      savedFilters: [],
+      categories: []
     };
   }
 
@@ -22,7 +23,8 @@ class UserDataContainer extends Component {
     if(user) {
       const savedRecipes = await getUserRecipes();
       const savedFilters = await getUserFilters();
-      this.setState({ username: user.name, loggedIn: true, savedRecipes, savedFilters });
+      const categories = await getUserCategories();
+      this.setState({ username: user.name, loggedIn: true, savedRecipes, savedFilters, categories });
     }
     else {
       this.setState({ username: '', loggedIn: false, savedRecipes: [], savedFilters: [] });

@@ -49,7 +49,7 @@ class RecipeList extends Component {
         servings={recipe.servings}
         saved={recipe.saved}
         sourceName={recipe.sourceName}
-        key={recipe.id}
+        key={index}
         removeRecipe={this.removeRecipe}
         userUpdated={this.props.userUpdated}
       />;

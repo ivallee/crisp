@@ -108,6 +108,25 @@ const deleteSavedFilter = async (filter, userUpdated) => {
   }
 };
 
+const createCategory = async (name, userUpdated) => {
+  try {
+    await axios.post(`${ENDPOINT}/users/categories`, { name });
+    userUpdated();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const getUserCategories = async () => {
+  try {
+    const response = await axios.get(`${ENDPOINT}/users/categories`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
 const getUser = async () => {
   try {
     const response = await axios.get(`${ENDPOINT}/users/current`);
@@ -159,6 +178,8 @@ module.exports = {
   getUserFilters,
   updateSavedFilter,
   deleteSavedFilter,
+  createCategory,
+  getUserCategories,
   getUser,
   login,
   logout,

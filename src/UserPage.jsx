@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeContainer from './RecipeContainer.jsx';
 import Filters from './Filters.jsx';
-import { saveFilter, updateSavedFilter, deleteSavedFilter } from './api.js';
+import Categories from './Categories.jsx';
+import { saveFilter, updateSavedFilter, deleteSavedFilter, createCategory } from './api.js';
 
 class UserPage extends Component {
 
   static propTypes = {
     savedRecipes: PropTypes.array,
     savedFilters: PropTypes.array,
+    categories: PropTypes.array,
     userUpdated: PropTypes.func
   }
 
@@ -25,6 +27,10 @@ class UserPage extends Component {
   updateFilter = (filter) => {
     const { saved_filter_id, value, exclude } = filter;
     updateSavedFilter(saved_filter_id, value, exclude, this.props.userUpdated);
+  }
+
+  addCategory = (category) => {
+    createCategory(category.name, this.props.userUpdated);
   }
 
   render() {
@@ -47,13 +53,8 @@ class UserPage extends Component {
             </div>
             <a href="#demo2" className="btn btn-secondary col" data-toggle="collapse">Your Recipes</a>
             <div id="demo2" className="collapse col">
-              <ul className="list-group col-10">
-                <li className="list-group-item"> <a href="#demo3" className="btn btn-secondary col" data-toggle="collapse">Dinner</a></li>
-                <li className="list-group-item">Breakfast</li>
-                <li className="list-group-item">Spicy</li>
-                <li className="list-group-item">Other people's favorites</li>
-                <li className="list-group-item">Sunday Meals</li>
-              </ul>
+                <Categories categories={this.props.categories} addCategory={this.addCategory}/>
+                {/* <a href="#demo3" className="btn btn-secondary col" data-toggle="collapse">Dinner</a> */}
             </div>
           </div>
           <div className="user-recipe-list-card">
