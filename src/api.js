@@ -70,6 +70,16 @@ const getFilter = async (id) => {
   }
 };
 
+const saveFilter = async (type, value, exclude, userUpdated) => {
+  try {
+    console.log('Type:', type, 'Value:', value, 'Exclude:', exclude);
+    await axios.post(`${ENDPOINT}/users/filters/`, { type, value, exclude });
+    userUpdated();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const getUserFilters = async () => {
   try {
     const response = await axios.get(`${ENDPOINT}/users/filters`);
@@ -136,6 +146,7 @@ module.exports = {
   getRecipeDetails,
   getFilterTypes,
   getFilter,
+  saveFilter,
   getUserFilters,
   deleteSavedFilter,
   getUser,
