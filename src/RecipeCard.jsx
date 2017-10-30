@@ -73,33 +73,6 @@ class RecipeCard extends Component {
       </div>
 
 
-      // <div className="card recipe-card w-50">
-      //   <img className="card-img-top" src={this.props.image} alt="Card image cap" />
-      //   <div className="card-block">
-      //     <h5 className="card-title">{this.props.title}</h5>
-      //     <p className="card-text">
-      //     <ul className="list-unstyled">
-      //               <li>
-      //                 <small>Time: {this.props.time}</small>
-      //               </li>
-      //               <li>
-      //                 <small>From: {this.props.sourceName}</small>
-      //               </li>
-      //               <li>
-      //                 <small>Servings: {this.props.servings}</small>
-      //               </li>
-      //             </ul>
-      //       </p>
-      //   </div>
-      // <div className="card-block d-flex justify-content-between">
-
-      //   <button type="button" className="btn btn-danger" onClick={e => this.remove(e)}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>
-      //   <button type="button" className="btn btn-success" onClick={() => this.saveRecipe(this.props.id)}><i className="fa fa-bookmark-o" aria-hidden="true"></i></button>
-      // </div>
-
-      // </div>
-
-
     );
   }
 }
