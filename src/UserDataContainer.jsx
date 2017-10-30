@@ -8,7 +8,8 @@ class UserDataContainer extends Component {
     this.state = {
       loggedIn: false,
       username: '',
-      savedRecipes: []
+      savedRecipes: [],
+      savedFilters: []
     };
   }
 
@@ -21,7 +22,6 @@ class UserDataContainer extends Component {
     if(user) {
       const savedRecipes = await getUserRecipes();
       const savedFilters = await getUserFilters();
-      console.log(savedFilters);
       this.setState({ username: user.name, loggedIn: true, savedRecipes, savedFilters });
     }
     else {

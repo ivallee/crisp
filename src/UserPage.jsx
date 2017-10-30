@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeContainer from './RecipeContainer.jsx';
+import Filters from './Filters.jsx';
 
 class UserPage extends Component {
 
   static propTypes = {
     savedRecipes: PropTypes.array,
+    savedFilters: PropTypes.array,
     userUpdated: PropTypes.func
+  }
+
+  addFilter() {
+
+  }
+  removeFilter() {
+
+  }
+  updateFilter() {
+
   }
 
   render() {
@@ -16,7 +28,10 @@ class UserPage extends Component {
         return recipe;
       });
     return (
-      <RecipeContainer recipes={recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
+      <div>
+        <RecipeContainer recipes={recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
+        <Filters filters={this.props.savedFilters} addFilter={this.addFilter} removeFilter={this.removeFilter} updateFilter={this.updateFilter} />
+      </div>
       // <div className="col user-recipes">
       //   <div className="row">
       //     <div className="col-4">
