@@ -15,7 +15,7 @@ class SearchResults extends Component {
       <div className="results">
         <div id="search-result-list" className='jumbotron content-blocks'>
           <h3 id="search-result-list-header" className="text-center">Recommendations:</h3>
-          <RecipeContainer recipes = {this.props.searchResponse} savedRecipes = {this.props.savedRecipes} userUpdated = {this.props.userUpdated} />
+          <RecipeContainer recipes = {this.props.searchResponse} savedRecipes = {this.props.savedRecipes} userUpdated = {this.props.userUpdated} count={4}/>
           <div className='d-flex justify-content-center'>
             <a className='back-btn' href='/'><button className="btn btn-success">Do a different search</button></a>
           </div>

@@ -17,6 +17,11 @@ class RecipeList extends Component {
     userUpdated: PropTypes.func
   }
 
+
+  componentWillReceiveProps(props) {
+    this.state = { recipes: props.recipes };
+  }
+
   removeRecipe = (index) => {
     if(this.props.recipeCount) {
       //replace with the first unused recipe
@@ -33,7 +38,7 @@ class RecipeList extends Component {
   }
 
   renderRecipes = () => {
-    const recipes = this.props.recipeCount? this.state.recipes.slice(0, this.props.recipeCount) : this.state.recipes;
+    const recipes = this.props.recipeCount ? this.state.recipes.slice(0, this.props.recipeCount) : this.state.recipes;
     return recipes.map((recipe, index) => {
       return <RecipeCard
         id={recipe.id}
