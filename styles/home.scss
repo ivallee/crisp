@@ -122,6 +122,22 @@ body {
 	background-color: $bg-color-primary-dk;
 }
 
+.recipe-card {
+
+  max-width: 250px;
+  min-width: 200px;
+  margin-bottom: 20px;
+  
+  .card-block {
+    min-height: 40px;
+  }
+  
+  .card-img-top {
+    max-height: 108px;
+  }
+
+
+}
 
 .recipe-details-img {
   max-width: 300px;

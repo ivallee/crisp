@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeCard from './RecipeCard.jsx';
 import axios from 'axios';
+import dummyResults from './_dummyresults.js';
+
 
 class RecipeList extends Component {
 
@@ -26,6 +28,7 @@ class RecipeList extends Component {
   }
 
   renderRecipes = () => { 
+    // change back to this.state.recipes
     return this.state.recipes.slice(0, 4).map((recipe, index) => {
       return <RecipeCard
       id={recipe.id}
@@ -58,7 +61,12 @@ class RecipeList extends Component {
 
       <div className="recipe-list">
         <div className="row">
+          
+
+
+
           {recipeCards}
+          
         </div>
       </div>
 
