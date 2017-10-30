@@ -20,6 +20,15 @@ const getUserRecipes = async () => {
   }
 };
 
+const deleteRecipe = async (recipe_id, userUpdated) => {
+  try {
+    await axios.delete(`${ENDPOINT}/users/recipes`, {params: {recipe_id}});
+    userUpdated();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const recipeSearch = async (query) => {
   try {
     const response = await axios.get(`${ENDPOINT}/recipes/search/${query || '%20'}`);
@@ -103,6 +112,7 @@ const register = async (name, password, userUpdated) => {
 module.exports = {
   saveRecipe,
   getUserRecipes,
+  deleteRecipe,
   recipeSearch,
   getRecipeDetails,
   getFilterTypes,

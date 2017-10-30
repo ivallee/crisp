@@ -13,7 +13,13 @@ class RecipeList extends Component {
 
   static propTypes = {
     recipes: PropTypes.array,
-    recipeCount: PropTypes.number
+    recipeCount: PropTypes.number,
+    userUpdated: PropTypes.func
+  }
+
+
+  componentWillReceiveProps(props) {
+    this.state = { recipes: props.recipes };
   }
 
   removeRecipe = (index) => {
@@ -32,7 +38,7 @@ class RecipeList extends Component {
   }
 
   renderRecipes = () => {
-    const recipes = this.props.recipeCount? this.state.recipes.slice(0, this.props.recipeCount) : this.state.recipes;
+    const recipes = this.props.recipeCount ? this.state.recipes.slice(0, this.props.recipeCount) : this.state.recipes;
     return recipes.map((recipe, index) => {
       return <RecipeCard
         id={recipe.id}
@@ -45,6 +51,7 @@ class RecipeList extends Component {
         sourceName={recipe.sourceName}
         key={recipe.id}
         removeRecipe={this.removeRecipe}
+        userUpdated={this.props.userUpdated}
       />;
     });
   };

@@ -49,7 +49,7 @@ class Main extends Component {
         <Route exact path='/results' render={() => <SearchResults searchResponse={this.state.searchResponse} {...this.props} />} />
         <Route path='/recipes/:id' component={RecipeDetails} {...this.props} />
         <Route path='/register' render={() => <Register newUser={this.newUser} {...this.props} />} />
-        <Route path='/users/:id' component={UserPage} {...this.props} />
+        <Route path='/users' render={() => <UserPage {...this.props} />} />
 
         {/* Handles 404s client-side */}
         {<Route path="*" component={NotFound} />}

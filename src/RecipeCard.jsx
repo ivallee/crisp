@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import { Link } from 'react-router-dom';
-import { saveRecipe } from './api.js';
+import { saveRecipe, deleteRecipe } from './api.js';
 
 class RecipeCard extends Component {
 
@@ -12,14 +12,24 @@ class RecipeCard extends Component {
     recipes: PropTypes.array,
     removeRecipe: PropTypes.func,
     servings: PropTypes.number,
+    saved: PropTypes.bool,
     sourceName: PropTypes.string,
     title: PropTypes.string,
-    time: PropTypes.number
+    time: PropTypes.number,
+    userUpdated: PropTypes.func
   }
 
   remove = (e) => {
     e.stopPropagation();
     this.props.removeRecipe(this.props.index);
+  }
+
+  saveButton = () => {
+    if(this.props.saved) {
+      return <button type="button" className="btn btn-success" onClick={() => deleteRecipe(this.props.id, this.props.userUpdated)}>Saved</button>;
+    } else {
+      return <button type="button" className="btn btn-success" onClick={() => saveRecipe(this.props.id, this.props.userUpdated)}>Save Recipe</button>;
+    }
   }
 
   render() {
@@ -58,7 +68,7 @@ class RecipeCard extends Component {
               </button>
                 <button type="button" className="btn btn-danger" onClick={e => this.remove(e)}>Show another one</button>
               </div>
-                <button type="button" className="btn btn-success" onClick={() => saveRecipe(this.props.id)}>Save Recipe</button>
+                {this.saveButton()}
             </div>
           </div>
       </div>
