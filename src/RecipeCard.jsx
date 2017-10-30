@@ -6,7 +6,7 @@ import { saveRecipe, deleteRecipe, getRecipeDetails } from './api.js';
 class RecipeCard extends Component {
   constructor(props) {
     super(props);
-    this.setStateFromProps();
+    this.setStateFromProps(this.props);
   }
 
   static propTypes = {
@@ -27,8 +27,12 @@ class RecipeCard extends Component {
     if(!this.state.title) this.setStateFromAPI();
   }
 
-  setStateFromProps = () => {
-    const { image, recipes, servings, sourceName, title, time } = this.props;
+  componentWillReceiveProps(props) {
+    this.setStateFromProps(props);
+  }
+
+  setStateFromProps = (props) => {
+    const { image, recipes, servings, sourceName, title, time } = props;
     this.state = { image, recipes, servings, sourceName, title, time };
   }
 
@@ -88,8 +92,6 @@ class RecipeCard extends Component {
           </div>
         </div>
       </div>
-
-
     );
   }
 }

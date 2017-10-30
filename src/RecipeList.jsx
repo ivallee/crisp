@@ -23,6 +23,7 @@ class RecipeList extends Component {
   }
 
   removeRecipe = (index) => {
+    console.log(this.state.recipes);
     if(this.props.recipeCount) {
       //replace with the first unused recipe
       this.state.recipes.splice(index, 1, this.state.recipes[this.props.recipeCount]);
@@ -34,7 +35,6 @@ class RecipeList extends Component {
     this.setState({
       recipes: this.state.recipes
     });
-
   }
 
   renderRecipes = () => {
