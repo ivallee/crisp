@@ -32,9 +32,13 @@ module.exports = (db) => {
     res.send({ message: 'Logout successful' });
   });
 
-  router.get('/current', check.isAuthenticated, async (req, res) => {
-    const user = await db.getUserByID(req.session.user_id);
-    res.send(user);
+  router.get('/current', async (req, res) => {
+    if(req.session.user_id) {
+      const user = await db.getUserByID(req.session.user_id);
+      res.send(user);
+    } else {
+      res.send();
+    }
   });
 
   router.use('/categories', require('./categories')(db));
