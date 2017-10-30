@@ -64,7 +64,6 @@ class UserPage extends Component {
             <a href=".demo2" className="btn btn-secondary col" data-toggle="collapse">Your Recipes</a>
             <div className="collapse col demo2">
               <Categories categories={this.props.categories} addCategory={this.addCategory} changeCategory={this.changeCategory} selectedCategory={this.state.selectedCategory} />
-              {/* <a href="#demo3" className="btn btn-secondary col" data-toggle="collapse">Dinner</a> */}
             </div>
           </div>
           <div className="collapse col demo2">

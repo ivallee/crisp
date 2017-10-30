@@ -6,7 +6,7 @@ import { saveRecipe, deleteRecipe, getRecipeDetails } from './api.js';
 class RecipeCard extends Component {
   constructor(props) {
     super(props);
-    this.setStateFromProps(this.props);
+    this.state = this.extractStateProps(this.props);
   }
 
   static propTypes = {
@@ -28,13 +28,14 @@ class RecipeCard extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setStateFromProps(props);
+    this.setState(this.extractStateProps(props));
   }
 
-  setStateFromProps = (props) => {
-    const { image, recipes, servings, sourceName, title, time } = props;
-    this.state = { image, recipes, servings, sourceName, title, time };
-  }
+  extractStateProps = ({ image, recipes, servings, sourceName, title, time }) => {
+    const extracted = { image, recipes, servings, sourceName, title, time };
+    Object.keys(extracted).forEach(key => extracted[key] === undefined && delete extracted[key]);
+    return extracted;
+  };
 
   setStateFromAPI = () => {
     getRecipeDetails(this.props.id).then(response => {
