@@ -9,8 +9,10 @@ class UserPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedCategory: ''
+      selectedCategory: '',
+      recipes: this.buildRecipeList(this.props.savedRecipes, '')
     };
+    console.log(this.state.recipes);
   }
 
   static propTypes = {
@@ -18,6 +20,10 @@ class UserPage extends Component {
     savedFilters: PropTypes.array,
     categories: PropTypes.array,
     userUpdated: PropTypes.func
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({ recipes: this.buildRecipeList(props.savedRecipes, this.state.selectedCategory) });
   }
 
   addFilter = (filter) => {
@@ -39,8 +45,15 @@ class UserPage extends Component {
     createCategory(category.name, this.props.userUpdated);
   }
 
+  buildRecipeList = (recipes, selectedCategory) => {
+    return recipes.filter(recipe => {
+      return selectedCategory === '' || recipe.category === selectedCategory;
+    });
+  }
+
   changeCategory = (selectedCategory) => {
-    this.setState({ selectedCategory });
+    const recipes = this.buildRecipeList(this.props.savedRecipes, selectedCategory);
+    this.setState({ selectedCategory, recipes });
   }
 
   render() {
@@ -67,7 +80,7 @@ class UserPage extends Component {
             </div>
           </div>
           <div className="collapse col demo2">
-            <RecipeContainer recipes={this.props.savedRecipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
+            <RecipeContainer recipes={this.state.recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
           </div>
         </div>
       </div>
