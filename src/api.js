@@ -73,8 +73,7 @@ const getFilter = async (id) => {
 const getUserFilters = async () => {
   try {
     const response = await axios.get(`${ENDPOINT}/users/filters`);
-    console.log('User Filters:', response);
-    return response;
+    return response.data;
   } catch(err) {
     console.error(err);
     return [];

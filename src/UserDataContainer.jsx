@@ -21,10 +21,11 @@ class UserDataContainer extends Component {
     if(user) {
       const savedRecipes = await getUserRecipes();
       const savedFilters = await getUserFilters();
+      console.log(savedFilters);
       this.setState({ username: user.name, loggedIn: true, savedRecipes, savedFilters });
     }
     else {
-      this.setState({ username: '', loggedIn: false, savedRecipes: [] });
+      this.setState({ username: '', loggedIn: false, savedRecipes: [], savedFilters: [] });
     }
   }
 
