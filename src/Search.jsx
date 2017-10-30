@@ -11,7 +11,12 @@ class Search extends Component {
   }
 
   static propTypes = {
-    sendQuery: PropTypes.func
+    sendQuery: PropTypes.func,
+    savedFilters: PropTypes.array
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({ filters: props.savedFilters });
   }
 
   doSearch = () => {
@@ -19,9 +24,9 @@ class Search extends Component {
 
     axios.get('http://localhost:3000/api/filters')
       .then(({ data }) => {
-        for (const filter of data) {
+        for(const filter of data) {
           let filterString = this.buildFilterString(filter.id, filter.key);
-          if (filter.exclude_key) {
+          if(filter.exclude_key) {
             filterString += this.buildFilterString(filter.id, filter.exclude_key, true);
           }
           request += filterString;
@@ -34,7 +39,7 @@ class Search extends Component {
     const filtersOfType = this.state.filters
       .filter(filter => filter && filter.id === id && filter.exclude === exclude)
       .map(filter => encodeURIComponent(filter.value));
-    if (filtersOfType.length === 0) return '';
+    if(filtersOfType.length === 0) return '';
     return `&${key}=${filtersOfType.join('%2C+')}`;
   }
 
@@ -46,6 +51,7 @@ class Search extends Component {
     let filters = this.state.filters;
     filters.unshift(newFilter);
     this.setState({ filters });
+    console.log(this.state.filters);
   }
 
   removeFilter = (filterID) => {
@@ -65,7 +71,7 @@ class Search extends Component {
       return filter && filter.type === type;
     }).map(filter => filter.value);
 
-    if (!filterList) return '';
+    if(!filterList) return '';
 
     return filterList.join(', ');
   }
