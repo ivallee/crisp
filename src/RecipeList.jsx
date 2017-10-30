@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeCard from './RecipeCard.jsx';
-import axios from 'axios';
-import dummyResults from './_dummyresults.js';
-
 
 class RecipeList extends Component {
 
@@ -15,62 +12,57 @@ class RecipeList extends Component {
   }
 
   static propTypes = {
-    recipes: PropTypes.array
+    recipes: PropTypes.array,
+    recipeCount: PropTypes.number,
+    userUpdated: PropTypes.func
+  }
+
+
+  componentWillReceiveProps(props) {
+    this.state = { recipes: props.recipes };
   }
 
   removeRecipe = (index) => {
-    this.state.recipes.splice(index, 1, this.state.recipes[4]);
-    this.state.recipes.splice(4,1);
+    if(this.props.recipeCount) {
+      //replace with the first unused recipe
+      this.state.recipes.splice(index, 1, this.state.recipes[this.props.recipeCount]);
+      //remove that recipe from the list
+      this.state.recipes.splice(this.props.recipeCount, 1);
+    } else {
+      this.state.recipes.splice(index, 1);
+    }
     this.setState({
       recipes: this.state.recipes
     });
-  
+
   }
 
-  renderRecipes = () => { 
-    // change back to this.state.recipes
-    return this.state.recipes.slice(0, 4).map((recipe, index) => {
+  renderRecipes = () => {
+    const recipes = this.props.recipeCount ? this.state.recipes.slice(0, this.props.recipeCount) : this.state.recipes;
+    return recipes.map((recipe, index) => {
       return <RecipeCard
-      id={recipe.id}
-      index={index}
-      title={recipe.title}
-      image={recipe.image}
-      time={recipe.readyInMinutes}
-      servings={recipe.servings}
-      sourceName={recipe.sourceName}
-      key={recipe.id}
-      removeRecipe={this.removeRecipe}
-    />;
+        id={recipe.id}
+        index={index}
+        title={recipe.title}
+        image={recipe.image}
+        time={recipe.readyInMinutes}
+        servings={recipe.servings}
+        saved={recipe.saved}
+        sourceName={recipe.sourceName}
+        key={index}
+        removeRecipe={this.removeRecipe}
+        userUpdated={this.props.userUpdated}
+      />;
     });
   };
 
-
-  getUserRecipes = () => {
-    axios.get('http://localhost:3000/api/users/recipes')
-    .then((recipes) => console.log(recipes))
-    .catch(error => {
-      console.log(error);
-    });
-  }
-
-  
   render() {
-    const recipeCards = this.renderRecipes();
-    this.getUserRecipes();
     return (
-
       <div className="recipe-list">
         <div className="row">
-          
-
-
-
-          {recipeCards}
-          
+          {this.renderRecipes()}
         </div>
       </div>
-
-
     );
   }
 }

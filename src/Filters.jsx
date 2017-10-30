@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import Filter from './Filter.jsx';
-import axios from 'axios';
+import { getFilterTypes, getFilter } from './api.js';
 
 class Filters extends Component {
   constructor(props) {
@@ -10,9 +10,9 @@ class Filters extends Component {
   }
 
   componentWillMount = () => {
-    axios.get('http://localhost:3000/api/filters')
-      .then(({ data }) => {
-        this.setState({ filterTypes: data });
+    getFilterTypes()
+      .then((filterTypes) => {
+        this.setState({ filterTypes });
       });
   }
 
@@ -25,11 +25,11 @@ class Filters extends Component {
 
   addFilter = (id) => {
     return () => {
-      axios.get(`http://localhost:3000/api/filters/${id}`)
-        .then(({ data }) => {
-          data.value = '';
-          data.exclude = false;
-          this.props.addFilter(data);
+      getFilter(id)
+        .then((filter) => {
+          filter.value = '';
+          filter.exclude = false;
+          this.props.addFilter(filter);
         });
     };
   }

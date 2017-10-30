@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import {Redirect} from 'react-router-dom';
-import axios from 'axios';
+import register from './api';
 
 export default class Register extends Component {
   constructor(props) {
@@ -15,27 +15,12 @@ export default class Register extends Component {
   }
 
 
-  newUser = (data) => {
-    console.log(this.state.data);
-
-    axios.post('http://localhost:3000/api/users/new', {
-      name: this.state.data.name,
-      password: this.state.data.password
-    })
-    .then(function (response) {
+  newUser = () => {
+    const { name, password } = this.state.data;
+    register(name, password).then((response) => {
       console.log(response);
-    })
-    // .then(() => this.setState({ redirect: true }))
-    .catch(function (error) {
-      console.log(error);
     });
   }
-
-  // onUser = (event) => {
-  //   this.setState({
-  //     name: event.target.value,
-  //   });
-  // }
 
   onUserChanged = event => {
     this.state.data.name = event.target.value;

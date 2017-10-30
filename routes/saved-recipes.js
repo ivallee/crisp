@@ -28,19 +28,19 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .put(check.hasParams('recipe', 'category'), async (req, res, next) => {
+    .put(check.hasParams('recipe_id', 'category'), async (req, res, next) => {
       try {
-        const { recipe, category } = req.body;
-        await db.categorizeRecipe(recipe, req.session.user_id, category);
-        res.send({ message: `Recipe ${recipe} moved to category ${category}` });
+        const { recipe_id, category } = req.body;
+        await db.categorizeRecipe(recipe_id, req.session.user_id, category);
+        res.send({ message: `Recipe ${recipe_id} moved to category ${category}` });
       } catch(err) {
         next(err);
       }
     })
-    .delete(check.hasParams('recipe'), async (req, res, next) => {
+    .delete(check.hasQueryParams('recipe_id'), async (req, res, next) => {
       try {
-        await db.deleteRecipe(req.body.recipe, req.session.user_id);
-        res.send({ message: `Recipe ${req.body.recipe} deleted` });
+        await db.deleteRecipe(req.query.recipe_id, req.session.user_id);
+        res.send({ message: `Recipe ${req.body.recipe_id} deleted` });
       } catch(err) {
         next(err);
       }

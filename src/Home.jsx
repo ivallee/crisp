@@ -14,7 +14,7 @@ class Home extends Component {
           <p className="lead">Registered users can save their favourite recipes!</p>
         </div>
 
-        <Search sendQuery={this.props.sendQuery}/>
+        <Search sendQuery={this.props.sendQuery} savedFilters={this.props.savedFilters}/>
       </div>
 
 

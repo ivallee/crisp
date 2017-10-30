@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
 import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
-import axios from 'axios';
-
-// delete when api calls functioning
-import dummyRecipeData from './_dummyRecipeData';
+import { getRecipeDetails } from './api.js';
 
 class RecipeDetails extends Component {
 
@@ -16,14 +13,11 @@ class RecipeDetails extends Component {
     };
   }
 
-
-
-
   componentWillMount() {
-    axios.get(`http://localhost:3000/api/recipes/${this.props.match.params.id}`)
-    .then(response => {
-      console.log(response.data);
-      this.setState({ recipeData:response.data });
+    getRecipeDetails(this.props.match.params.id)
+    .then(recipeData => {
+      console.log(recipeData);
+      this.setState({ recipeData });
     });
 
   }

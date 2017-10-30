@@ -1,20 +1,42 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { saveRecipe, deleteRecipe, getRecipeDetails } from './api.js';
 
 class RecipeCard extends Component {
+  constructor(props) {
+    super(props);
+    this.setStateFromProps();
+  }
 
   static propTypes = {
     id: PropTypes.number,
     index: PropTypes.number,
-    // image: PropTypes.image, FIX THIS PROPTYPE. Complains for PropTypes.image/PropTypes.img. Says it must be a function?
+    image: PropTypes.string,
     recipes: PropTypes.array,
     removeRecipe: PropTypes.func,
     servings: PropTypes.number,
+    saved: PropTypes.bool,
     sourceName: PropTypes.string,
     title: PropTypes.string,
-    time: PropTypes.number
+    time: PropTypes.number,
+    userUpdated: PropTypes.func
+  }
+
+  componentDidMount() {
+    if(!this.state.title) this.setStateFromAPI();
+  }
+
+  setStateFromProps = () => {
+    const { image, recipes, servings, sourceName, title, time } = this.props;
+    this.state = { image, recipes, servings, sourceName, title, time };
+  }
+
+  setStateFromAPI = () => {
+    getRecipeDetails(this.props.id).then(response => {
+      const { image, recipes, servings, sourceName, title, time } = response;
+      this.setState({ image, recipes, servings, sourceName, title, time });
+    });
   }
 
   remove = (e) => {
@@ -22,16 +44,12 @@ class RecipeCard extends Component {
     this.props.removeRecipe(this.props.index);
   }
 
-  saveRecipe = (recipe_id) => {
-    console.log('saving recipe_id', recipe_id);
-    axios.post(`http://localhost:3000/api/users/recipes/`, { recipe_id })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
+  saveButton = () => {
+    if(this.props.saved) {
+      return <button type="button" className="btn btn-success" onClick={() => deleteRecipe(this.props.id, this.props.userUpdated)}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>;
+    } else {
+      return <button type="button" className="btn btn-success" onClick={() => saveRecipe(this.props.id, this.props.userUpdated)}><i className="fa fa-bookmark" aria-hidden="true"></i></button>;
+    }
   }
 
   render() {
@@ -41,32 +59,31 @@ class RecipeCard extends Component {
           <div className="card-block">
             <Link to={`/recipes/${this.props.id}`} className="recipe-card-link">
               {/* <div className="row"> */}
-              <img className="card-img-top" src={this.props.image} alt="Card image cap" />
+              <img className="card-img-top" src={this.state.image} alt="Card image cap" />
               <div className="card-block">
-                <h6 className="card-title">{this.props.title}</h6>
+                <h6 className="card-title">{this.state.title}</h6>
               </div>
               {/* </div> */}
               <div className="card-block">
                 {/* <div className="col-sm-6">
-                  <img className="img-thumbnail" src={this.props.image} alt="recipe thumbnail"></img>
+                  <img className="img-thumbnail" src={this.state.image} alt="recipe thumbnail"></img>
                 </div> */}
                   <ul className="list-unstyled">
                     <li>
-                      <small>Time: {this.props.time}</small>
+                      <small>Time: {this.state.time}</small>
                     </li>
                     <li>
-                      <small>From: {this.props.sourceName}</small>
+                      <small>From: {this.state.sourceName}</small>
                     </li>
                     <li>
-                      <small>Servings: {this.props.servings}</small>
+                      <small>Servings: {this.state.servings}</small>
                     </li>
                   </ul>
                 </div>
             </ Link>
             <div className="card-block d-flex justify-content-between">
-
               <button type="button" className="btn btn-danger" onClick={e => this.remove(e)}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>
-              <button type="button" className="btn btn-success" onClick={() => this.saveRecipe(this.props.id)}><i className="fa fa-bookmark" aria-hidden="true"></i></button>
+              {this.saveButton()}
             </div>
           </div>
         </div>

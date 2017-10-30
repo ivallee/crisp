@@ -8,7 +8,7 @@ module.exports = (db) => {
   router.route('/').post(check.hasParams('type', 'value', 'exclude'), async (req, res, next) => {
     try {
       const { type, value, exclude } = req.body;
-      const id = await db.saveFilter(req.session.user_id, type, value, exclude);
+      const id = await db.saveFilterByType(req.session.user_id, type, value, exclude);
       res.status(201).send({ message: 'Filter saved', id });
     } catch(err) {
       next(err);
@@ -31,9 +31,9 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .delete(check.hasParams('filter'), async (req, res, next) => {
+    .delete(check.hasQueryParams('filter'), async (req, res, next) => {
       try {
-        await db.deleteFilter(req.body.filter, req.session.user_id);
+        await db.deleteFilter(req.query.filter, req.session.user_id);
         res.send({ message: `Filter ${req.body.filter} deleted` });
       } catch(err) {
         next(err);

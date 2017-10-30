@@ -21,7 +21,7 @@ router.get('/search/:query', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   const options = {
-    uri: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${req.params.id}/information`,
+    uri: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${req.params.id}/information?includeNutrition=false`,
     headers: {'X-Mashape-Key': process.env.MASHAPE_KEY }
   };
   rp(options)
