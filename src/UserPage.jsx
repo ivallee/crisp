@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeContainer from './RecipeContainer.jsx';
 import Filters from './Filters.jsx';
-import { deleteSavedFilter } from './api.js';
+import { saveFilter, updateSavedFilter, deleteSavedFilter } from './api.js';
 
 class UserPage extends Component {
 
@@ -12,17 +12,19 @@ class UserPage extends Component {
     userUpdated: PropTypes.func
   }
 
-  addFilter = () => {
-
+  addFilter = (filter) => {
+    const { type, value, exclude } = filter;
+    saveFilter(type, value, exclude, this.props.userUpdated);
   }
+
   removeFilter = (filterID) => {
-    console.log(filterID);
-    console.log(this.props.savedFilters);
     const savedFilterID = this.props.savedFilters[filterID].saved_filter_id;
     deleteSavedFilter(savedFilterID, this.props.userUpdated);
   }
-  updateFilter = () => {
 
+  updateFilter = (filter) => {
+    const { saved_filter_id, value, exclude } = filter;
+    updateSavedFilter(saved_filter_id, value, exclude, this.props.userUpdated);
   }
 
   render() {

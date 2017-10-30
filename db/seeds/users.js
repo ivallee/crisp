@@ -4,4 +4,5 @@ exports.seed = async (knex) => {
   await knex('users').del();
   const userID = await db(knex).createUser('test', 'test');
   await db(knex).saveFilterByType(userID, 'Cuisine', 'italian', false);
+  await db(knex).createCategory(userID, 'Cool Food');
 };

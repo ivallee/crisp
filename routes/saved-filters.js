@@ -8,7 +8,7 @@ module.exports = (db) => {
   router.route('/').post(check.hasParams('type', 'value', 'exclude'), async (req, res, next) => {
     try {
       const { type, value, exclude } = req.body;
-      const id = await db.saveFilter(req.session.user_id, type, value, exclude);
+      const id = await db.saveFilterByType(req.session.user_id, type, value, exclude);
       res.status(201).send({ message: 'Filter saved', id });
     } catch(err) {
       next(err);

@@ -31,10 +31,10 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .delete(check.hasParams('category'), async (req, res, next) => {
+    .delete(check.hasQueryParams('category'), async (req, res, next) => {
       try {
-        await db.deleteCategory(req.body.category, req.session.user_id);
-        res.send({ message: `Category ${req.body.category} deleted` });
+        await db.deleteCategory(req.query.category, req.session.user_id);
+        res.send({ message: `Category ${req.query.category} deleted` });
       } catch(err) {
         next(err);
       }
