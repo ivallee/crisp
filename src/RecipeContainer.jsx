@@ -18,7 +18,9 @@ class RecipeContainer extends Component {
   buildRecipes = (props) => {
     const { recipes, savedRecipes } = props;
     recipes.map(recipe => {
-      recipe.saved = savedRecipes.some(user => user.recipe_id === recipe.id);
+      recipe.saved = savedRecipes.some(saved => {
+        return saved.recipe_id === recipe.id;
+      });
       return recipe;
     });
     return recipes;

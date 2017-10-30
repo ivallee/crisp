@@ -12,7 +12,6 @@ class Filters extends Component {
   componentWillMount = () => {
     getFilterTypes()
       .then((filterTypes) => {
-        console.log(filterTypes);
         this.setState({ filterTypes });
       });
   }
