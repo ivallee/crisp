@@ -51,7 +51,6 @@ class Search extends Component {
     let filters = this.state.filters;
     filters.unshift(newFilter);
     this.setState({ filters });
-    console.log(this.state.filters);
   }
 
   removeFilter = (filterID) => {
