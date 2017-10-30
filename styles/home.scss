@@ -122,12 +122,26 @@ body {
 	background-color: $bg-color-primary-dk;
 }
 
+
 .recipe-card {
 
   max-width: 250px;
   min-width: 200px;
   margin-bottom: 20px;
   
+  .btn-save {
+    color: $bg-color-primary;
+  }
+  
+  .btn-delete {
+    color: #dc3545;
+  }
+
+  .btn {
+    background: transparent;
+    box-shadow: none;
+  }
+
   .card-block {
     min-height: 40px;
   }
@@ -135,6 +149,7 @@ body {
   .card-img-top {
     max-height: 108px;
   }
+
 
 
 }

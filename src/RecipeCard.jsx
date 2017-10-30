@@ -50,9 +50,9 @@ class RecipeCard extends Component {
 
   saveButton = () => {
     if(this.props.saved) {
-      return <button type="button" className="btn btn-success" onClick={() => deleteRecipe(this.props.id, this.props.userUpdated)}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>;
+      return <button type="button" className="btn btn-save" onClick={() => deleteRecipe(this.props.id, this.props.userUpdated)}><i className="fa fa-lg fa-bookmark" aria-hidden="true"></i></button>;
     } else {
-      return <button type="button" className="btn btn-success" onClick={() => saveRecipe(this.props.id, this.props.userUpdated)}><i className="fa fa-bookmark" aria-hidden="true"></i></button>;
+      return <button type="button" className="btn btn-save" onClick={() => saveRecipe(this.props.id, this.props.userUpdated)}><i className="fa fa-lg fa-bookmark-o" aria-hidden="true"></i></button>;
     }
   }
 
@@ -86,7 +86,7 @@ class RecipeCard extends Component {
                 </div>
             </ Link>
             <div className="card-block d-flex justify-content-between">
-              <button type="button" className="btn btn-danger" onClick={e => this.remove(e)}><i className="fa fa-times-circle-o" aria-hidden="true"></i></button>
+              <button type="button" className="btn btn-delete" onClick={e => this.remove(e)}><i className="fa fa-lg fa-times" aria-hidden="true"></i></button>
               {this.saveButton()}
             </div>
           </div>
