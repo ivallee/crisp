@@ -59,7 +59,7 @@ class RecipeCard extends Component {
   render() {
     return (
       <div className="recipe-card col">
-        <div className="card">
+        <div className="card text-center">
           <div className="card-block">
             <Link to={`/recipes/${this.props.id}`} className="recipe-card-link">
               {/* <div className="row"> */}
