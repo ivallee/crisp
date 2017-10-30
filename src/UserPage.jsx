@@ -28,11 +28,6 @@ class UserPage extends Component {
   }
 
   render() {
-    const recipes = this.props.savedRecipes.map(
-      recipe => {
-        recipe.id = recipe.recipe_id;
-        return recipe;
-      });
     return (
       <div className="col user-recipes">
         <div className="user-page-jumbo">
@@ -64,45 +59,7 @@ class UserPage extends Component {
           <div className="user-recipe-list-card">
           </div>
           <div id="demo3" className="collapse col">
-            <RecipeContainer recipes={recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
-            <div className="user-recipe-list-card">
-              <div className="card">
-                <div className="card-block">
-                  {/* <Link to={`/recipes/${this.props.id}`} className="recipe-card-link"> */}
-                  <div className="row">
-                    <div className="col">
-                      <h4 className="card-title">Yummy</h4>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-sm-6">
-                      <img className="img-thumbnail" src={'/docs/grilledcheese.jpg'} alt="recipe thumbnail"></img>
-                    </div>
-                    <div className="col-sm-6">
-                      <ul className="list-unstyled">
-                        <li>
-                          <small>Time: Short</small>
-                        </li>
-                        <li>
-                          <small>From: Home</small>
-                        </li>
-                        <li>
-                          <small>Servings: plenty</small>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  {/* </ Link> */}
-                  <div className="btn-group btn-group-sm" role="group">
-                    <button type="button" className="close" aria-label="Remove" onClick={e => this.remove(e)}>
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    <button type="button" className="btn btn-danger">Never</button>
-                    <button type="button" className="btn btn-success">Try later</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <RecipeContainer recipes={this.props.savedRecipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
           </div>
         </div>
       </div>
@@ -112,7 +69,3 @@ class UserPage extends Component {
   }
 }
 export default UserPage;
-
-// Can save dietary restrictions/preferences/filter settings
-// Can have favourites
-// Data on things they liked, want to try,
