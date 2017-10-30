@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeContainer from './RecipeContainer.jsx';
+import Filters from './Filters.jsx';
+import { deleteSavedFilter } from './api.js';
 
 class UserPage extends Component {
 
   static propTypes = {
     savedRecipes: PropTypes.array,
+    savedFilters: PropTypes.array,
     userUpdated: PropTypes.func
+  }
+
+  addFilter = () => {
+
+  }
+  removeFilter = (filterID) => {
+    console.log(filterID);
+    console.log(this.props.savedFilters);
+    const savedFilterID = this.props.savedFilters[filterID].saved_filter_id;
+    deleteSavedFilter(savedFilterID, this.props.userUpdated);
+  }
+  updateFilter = () => {
+
   }
 
   render() {
@@ -16,7 +32,10 @@ class UserPage extends Component {
         return recipe;
       });
     return (
-      <RecipeContainer recipes={recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
+      <div>
+        <RecipeContainer recipes={recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
+        <Filters filters={this.props.savedFilters} addFilter={this.addFilter} removeFilter={this.removeFilter} updateFilter={this.updateFilter} />
+      </div>
       // <div className="col user-recipes">
       //   <div className="row">
       //     <div className="col-4">

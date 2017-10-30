@@ -31,9 +31,9 @@ module.exports = (db) => {
         next(err);
       }
     })
-    .delete(check.hasParams('filter'), async (req, res, next) => {
+    .delete(check.hasQueryParams('filter'), async (req, res, next) => {
       try {
-        await db.deleteFilter(req.body.filter, req.session.user_id);
+        await db.deleteFilter(req.query.filter, req.session.user_id);
         res.send({ message: `Filter ${req.body.filter} deleted` });
       } catch(err) {
         next(err);

@@ -80,6 +80,15 @@ const getUserFilters = async () => {
   }
 };
 
+const deleteSavedFilter = async (filter, userUpdated) => {
+  try {
+    await axios.delete(`${ENDPOINT}/users/filters`, { params: { filter } });
+    userUpdated();
+  } catch(err) {
+    console.error(err);
+  }
+};
+
 const getUser = async () => {
   try {
     const response = await axios.get(`${ENDPOINT}/users/current`);
@@ -128,6 +137,7 @@ module.exports = {
   getFilterTypes,
   getFilter,
   getUserFilters,
+  deleteSavedFilter,
   getUser,
   login,
   logout,
