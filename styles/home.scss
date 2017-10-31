@@ -108,6 +108,10 @@ body {
   color: black;
 }
 
+.btn-filter {
+  width: 100px;  
+}
+
 .btn-main {
 	// -moz-box-shadow: 0px 10px 14px -7px #3e7327;
 	// -webkit-box-shadow: 0px 10px 14px -7px #3e7327;
@@ -116,12 +120,33 @@ body {
 	border-radius:4px;
 	color: black;
   padding: 0.4rem 0.8rem;
-  width: 100px;
 }
 .btn-main:hover {
 	background-color: $bg-color-primary-dk;
 }
 
+.category-sidebar {
+
+  li {
+    background-color: $bg-color-secondary;
+  }
+
+  .active {
+    background-color: #17a2b8;
+    border: none;
+  }
+
+  .btn {
+    // background: transparent;
+    box-shadow: none;
+  }
+  
+  .btn-delete {
+    color: #dc3545;
+    background: transparent;
+  }
+  
+}
 
 .recipe-card {
 
@@ -171,8 +196,6 @@ body {
     padding-top: 10px;
   }
 
-
-
 }
 
 .recipe-details-img {
@@ -195,8 +218,8 @@ body {
 }
 
 .recipe-card-link {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+  color: inherit;
+  text-decoration: inherit;
 }
 
 .recipe-card-link:hover {
@@ -204,6 +227,8 @@ body {
   text-decoration: inherit; /* no underline */
 }
 
+
+//SIGN
 
 // .wrapper {	
 // 	margin-top: 40px;
@@ -257,4 +282,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.btn-user-filter:hover {
+  color: inherit;
 }
