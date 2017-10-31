@@ -16,7 +16,8 @@ class RecipeCard extends Component {
     sourceName: PropTypes.string,
     title: PropTypes.string,
     readyInMinutes: PropTypes.number,
-    userUpdated: PropTypes.func
+    userUpdated: PropTypes.func,
+    category: PropTypes.string
   }
 
   extractStateProps = ({ image, recipes, servings, sourceName, title, readyInMinutes }) => {
@@ -64,7 +65,7 @@ class RecipeCard extends Component {
             </ Link>
             <div className="card-block d-flex justify-content-between">
               <button type="button" className="btn btn-delete" onClick={e => this.remove(e)}><i className="fa fa-lg fa-times"></i></button>
-              <button className="btn btn-category btn-sm dropdown-toggle" type="button" data-toggle="dropdown">Category</button>
+              { this.props.saved? <button className="btn btn-category btn-sm dropdown-toggle" type="button" data-toggle="dropdown">{this.props.category || 'Categorize'}</button> : ''}
               <div className="dropdown-menu">
                   <small className="dropdown-item">Breakfast</small>
                   <small className="dropdown-item">Work lunches</small>
