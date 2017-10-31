@@ -25,7 +25,7 @@ class SearchBar extends Component {
           placeholder="What would you like?"
           value={this.props.query}
           onChange={this.handleQueryChange} />
-        <input className="btn btn-main"
+        <input className="btn btn-main btn-filter"
           id="search-button"
           type="button"
           value="Search"
