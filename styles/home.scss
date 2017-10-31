@@ -148,6 +148,10 @@ body {
   
 }
 
+.btn-user-filter:hover {
+  color: inherit;
+}
+
 .recipe-card {
 
   max-width: 250px;
@@ -227,6 +231,6 @@ body {
   text-decoration: inherit;
 }
 
-.btn-user-filter:hover {
-  color: inherit;
+.filter-list {
+  padding-top: 20px;
 }
