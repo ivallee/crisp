@@ -130,6 +130,22 @@ body {
   li {
     background-color: $bg-color-secondary;
   }
+
+  .active {
+    background-color: #17a2b8;
+    border: none;
+  }
+
+  .btn {
+    // background: transparent;
+    box-shadow: none;
+  }
+  
+  .btn-delete {
+    color: #dc3545;
+    background: transparent;
+  }
+  
 }
 
 .recipe-card {
