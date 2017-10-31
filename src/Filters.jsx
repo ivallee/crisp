@@ -27,6 +27,9 @@ class Filters extends Component {
     return () => {
       getFilter(id)
         .then((filter) => {
+          if(filter.unique && this.props.filters.some(savedFilter => filter.type === savedFilter.type)) {
+            alert('Duplicate!');
+          }
           filter.value = '';
           filter.exclude = false;
           this.props.addFilter(filter);
