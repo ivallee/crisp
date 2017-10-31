@@ -44,14 +44,8 @@ class RecipeList extends Component {
     // const recipes = dummyResults.results;
     return recipes.map((recipe, index) => {
       return <RecipeCard
-        id={recipe.id}
+        {...recipe}
         index={index}
-        title={recipe.title}
-        image={recipe.image}
-        time={recipe.readyInMinutes}
-        servings={recipe.servings}
-        saved={recipe.saved}
-        sourceName={recipe.sourceName}
         key={index}
         removeRecipe={this.removeRecipe}
         userUpdated={this.props.userUpdated}

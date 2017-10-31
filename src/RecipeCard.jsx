@@ -15,12 +15,12 @@ class RecipeCard extends Component {
     saved: PropTypes.bool,
     sourceName: PropTypes.string,
     title: PropTypes.string,
-    time: PropTypes.number,
+    readyInMinutes: PropTypes.number,
     userUpdated: PropTypes.func
   }
 
-  extractStateProps = ({ image, recipes, servings, sourceName, title, time }) => {
-    const extracted = { image, recipes, servings, sourceName, title, time };
+  extractStateProps = ({ image, recipes, servings, sourceName, title, readyInMinutes }) => {
+    const extracted = { image, recipes, servings, sourceName, title, readyInMinutes };
     Object.keys(extracted).forEach(key => extracted[key] === undefined && delete extracted[key]);
     return extracted;
   };
@@ -51,7 +51,7 @@ class RecipeCard extends Component {
               <div className="card-block card-meta">
                   <ul className="list-unstyled">
                     <li>
-                      <small><i className="fa fa-clock-o" aria-hidden="true"></i> {this.props.time}m</small>
+                      <small><i className="fa fa-clock-o" aria-hidden="true"></i> {this.props.readyInMinutes}m</small>
                     </li>
                     <li>
                       <small><i className="fa fa-users" aria-hidden="true"></i> {this.props.servings}</small>
