@@ -46,10 +46,14 @@ class RecipeCard extends Component {
         <button className="btn btn-category btn-sm dropdown-toggle" type="button" data-toggle="dropdown">{this.props.category || 'Categorize'}</button>
         <div className="dropdown-menu">
           <small className="dropdown-item" key={-1}>Uncategorized</small>
-          {this.props.categoryList.map((category, index) => <small className="dropdown-item" key={index}>{category.name}</small>)}
+          {this.props.categoryList.map((category, index) => <small className="dropdown-item" key={index} onClick={(() => this.setCategory(category.name))}>{ category.name }</small>)}
         </div>
       </div>
     ) : '';
+  }
+
+  setCategory = (category) => {
+    alert(category);
   }
 
   render() {
