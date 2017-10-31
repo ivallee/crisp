@@ -155,8 +155,14 @@ body {
     max-height: 108px;
   }
 
+  .card-meta {
+    padding-left: 20px;
+  }
+
   .card-title {
     min-height: 60px;
+    max-height: 60px;
+    padding-top: 10px;
   }
 
 

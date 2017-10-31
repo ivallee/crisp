@@ -59,28 +59,23 @@ class RecipeCard extends Component {
   render() {
     return (
       <div className="recipe-card col">
-        <div className="card text-center">
+        <div className="card">
           <div className="card-block">
             <Link to={`/recipes/${this.props.id}`} className="recipe-card-link">
-              {/* <div className="row"> */}
               <img className="card-img-top" src={this.state.image} alt="Card image cap" />
               <div className="card-block">
-                <h6 className="card-title">{this.state.title}</h6>
+                <h6 className="card-title text-center">{this.state.title}</h6>
               </div>
-              {/* </div> */}
-              <div className="card-block">
-                {/* <div className="col-sm-6">
-                  <img className="img-thumbnail" src={this.state.image} alt="recipe thumbnail"></img>
-                </div> */}
+              <div className="card-block card-meta">
                   <ul className="list-unstyled">
                     <li>
-                      <small>Time: {this.state.time}</small>
+                      <small><i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.time}m</small>
+                    </li>
+                    <li>
+                      <small><i className="fa fa-users" aria-hidden="true"></i> {this.state.servings}</small>
                     </li>
                     <li>
                       <small>From: {this.state.sourceName}</small>
-                    </li>
-                    <li>
-                      <small>Servings: {this.state.servings}</small>
                     </li>
                   </ul>
                 </div>
