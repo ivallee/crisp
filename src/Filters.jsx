@@ -40,7 +40,7 @@ class Filters extends Component {
 
       <hr />
         <div className="d-flex justify-content-between">
-          {this.state.filterTypes.map(filter => <button className="btn btn-sm btn-main" key={filter.id} onClick={this.addFilter(filter.id)}>{filter.type}</button>)}
+          {this.state.filterTypes.map(filter => <button className="btn btn-sm btn-main btn-filter" key={filter.id} onClick={this.addFilter(filter.id)}>{filter.type}</button>)}
         </div>
         <ul className="list-group">
           {/* <li className="list-group-item d-flex justify-content-between">

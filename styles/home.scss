@@ -108,6 +108,10 @@ body {
   color: $bg-color-secondary;
 }
 
+.btn-filter {
+  width: 100px;  
+}
+
 .btn-main {
 	// -moz-box-shadow: 0px 10px 14px -7px #3e7327;
 	// -webkit-box-shadow: 0px 10px 14px -7px #3e7327;
@@ -116,7 +120,6 @@ body {
 	border-radius:4px;
 	color: $bg-color-secondary;
   padding: 0.4rem 0.8rem;
-  width: 100px;
 }
 .btn-main:hover {
 	background-color: $bg-color-primary-dk;
@@ -195,11 +198,15 @@ body {
 }
 
 .recipe-card-link {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+  color: inherit;
+  text-decoration: inherit;
 }
 
 .recipe-card-link:hover {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.btn-user-filter:hover {
+  color: inherit;
 }

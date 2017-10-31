@@ -72,7 +72,7 @@ class UserPage extends Component {
 
           <div className="row marketing">
             <div className="col">
-          <a href="#demo" className="btn btn-secondary" data-toggle="collapse">Your filter settings</a>
+          <a href="#demo" className="btn btn-main btn-user-filter" data-toggle="collapse">Your filter settings</a>
           <div id="demo" className="collapse">
             <ul className="list-group">
               <Filters filters={this.props.savedFilters} addFilter={this.addFilter} removeFilter={this.removeFilter} updateFilter={this.updateFilter} />
