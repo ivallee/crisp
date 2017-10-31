@@ -32,7 +32,6 @@ const deleteRecipe = async (recipe_id, userUpdated) => {
 const recipeSearch = async (query) => {
   try {
     const response = await axios.get(`${ENDPOINT}/recipes/search/${query || '%20'}`);
-    console.log(response);
     return response.data.results;
   } catch(err) {
     console.error(err);
@@ -72,7 +71,6 @@ const getFilter = async (id) => {
 
 const saveFilter = async (type, value, exclude, userUpdated) => {
   try {
-    console.log('Type:', type, 'Value:', value, 'Exclude:', exclude);
     await axios.post(`${ENDPOINT}/users/filters/`, { type, value, exclude });
     userUpdated();
   } catch(err) {

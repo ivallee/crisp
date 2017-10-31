@@ -17,7 +17,8 @@ class RecipeCard extends Component {
     title: PropTypes.string,
     readyInMinutes: PropTypes.number,
     userUpdated: PropTypes.func,
-    category: PropTypes.string
+    category: PropTypes.string,
+    categoryList: PropTypes.array
   }
 
   extractStateProps = ({ image, recipes, servings, sourceName, title, readyInMinutes }) => {
@@ -32,11 +33,23 @@ class RecipeCard extends Component {
   }
 
   saveButton = () => {
-    if (this.props.saved) {
+    if(this.props.saved) {
       return <button type="button" className="btn btn-save" onClick={() => deleteRecipe(this.props.id, this.props.userUpdated)}><i className="fa fa-lg fa-bookmark" aria-hidden="true"></i></button>;
     } else {
       return <button type="button" className="btn btn-save" onClick={() => saveRecipe(this.props.id, this.props.userUpdated)}><i className="fa fa-lg fa-bookmark-o" aria-hidden="true"></i></button>;
     }
+  }
+
+  categorySelector = () => {
+    return this.props.saved && this.props.categoryList ? (
+      <div>
+        <button className="btn btn-category btn-sm dropdown-toggle" type="button" data-toggle="dropdown">{this.props.category || 'Categorize'}</button>
+        <div className="dropdown-menu">
+          <small className="dropdown-item" key={-1}>Uncategorized</small>
+          {this.props.categoryList.map((category, index) => <small className="dropdown-item" key={index}>{category.name}</small>)}
+        </div>
+      </div>
+    ) : '';
   }
 
   render() {
@@ -65,12 +78,7 @@ class RecipeCard extends Component {
             </ Link>
             <div className="card-block d-flex justify-content-between">
               <button type="button" className="btn btn-delete" onClick={e => this.remove(e)}><i className="fa fa-lg fa-times"></i></button>
-              { this.props.saved? <button className="btn btn-category btn-sm dropdown-toggle" type="button" data-toggle="dropdown">{this.props.category || 'Categorize'}</button> : ''}
-              <div className="dropdown-menu">
-                  <small className="dropdown-item">Breakfast</small>
-                  <small className="dropdown-item">Work lunches</small>
-                  <small className="dropdown-item"> Snacks</small>
-              </div>
+              {this.categorySelector()}
               {this.saveButton()}
             </div>
           </div>

@@ -12,7 +12,8 @@ class RecipeContainer extends Component {
     recipes: PropTypes.array,
     savedRecipes: PropTypes.array,
     userUpdated: PropTypes.func,
-    count: PropTypes.number
+    count: PropTypes.number,
+    categories: PropTypes.array
   }
 
   buildRecipes = (props) => {
@@ -31,7 +32,7 @@ class RecipeContainer extends Component {
   }
 
   render() {
-    return (<RecipeList recipes={this.state.recipes} recipeCount={this.props.count} userUpdated={this.props.userUpdated} />);
+    return (<RecipeList recipes={this.state.recipes} recipeCount={this.props.count} userUpdated={this.props.userUpdated} categories={this.props.categories}/>);
   }
 }
 export default RecipeContainer;

@@ -16,7 +16,8 @@ class RecipeList extends Component {
   static propTypes = {
     recipes: PropTypes.array,
     recipeCount: PropTypes.number,
-    userUpdated: PropTypes.func
+    userUpdated: PropTypes.func,
+    categories: PropTypes.array
   }
 
 
@@ -25,7 +26,6 @@ class RecipeList extends Component {
   }
 
   removeRecipe = (index) => {
-    console.log(this.state.recipes);
     if(this.props.recipeCount) {
       //replace with the first unused recipe
       this.state.recipes.splice(index, 1, this.state.recipes[this.props.recipeCount]);
@@ -49,6 +49,7 @@ class RecipeList extends Component {
         key={index}
         removeRecipe={this.removeRecipe}
         userUpdated={this.props.userUpdated}
+        categoryList={this.props.categories}
       />;
     });
   };
