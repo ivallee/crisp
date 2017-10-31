@@ -75,7 +75,7 @@ class RecipeCard extends Component {
                       <small><i className="fa fa-users" aria-hidden="true"></i> {this.state.servings}</small>
                     </li>
                     <li>
-                      <small>From: {this.state.sourceName}</small>
+                      <small>By {this.state.sourceName}</small>
                     </li>
                   </ul>
                 </div>
