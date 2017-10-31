@@ -3,8 +3,8 @@ import PropTypes from 'proptypes';
 import RecipeContainer from './RecipeContainer.jsx';
 import Filters from './Filters.jsx';
 import Categories from './Categories.jsx';
-import { saveFilter, updateSavedFilter, deleteSavedFilter, createCategory } from './api.js';
 import { Redirect } from 'react-router-dom';
+import { saveFilter, updateSavedFilter, deleteSavedFilter, createCategory, deleteCategory } from './api.js';
 
 class UserPage extends Component {
   constructor(props) {
@@ -56,6 +56,10 @@ class UserPage extends Component {
     this.setState({ selectedCategory, recipes });
   }
 
+  deleteCategory = (category) => {
+    deleteCategory(category, this.props.userUpdated);
+  }
+
   render() {
     console.log(this.props.username)
     if (!this.props.username) {
@@ -80,7 +84,7 @@ class UserPage extends Component {
             </div>
             <a href=".demo2" className="btn btn-secondary col" data-toggle="collapse">Your Recipes</a>
             <div className="collapse col demo2">
-              <Categories categories={this.props.categories} addCategory={this.addCategory} changeCategory={this.changeCategory} selectedCategory={this.state.selectedCategory} />
+              <Categories categories={this.props.categories} addCategory={this.addCategory} changeCategory={this.changeCategory} deleteCategory={this.deleteCategory} selectedCategory={this.state.selectedCategory} />
             </div>
           </div>
           <div className="collapse col demo2">

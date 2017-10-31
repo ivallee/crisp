@@ -24,10 +24,13 @@ class UserDataContainer extends Component {
       const savedRecipes = await getUserRecipes();
       const savedFilters = await getUserFilters();
       const categories = await getUserCategories();
+      this.mergeSavedRecipes(savedRecipes);
       this.setState({ username: user.name, loggedIn: true, savedRecipes, savedFilters, categories });
 
-      for (let recipe of savedRecipes) {
-        await this.loadRecipeData(recipe);
+      for (const recipe of savedRecipes) {
+        if(recipe.needsData) {
+          await this.loadRecipeDetails(recipe);
+        }
       }
       this.setState(savedRecipes);
     }
@@ -36,10 +39,27 @@ class UserDataContainer extends Component {
     }
   }
 
-  loadRecipeData = async (recipe) => {
-    const recipeData = await getRecipeDetails(recipe.id);
-    const selected = (({ image, recipes, servings, sourceName, title, readyInMinutes }) => ({ image, recipes, servings, sourceName, title, readyInMinutes }))(recipeData);
-    Object.assign(recipe, selected);
+  mergeRecipeDetails = (target, source) => {
+    const sourceDetails = (({ image, recipes, servings, sourceName, title, readyInMinutes }) => ({ image, recipes, servings, sourceName, title, readyInMinutes }))(source);
+    Object.assign(target, sourceDetails);
+  }
+
+  mergeSavedRecipes = (recipes) => {
+    for(const recipe of recipes) {
+      const match = this.state.savedRecipes.find(savedRecipe => recipe.id === savedRecipe.id);
+      if(match) {
+        this.mergeRecipeDetails(recipe, match);
+      }
+      else {
+        recipe.needsData = true;
+      }
+    }
+  }
+
+  loadRecipeDetails = async (recipe) => {
+    const response = await getRecipeDetails(recipe.id);
+    this.mergeRecipeDetails(recipe, response);
+    recipe.needsData = false;
   }
 
   componentDidMount() {
