@@ -95,6 +95,7 @@ body {
 
 .navbar-container {
   background: white;
+  padding-bottom: 50px;
 }
 
 .container {
@@ -209,12 +210,9 @@ body {
 }
 
 
-
-
-//FOR POTENTIAL LOGIN BOX
 .wrapper {	
-	margin-top: 80px;
-  margin-bottom: 80px;
+	margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .form-signin {
@@ -258,3 +256,10 @@ body {
 	}
 }
 
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

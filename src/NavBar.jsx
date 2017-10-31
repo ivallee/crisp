@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import Register from './Register.jsx';
 import Login from './Login.jsx';
-import LoginControl from './LoginControl.jsx';
+// import LoginControl from './LoginControl.jsx';
 import { logout } from './api.js';
 
 class NavBar extends Component {
@@ -30,12 +30,8 @@ class NavBar extends Component {
     return (
       <nav className="navbar-container">
           {LoginStatus}
-        {/* <div className="collapse col" id="demo">
-          <Register />
-        </div>
-        <div className="collapse col" id="demo2">
-          <Login />
-        </div> */}
+          <Register userUpdated={this.props.userUpdated} />
+          <Login userUpdated={this.props.userUpdated} />
         <h3 className='nav-logo'>Crisp</h3>
       </nav>
     );
@@ -47,8 +43,8 @@ export default NavBar;
 function LoggedOut(props) {
   return (
   <nav className="nav nav-pills flex-column flex-sm-row float-right">
-    <a className="fill text-sm-center nav-link" href="#demo" data-toggle="collapse">Register</a>
-    <a className="fill text-sm-center nav-link" href="#demo2" data-toggle="collapse">Login</a>
+    <a className="fill text-sm-center nav-link" href="#demo" data-toggle="modal" data-target="#exampleModal">Register</a>
+    <a className="fill text-sm-center nav-link" href="#demo2" data-toggle="modal" data-target="#exampleModalLong">Login</a>
     <a className="flex-sm-fill text-sm-center nav-link" href="/">Search</a>
   </nav>
   
