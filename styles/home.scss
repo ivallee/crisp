@@ -233,4 +233,14 @@ body {
 
 .filter-list {
   padding-top: 20px;
+
+  .btn {
+    // background: transparent;
+    box-shadow: none;
+  }
+  
+  .btn-delete {
+    color: $bg-color-primary-dk;
+    background: transparent;
+  }
 }
