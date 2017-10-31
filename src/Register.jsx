@@ -34,12 +34,20 @@ export default class Register extends Component {
     }
     return (
       <form onSubmit={this.handleRegistration.bind(this)}>
-        <h3>Register</h3>
+        <h3>Sign up</h3>
         <input type="text" ref="name" placeholder="enter you username" />
         <input type="password" ref="password" placeholder="enter password" />
         <input type="submit" value="Register" />
       </form>
     );
   }
-
 }
+
+  //  <div className="wrapper">
+  //   <form className="form-signin" onSubmit={this.handleLogin.bind(this)}>       
+  //     <h2 className="form-signin-heading">Sign up</h2>
+  //     <input type="text" className="form-control" name="username" ref="name" placeholder="Email Address" required="" autoFocus="" />
+  //     <input type="password" className="form-control" name="password" ref="password" placeholder="Password" required=""/>      
+  //     <button className="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>   
+  //   </form>
+  //   </div>

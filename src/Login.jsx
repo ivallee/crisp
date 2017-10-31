@@ -33,7 +33,6 @@ export default class Login extends Component {
     });
   }
 
-  // .then(() => this.setState({ redirect: true }));
 
 
   render() {
@@ -42,35 +41,14 @@ export default class Login extends Component {
       return <Redirect to='/' />;
     }
     return (
-      <form onSubmit={this.handleLogin.bind(this)}>
-        <h3>Sign in</h3>
-        <input type="text" ref="name" placeholder="enter you username" />
-        <input type="password" ref="password" placeholder="enter password" />
-        <input type="submit" value="Login" />
-      </form>
+    <div className="wrapper">
+    <form className="form-signin" onSubmit={this.handleLogin.bind(this)}>       
+      <h2 className="form-signin-heading">Please login</h2>
+      <input type="text" className="form-control" name="username" ref="name" placeholder="Email Address" required="" autoFocus="" />
+      <input type="password" className="form-control" name="password" ref="password" placeholder="Password" required=""/>      
+      <button className="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+    </form>
+    </div>
     );
-  }
-
+  }  
 }
-
-//   render() {
-//     return (
-//     <form id="Login">
-//         <h1>Log In</h1>
-//         <fieldset id="inputs">
-//             <input id="name"
-//                     type="email"
-//                     placeholder="Username"
-//                     onChange={this.onUserChanged}/>
-//             <input id="password"
-//                    type="password"
-//                    placeholder="Password"
-//                    onChange={this.onPasswordChanged}/>
-//         </fieldset>
-//         <fieldset id="actions">
-//             <input type="submit" id="submit" onClick={this.onSubmit} value="Log in"/>
-//         </fieldset>
-//     </form>
-//     );
-//   }
-// }

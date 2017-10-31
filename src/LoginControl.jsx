@@ -36,38 +36,27 @@ export default class LoginControl extends React.Component {
     let LoginStatus = null;
     if (loggedIn) {
       LoginStatus = <LoggedIn onClick={this.handleLogoutClick} />;
-    } else {
-      LoginStatus = <NotLoggedIn onClick={this.handleLoginClick} />;
     }
 
     return (
       <div>
-        {LoginStatus}
+      { LoginStatus }
       </div>
     );
   }
 }
 
-function NotLoggedIn(props) {
-  return (
-    <li className="nav-item">
-      <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
-      <NavLink className="nav-link" activeClassName="nav-link" to='/login'>Log in</NavLink>
-    </li>
-  );
-}
-
 function LoggedIn(props) {
   return (
     <span>
-    <li className="nav-item">
-      <NavLink className="nav-link" activeClassName="nav-link" to='/users'>Your Page</NavLink>
-    </li>
-    <li className="nav-item">
-      <button onClick={props.onClick}>
-        Logout
+      <li className="nav-item">
+        <NavLink className="nav-link" activeClassName="nav-link" to='/users'>Your Page</NavLink>
+      </li>
+      <li className="nav-item">
+        <button onClick={props.onClick}>
+          Logout
     </button>
-    </li>
+      </li>
     </span>
   );
 }

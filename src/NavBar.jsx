@@ -1,37 +1,71 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Register from './Register.jsx';
-import Modal from './Modal.jsx';
+import Login from './Login.jsx';
 import LoginControl from './LoginControl.jsx';
+import { logout } from './api.js';
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+  }
+
+  handleLogoutClick() {
+    logout(this.props.userUpdated).then(() => {
+      console.log('logout');
+      this.setState({ isLoggedIn: false });
+    });
+  }
+
+
   render() {
+    const { loggedIn } = this.props;
+    let LoginStatus = null;
+    if (loggedIn) {
+      LoginStatus = <LoggedIn onClick={this.handleLogoutClick} />;
+    } else {
+      LoginStatus = <LoggedOut />;
+    }
     return (
-        <nav>
-          <ul className="nav nav-pills float-right">
-            <li className="nav-item">
-              <NavLink className='nav-link' activeClassName="nav-link" to='/'>Search</NavLink>
-            </li>
-            <LoginControl {...this.props}/>
-          </ul>
+      <nav className="navbar-container">
+          {LoginStatus}
+        {/* <div className="collapse col" id="demo">
+          <Register />
+        </div>
+        <div className="collapse col" id="demo2">
+          <Login />
+        </div> */}
         <h3 className='nav-logo'>Crisp</h3>
-        </nav>
+      </nav>
     );
   }
 }
 export default NavBar;
 
-// <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-//   <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-//     <span className="navbar-toggler-icon"></span>
-//   </button>
-//   <a className="navbar-brand" href="#">Navbar</a>
-//   <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-//     <div className="navbar-nav">
-//     <NavLink className='nav-link' activeClassName="nav-link" to='/'>Home</NavLink>
-//     <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
-//     <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
-//       <a className="nav-item nav-link disabled" href="#">Disabled</a>
-//     </div>
-//   </div>
-// </nav>
+
+function LoggedOut(props) {
+  return (
+  <nav className="nav nav-pills flex-column flex-sm-row float-right">
+    <a className="fill text-sm-center nav-link" href="#demo" data-toggle="collapse">Register</a>
+    <a className="fill text-sm-center nav-link" href="#demo2" data-toggle="collapse">Login</a>
+    <a className="flex-sm-fill text-sm-center nav-link" href="/">Search</a>
+  </nav>
+  
+  )
+}
+
+function LoggedIn(props) {
+  return (
+    <nav className="nav nav-pills flex-column flex-sm-row float-right">
+      <a className="flex-sm-fill text-sm-center nav-link" href="/users">User Page</a>
+      <a className="flex-sm-fill text-sm-center nav-link" href="#" onClick={props.onClick}>Log out</a>
+      <a className="flex-sm-fill text-sm-center nav-link" href="/">Search</a>
+    </nav>
+  );
+}
+
+
+
+
+
