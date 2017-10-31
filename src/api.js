@@ -134,6 +134,15 @@ const getUserCategories = async () => {
   }
 };
 
+const deleteCategory = async (category, userUpdated) => {
+  try {
+    await axios.delete(`${ENDPOINT}/users/categories`, { params: { category } });
+    userUpdated();
+  } catch(err) {
+    console.error(err);
+  }
+};
+
 const getUser = async () => {
   try {
     const response = await axios.get(`${ENDPOINT}/users/current`);
@@ -188,6 +197,7 @@ module.exports = {
   deleteSavedFilter,
   createCategory,
   getUserCategories,
+  deleteCategory,
   getUser,
   login,
   logout,
