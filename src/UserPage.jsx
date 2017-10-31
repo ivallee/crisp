@@ -6,12 +6,23 @@ import Categories from './Categories.jsx';
 import { saveFilter, updateSavedFilter, deleteSavedFilter, createCategory } from './api.js';
 
 class UserPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedCategory: '',
+      recipes: this.buildRecipeList(this.props.savedRecipes, '')
+    };
+  }
 
   static propTypes = {
     savedRecipes: PropTypes.array,
     savedFilters: PropTypes.array,
     categories: PropTypes.array,
     userUpdated: PropTypes.func
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({ recipes: this.buildRecipeList(props.savedRecipes, this.state.selectedCategory) });
   }
 
   addFilter = (filter) => {
@@ -33,6 +44,17 @@ class UserPage extends Component {
     createCategory(category.name, this.props.userUpdated);
   }
 
+  buildRecipeList = (recipes, selectedCategory) => {
+    return recipes.filter(recipe => {
+      return selectedCategory === '' || recipe.category === selectedCategory;
+    });
+  }
+
+  changeCategory = (selectedCategory) => {
+    const recipes = this.buildRecipeList(this.props.savedRecipes, selectedCategory);
+    this.setState({ selectedCategory, recipes });
+  }
+
   render() {
     return (
       <div className="col user-recipes">
@@ -51,16 +73,13 @@ class UserPage extends Component {
                 <Filters filters={this.props.savedFilters} addFilter={this.addFilter} removeFilter={this.removeFilter} updateFilter={this.updateFilter} />
               </ul>
             </div>
-            <a href="#demo2" className="btn btn-secondary col" data-toggle="collapse">Your Recipes</a>
-            <div id="demo2" className="collapse col">
-                <Categories categories={this.props.categories} addCategory={this.addCategory}/>
-                {/* <a href="#demo3" className="btn btn-secondary col" data-toggle="collapse">Dinner</a> */}
+            <a href=".demo2" className="btn btn-secondary col" data-toggle="collapse">Your Recipes</a>
+            <div className="collapse col demo2">
+              <Categories categories={this.props.categories} addCategory={this.addCategory} changeCategory={this.changeCategory} selectedCategory={this.state.selectedCategory} />
             </div>
           </div>
-          <div className="user-recipe-list-card">
-          </div>
-          <div id="demo3" className="collapse col">
-            <RecipeContainer recipes={this.props.savedRecipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
+          <div className="collapse col demo2">
+            <RecipeContainer recipes={this.state.recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} />
           </div>
         </div>
       </div>

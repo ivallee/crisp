@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import { Link } from 'react-router-dom';
-import { saveRecipe, deleteRecipe, getRecipeDetails } from './api.js';
+import { saveRecipe, deleteRecipe } from './api.js';
 
 class RecipeCard extends Component {
-  constructor(props) {
-    super(props);
-    this.setStateFromProps(this.props);
-  }
 
   static propTypes = {
     id: PropTypes.number,
@@ -23,25 +19,11 @@ class RecipeCard extends Component {
     userUpdated: PropTypes.func
   }
 
-  componentDidMount() {
-    if(!this.state.title) this.setStateFromAPI();
-  }
-
-  componentWillReceiveProps(props) {
-    this.setStateFromProps(props);
-  }
-
-  setStateFromProps = (props) => {
-    const { image, recipes, servings, sourceName, title, time } = props;
-    this.state = { image, recipes, servings, sourceName, title, time };
-  }
-
-  setStateFromAPI = () => {
-    getRecipeDetails(this.props.id).then(response => {
-      const { image, recipes, servings, sourceName, title, time } = response;
-      this.setState({ image, recipes, servings, sourceName, title, time });
-    });
-  }
+  extractStateProps = ({ image, recipes, servings, sourceName, title, time }) => {
+    const extracted = { image, recipes, servings, sourceName, title, time };
+    Object.keys(extracted).forEach(key => extracted[key] === undefined && delete extracted[key]);
+    return extracted;
+  };
 
   remove = (e) => {
     e.stopPropagation();
@@ -62,20 +44,20 @@ class RecipeCard extends Component {
         <div className="card">
           <div className="card-block">
             <Link to={`/recipes/${this.props.id}`} className="recipe-card-link">
-              <img className="card-img-top" src={this.state.image} alt="Card image cap" />
+              <img className="card-img-top" src={this.props.image} alt="Card image cap" />
               <div className="card-block">
-                <h6 className="card-title text-center">{this.state.title}</h6>
+                <h6 className="card-title text-center">{this.props.title}</h6>
               </div>
               <div className="card-block card-meta">
                   <ul className="list-unstyled">
                     <li>
-                      <small><i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.time}m</small>
+                      <small><i className="fa fa-clock-o" aria-hidden="true"></i> {this.props.time}m</small>
                     </li>
                     <li>
-                      <small><i className="fa fa-users" aria-hidden="true"></i> {this.state.servings}</small>
+                      <small><i className="fa fa-users" aria-hidden="true"></i> {this.props.servings}</small>
                     </li>
                     <li>
-                      <small>By {this.state.sourceName}</small>
+                      <small>By {this.props.sourceName}</small>
                     </li>
                   </ul>
                 </div>
