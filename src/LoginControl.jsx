@@ -5,21 +5,21 @@ import { NavLink } from 'react-router-dom';
 export default class LoginControl extends React.Component {
   constructor(props) {
     super(props);
-    this.handleLoginClick = this.handleLoginClick.bind(this);
+    // this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
-  handleLoginClick() {
-    login('test', 'test', this.props.userUpdated).then((response) => {
-      if (response.success) {
-        console.log('successful login!');
-        this.setState({ isLoggedIn: true });
-      }
-      else {
-        console.log('failed login!');
-      }
-    });
-  }
+  // handleLoginClick() {
+  //   login('test', 'test', this.props.userUpdated).then((response) => {
+  //     if (response.success) {
+  //       console.log('successful login!');
+  //       this.setState({ isLoggedIn: true });
+  //     }
+  //     else {
+  //       console.log('failed login!');
+  //     }
+  //   });
+  // }
 
   handleLogoutClick() {
     logout(this.props.userUpdated).then(() => {
@@ -31,8 +31,8 @@ export default class LoginControl extends React.Component {
 
 
   render() {
+    console.log(this.props.username);
     const { loggedIn } = this.props;
-
     let LoginStatus = null;
     if (loggedIn) {
       LoginStatus = <LoggedIn onClick={this.handleLogoutClick} />;

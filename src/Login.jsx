@@ -22,7 +22,10 @@ export default class Login extends Component {
     login(name, password, this.props.userUpdated).then((response) => {
       if (response.success) {
         console.log('successful login!');
-        this.setState({ isLoggedIn: true });
+        this.setState({
+          isLoggedIn: true,
+          redirect: true
+        });
       }
       else {
         console.log('failed login!');

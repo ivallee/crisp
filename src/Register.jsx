@@ -1,27 +1,37 @@
-import React, {Component} from 'react';
-// import {Redirect} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { register } from './api';
 import propTypes from 'proptypes';
 
 export default class Register extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      redirect: false
+    };
   }
 
   static propTypes = {
-    userUpdated: propTypes.func
+    userUpdated: propTypes.func,
   }
 
   handleRegistration(e) {
-    e.preventDefault()
-    let name = this.refs.name.value
-    let password = this.refs.password.value
+    e.preventDefault();
+    let name = this.refs.name.value;
+    let password = this.refs.password.value;
     register(name, password, this.props.userUpdated).then((response) => {
       console.log(response);
+      this.setState({
+        redirect: true
+      });
     });
   }
-  
+
   render() {
+    const { redirect } = this.state;
+    if (redirect) {
+      return <Redirect to='/' />;
+    }
     return (
       <form onSubmit={this.handleRegistration.bind(this)}>
         <h3>Register</h3>
