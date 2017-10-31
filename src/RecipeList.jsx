@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeCard from './RecipeCard.jsx';
-// import dummyResults from './_dummyresults.js';
+import dummyResults from './_dummyresults.js';
 
 
 class RecipeList extends Component {

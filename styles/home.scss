@@ -129,18 +129,24 @@ body {
   min-width: 200px;
   margin-bottom: 20px;
   
-  .btn-save {
-    color: $bg-color-primary;
+  .btn {
+    background: transparent;
+    box-shadow: none;
   }
   
   .btn-delete {
     color: #dc3545;
   }
-
-  .btn {
-    background: transparent;
-    box-shadow: none;
+  
+  .btn-save {
+    color: $bg-color-primary;
   }
+
+  .btn-category {
+    color: black;
+    font-size: 75%;
+  }
+
 
   .card {
     border: none;

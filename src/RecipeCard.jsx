@@ -31,7 +31,7 @@ class RecipeCard extends Component {
   }
 
   saveButton = () => {
-    if(this.props.saved) {
+    if (this.props.saved) {
       return <button type="button" className="btn btn-save" onClick={() => deleteRecipe(this.props.id, this.props.userUpdated)}><i className="fa fa-lg fa-bookmark" aria-hidden="true"></i></button>;
     } else {
       return <button type="button" className="btn btn-save" onClick={() => saveRecipe(this.props.id, this.props.userUpdated)}><i className="fa fa-lg fa-bookmark-o" aria-hidden="true"></i></button>;
@@ -49,21 +49,27 @@ class RecipeCard extends Component {
                 <h6 className="card-title text-center">{this.props.title}</h6>
               </div>
               <div className="card-block card-meta">
-                  <ul className="list-unstyled">
-                    <li>
-                      <small><i className="fa fa-clock-o" aria-hidden="true"></i> {this.props.time}m</small>
-                    </li>
-                    <li>
-                      <small><i className="fa fa-users" aria-hidden="true"></i> {this.props.servings}</small>
-                    </li>
-                    <li>
-                      <small>By {this.props.sourceName}</small>
-                    </li>
-                  </ul>
-                </div>
+                <ul className="list-unstyled">
+                  <li>
+                    <small><i className="fa fa-clock-o" aria-hidden="true"></i> {this.props.time}m</small>
+                  </li>
+                  <li>
+                    <small><i className="fa fa-users" aria-hidden="true"></i> {this.props.servings}</small>
+                  </li>
+                  <li>
+                    <small>By {this.props.sourceName}</small>
+                  </li>
+                </ul>
+              </div>
             </ Link>
             <div className="card-block d-flex justify-content-between">
-              <button type="button" className="btn btn-delete" onClick={e => this.remove(e)}><i className="fa fa-lg fa-times" aria-hidden="true"></i></button>
+              <button type="button" className="btn btn-delete" onClick={e => this.remove(e)}><i className="fa fa-lg fa-times"></i></button>
+              <button className="btn btn-category btn-sm dropdown-toggle" type="button" data-toggle="dropdown">Category</button>
+              <div className="dropdown-menu">
+                  <small className="dropdown-item">Breakfast</small>
+                  <small className="dropdown-item">Work lunches</small>
+                  <small className="dropdown-item"> Snacks</small>
+              </div>
               {this.saveButton()}
             </div>
           </div>
