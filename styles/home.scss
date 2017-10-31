@@ -125,6 +125,12 @@ body {
 	background-color: $bg-color-primary-dk;
 }
 
+.category-sidebar {
+
+  li {
+    background-color: $bg-color-secondary;
+  }
+}
 
 .recipe-card {
 
@@ -173,8 +179,6 @@ body {
     max-height: 60px;
     padding-top: 10px;
   }
-
-
 
 }
 

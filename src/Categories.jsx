@@ -43,8 +43,8 @@ class Categories extends Component {
     const categories = [{ name: 'All Recipes' }, ...this.props.categories];
     return categories.map((category, index) => {
       category.key = (index > 0) ? category.name : '';
-      const buttonStyle = (category.key === this.props.selectedCategory) ? 'btn btn-success col' : 'btn btn-secondary col';
-      return <li className="list-group-item" key={index}>
+      const buttonStyle = (category.key === this.props.selectedCategory) ? 'btn btn-main' : 'btn btn-secondary btn-sm';
+      return <li className="list-group-item category-list" key={index}>
         <input className={buttonStyle} type="button" value={category.name} onClick={this.setSelectedCategory(category.key)} />
         {index > 0 && <button type="button" className="btn btn-delete" onClick={() => this.props.deleteCategory(category.name)}><i className="fa fa-lg fa-times"></i></button>}
       </li>;
@@ -53,7 +53,7 @@ class Categories extends Component {
 
   render() {
     return (
-      <ul className="list-group col-10">
+      <ul className="list-group">
         {this.renderCategoryList()}
         <li className="list-group-item" >
           <input className="form-control"
@@ -61,7 +61,7 @@ class Categories extends Component {
             placeholder="Add Category"
             value={this.state.newCategoryName}
             onChange={this.changeCategoryName} />
-          <input className="btn btn-secondary col" type="button" value="+" onClick={this.addCategory} />
+          <input className="btn btn-sm btn-main" type="button" value="+" onClick={this.addCategory} />
         </li>
       </ul>
     );
