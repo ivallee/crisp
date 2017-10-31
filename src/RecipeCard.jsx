@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import { Link } from 'react-router-dom';
-import { saveRecipe, deleteRecipe } from './api.js';
+import { saveRecipe, categorizeRecipe, deleteRecipe } from './api.js';
 
 class RecipeCard extends Component {
 
@@ -45,7 +45,7 @@ class RecipeCard extends Component {
       <div>
         <button className="btn btn-category btn-sm dropdown-toggle" type="button" data-toggle="dropdown">{this.props.category || 'Categorize'}</button>
         <div className="dropdown-menu">
-          <small className="dropdown-item" key={-1}>Uncategorized</small>
+          <small className="dropdown-item" key={-1} onClick={(() => this.setCategory(''))}>Uncategorized</small>
           {this.props.categoryList.map((category, index) => <small className="dropdown-item" key={index} onClick={(() => this.setCategory(category.name))}>{ category.name }</small>)}
         </div>
       </div>
@@ -53,7 +53,7 @@ class RecipeCard extends Component {
   }
 
   setCategory = (category) => {
-    alert(category);
+    categorizeRecipe(this.props.id, category, this.props.userUpdated);
   }
 
   render() {

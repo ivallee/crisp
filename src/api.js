@@ -20,6 +20,15 @@ const getUserRecipes = async () => {
   }
 };
 
+const categorizeRecipe = async (recipe_id, category, userUpdated) => {
+  try {
+    await axios.put(`${ENDPOINT}/users/recipes`, {recipe_id, category});
+    userUpdated();
+  } catch(err) {
+    console.error(err);
+  }
+};
+
 const deleteRecipe = async (recipe_id, userUpdated) => {
   try {
     await axios.delete(`${ENDPOINT}/users/recipes`, { params: { recipe_id } });
@@ -167,6 +176,7 @@ const register = async (name, password, userUpdated) => {
 module.exports = {
   saveRecipe,
   getUserRecipes,
+  categorizeRecipe,
   deleteRecipe,
   recipeSearch,
   getRecipeDetails,
