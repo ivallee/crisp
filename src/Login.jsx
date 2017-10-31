@@ -16,7 +16,6 @@ export default class Login extends Component {
   }
 
   handleLogin = (e) => {
-    console.log(this.props.userUpdated);
     e.preventDefault();
     let name = this.refs.name.value;
     let password = this.refs.password.value;
@@ -42,7 +41,7 @@ export default class Login extends Component {
     //   return <Redirect to='/' />;
     // }
     return (
-    <div className="modal fade" id="exampleModalLong" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div className="modal fade" id="exampleModal2" tabIndex="-1" role="dialog" aria-labelledby="exampleModal2" aria-hidden="true">
     <div className="modal-dialog" role="document">
       <div className="modal-content">
         <div className="modal-body">
