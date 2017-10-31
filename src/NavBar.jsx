@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import { NavLink } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import Register from './Register.jsx';
 import Login from './Login.jsx';
-// import LoginControl from './LoginControl.jsx';
 import { logout } from './api.js';
 
 class NavBar extends Component {
@@ -21,17 +20,13 @@ class NavBar extends Component {
     logout(this.props.userUpdated).then(() => {
       console.log('logout');
       this.setState({
-        isLoggedIn: false,
-        redirect: true
+        isLoggedIn: false
       });
     });
   }
 
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect to='/' />;
-    }
     console.log(this.props.username)
     const { loggedIn } = this.props;
     let LoginStatus = null;
@@ -58,7 +53,7 @@ function LoggedOut(props) {
     <nav className="nav nav-pills flex-column flex-sm-row float-right">
       <a className="fill text-sm-center nav-link" href="#demo" data-toggle="modal" data-target="#exampleModal">Register</a>
       <a className="fill text-sm-center nav-link" href="#demo2" data-toggle="modal" data-target="#exampleModal2">Login</a>
-      <a className="flex-sm-fill text-sm-center nav-link" href="/">Search</a>
+      <NavLink className="nav-link" activeClassName="nav-link" to='/'>Search</NavLink>
     </nav>
   );
 }
@@ -67,9 +62,9 @@ function LoggedIn(props) {
   return (
     <nav className="nav nav-pills flex-column flex-sm-row float-right">
       {<a className="flex-sm-fill text-sm-center nav-link">Logged in as: {props.username}</a>}
-      <a className="flex-sm-fill text-sm-center nav-link" href="/users">User Page</a>
+      <NavLink className="nav-link" activeClassName="nav-link" to='/users'>Your Page</NavLink>
       <a className="flex-sm-fill text-sm-center nav-link" href="#" onClick={props.onClick}>Log out</a>
-      <a className="flex-sm-fill text-sm-center nav-link" href="/">Search</a>
+      <NavLink className="nav-link" activeClassName="nav-link" to='/'>Search</NavLink>
     </nav>
   );
 }

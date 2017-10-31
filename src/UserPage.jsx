@@ -4,13 +4,14 @@ import RecipeContainer from './RecipeContainer.jsx';
 import Filters from './Filters.jsx';
 import Categories from './Categories.jsx';
 import { saveFilter, updateSavedFilter, deleteSavedFilter, createCategory } from './api.js';
+import { Redirect } from 'react-router-dom';
 
 class UserPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedCategory: '',
-      recipes: this.buildRecipeList(this.props.savedRecipes, '')
+      recipes: this.buildRecipeList(this.props.savedRecipes, ''),
     };
   }
 
@@ -56,6 +57,10 @@ class UserPage extends Component {
   }
 
   render() {
+    console.log(this.props.username)
+    if (!this.props.username) {
+      return <Redirect to='/' />;
+    }
     return (
       <div className="col user-recipes">
         <div className="user-page-jumbo">
@@ -79,7 +84,7 @@ class UserPage extends Component {
             </div>
           </div>
           <div className="collapse col demo2">
-            <RecipeContainer recipes={this.state.recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} categories={this.props.categories}/>
+            <RecipeContainer recipes={this.state.recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} categories={this.props.categories} />
           </div>
         </div>
       </div>
