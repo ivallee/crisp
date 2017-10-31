@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import { Link } from 'react-router-dom';
-import { saveRecipe, deleteRecipe, getRecipeDetails } from './api.js';
+import { saveRecipe, deleteRecipe } from './api.js';
 
 class RecipeCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = this.extractStateProps(this.props);
-  }
 
   static propTypes = {
     id: PropTypes.number,
@@ -23,27 +19,11 @@ class RecipeCard extends Component {
     userUpdated: PropTypes.func
   }
 
-  componentDidMount() {
-    if(!this.state.title) this.setStateFromAPI();
-  }
-
-  componentWillReceiveProps(props) {
-    console.log(props);
-    this.setState(this.extractStateProps(props));
-  }
-
   extractStateProps = ({ image, recipes, servings, sourceName, title, time }) => {
     const extracted = { image, recipes, servings, sourceName, title, time };
     Object.keys(extracted).forEach(key => extracted[key] === undefined && delete extracted[key]);
     return extracted;
   };
-
-  setStateFromAPI = () => {
-    getRecipeDetails(this.props.id).then(response => {
-      const { image, recipes, servings, sourceName, title, time } = response;
-      this.setState({ image, recipes, servings, sourceName, title, time });
-    });
-  }
 
   remove = (e) => {
     e.stopPropagation();
@@ -65,24 +45,24 @@ class RecipeCard extends Component {
           <div className="card-block">
             <Link to={`/recipes/${this.props.id}`} className="recipe-card-link">
               {/* <div className="row"> */}
-              <img className="card-img-top" src={this.state.image} alt="Card image cap" />
+              <img className="card-img-top" src={this.props.image} alt="Card image cap" />
               <div className="card-block">
-                <h6 className="card-title">{this.state.title}</h6>
+                <h6 className="card-title">{this.props.title}</h6>
               </div>
               {/* </div> */}
               <div className="card-block">
                 {/* <div className="col-sm-6">
-                  <img className="img-thumbnail" src={this.state.image} alt="recipe thumbnail"></img>
+                  <img className="img-thumbnail" src={this.props.image} alt="recipe thumbnail"></img>
                 </div> */}
                   <ul className="list-unstyled">
                     <li>
-                      <small>Time: {this.state.time}</small>
+                      <small>Time: {this.props.time}</small>
                     </li>
                     <li>
-                      <small>From: {this.state.sourceName}</small>
+                      <small>From: {this.props.sourceName}</small>
                     </li>
                     <li>
-                      <small>Servings: {this.state.servings}</small>
+                      <small>Servings: {this.props.servings}</small>
                     </li>
                   </ul>
                 </div>

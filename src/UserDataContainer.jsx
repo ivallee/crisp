@@ -27,7 +27,7 @@ class UserDataContainer extends Component {
       this.setState({ username: user.name, loggedIn: true, savedRecipes, savedFilters, categories });
 
       for (let recipe of savedRecipes) {
-        this.loadRecipeData(recipe);
+        await this.loadRecipeData(recipe);
       }
       this.setState(savedRecipes);
     }
