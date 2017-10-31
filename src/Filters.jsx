@@ -29,10 +29,11 @@ class Filters extends Component {
         .then((filter) => {
           if(filter.unique && this.props.filters.some(savedFilter => filter.type === savedFilter.type)) {
             alert('Duplicate!');
+          } else {
+            filter.value = '';
+            filter.exclude = false;
+            this.props.addFilter(filter);
           }
-          filter.value = '';
-          filter.exclude = false;
-          this.props.addFilter(filter);
         });
     };
   }
@@ -41,19 +42,14 @@ class Filters extends Component {
     return (
       <div id="filter-div">
 
-      <hr />
+        <hr />
         <div className="d-flex justify-content-between">
           {this.state.filterTypes.map(filter => <button className="btn btn-sm btn-main btn-filter" key={filter.id} onClick={this.addFilter(filter.id)}>{filter.type}</button>)}
         </div>
         <ul className="list-group">
-          {/* <li className="list-group-item d-flex justify-content-between">
-            {this.state.filterTypes.map(filter => <span className="col" key={filter.id} onClick={this.addFilter(filter.id)}>{filter.type}</span>)}
-          </li> */}
-          {
-            this.props.filters.map((filter, index) => {
-              return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter} />;
-            })
-          }
+          {this.props.filters.map((filter, index) => {
+            return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter} />;
+          })}
         </ul>
       </div>
     );
