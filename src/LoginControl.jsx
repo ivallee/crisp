@@ -1,5 +1,6 @@
 import React from 'react';
 import { login, logout } from './api.js';
+import { NavLink } from 'react-router-dom';
 
 export default class LoginControl extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class LoginControl extends React.Component {
 
   handleLoginClick() {
     login('test', 'test', this.props.userUpdated).then((response) => {
-      if(response.success) {
+      if (response.success) {
         console.log('successful login!');
         this.setState({ isLoggedIn: true });
       }
@@ -27,52 +28,46 @@ export default class LoginControl extends React.Component {
     });
   }
 
+
+
   render() {
     const { loggedIn } = this.props;
 
-    let button = null;
-    if(loggedIn) {
-      button = <LogoutButton onClick={this.handleLogoutClick} />;
+    let LoginStatus = null;
+    if (loggedIn) {
+      LoginStatus = <LoggedIn onClick={this.handleLogoutClick} />;
     } else {
-      button = <LoginButton onClick={this.handleLoginClick} />;
+      LoginStatus = <NotLoggedIn onClick={this.handleLoginClick} />;
     }
 
     return (
       <div>
-        <Greeting loggedIn={loggedIn} />
-        {button}
+        {LoginStatus}
       </div>
     );
   }
 }
 
-function UserGreeting() {
-  return <p>Welcome back!</p>;
-}
-
-function GuestGreeting() {
-  return <p>Please sign up.</p>;
-}
-
-function Greeting(loggedIn) {
-  if(loggedIn) {
-    return <UserGreeting />;
-  }
-  return <GuestGreeting />;
-}
-
-function LoginButton(props) {
+function NotLoggedIn(props) {
   return (
-    <button onClick={props.onClick}>
-      Login
-    </button>
+    <li className="nav-item">
+      <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
+      <NavLink className="nav-link" activeClassName="nav-link" to='/login'>Log in</NavLink>
+    </li>
   );
 }
 
-function LogoutButton(props) {
+function LoggedIn(props) {
   return (
-    <button onClick={props.onClick}>
-      Logout
+    <span>
+    <li className="nav-item">
+      <NavLink className="nav-link" activeClassName="nav-link" to='/users'>Your Page</NavLink>
+    </li>
+    <li className="nav-item">
+      <button onClick={props.onClick}>
+        Logout
     </button>
+    </li>
+    </span>
   );
 }

@@ -7,35 +7,31 @@ import LoginControl from './LoginControl.jsx';
 class NavBar extends Component {
   render() {
     return (
-      <div>
-        {/* <Modal >
-          <Register />
-        </Modal > */}
         <nav>
           <ul className="nav nav-pills float-right">
             <li className="nav-item">
-              <NavLink className='nav-link' activeClassName="nav-link" to='/'>Home</NavLink>
-              {/* <a className="nav-link" href="#">Home
-              </a> */}
+              <NavLink className='nav-link' activeClassName="nav-link" to='/'>Search</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="nav-link" to='/results'>Results</NavLink>
-            </li>
-            <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
-            </li>
-            <li>
             <LoginControl {...this.props}/>
-            {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              Launch demo modal
-            </button> */}
-            </li>
           </ul>
-        </nav>
         <h3 className='nav-logo'>Crisp</h3>
-      </div>
+        </nav>
     );
   }
 }
 export default NavBar;
 
+// <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
+//   <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+//     <span className="navbar-toggler-icon"></span>
+//   </button>
+//   <a className="navbar-brand" href="#">Navbar</a>
+//   <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+//     <div className="navbar-nav">
+//     <NavLink className='nav-link' activeClassName="nav-link" to='/'>Home</NavLink>
+//     <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
+//     <NavLink className="nav-link" activeClassName="nav-link" to='/register'>Register</NavLink>
+//       <a className="nav-item nav-link disabled" href="#">Disabled</a>
+//     </div>
+//   </div>
+// </nav>

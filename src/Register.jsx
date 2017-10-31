@@ -1,58 +1,35 @@
 import React, {Component} from 'react';
 // import {Redirect} from 'react-router-dom';
-import register from './api';
+import { register } from './api';
+import propTypes from 'proptypes';
 
 export default class Register extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: {
-        name: '',
-        password: '',
-        // redirect: false,
-      }
-    };
   }
 
+  static propTypes = {
+    userUpdated: propTypes.func
+  }
 
-  newUser = () => {
-    const { name, password } = this.state.data;
-    register(name, password).then((response) => {
+  handleRegistration(e) {
+    e.preventDefault()
+    let name = this.refs.name.value
+    let password = this.refs.password.value
+    register(name, password, this.props.userUpdated).then((response) => {
       console.log(response);
     });
   }
-
-  onUserChanged = event => {
-    this.state.data.name = event.target.value;
-  }
-
-  onPasswordChanged = event => {
-    this.state.data.password = event.target.value;
-  }
-
-  onSubmit = event => {
-    event.preventDefault();
-    this.newUser(this.state.data);
-  }
-
+  
   render() {
     return (
-    <form id="Register">
-        <h1>Log In</h1>
-        <fieldset id="inputs">
-            <input id="name"
-                    type="email"
-                    placeholder="Username"
-                    onChange={this.onUserChanged}/>
-            <input id="password"
-                   type="password"
-                   placeholder="Password"
-                   onChange={this.onPasswordChanged}/>
-        </fieldset>
-        <fieldset id="actions">
-            <input type="submit" id="submit" onClick={this.onSubmit} value="Log in"/>
-        </fieldset>
-    </form>
+      <form onSubmit={this.handleRegistration.bind(this)}>
+        <h3>Register</h3>
+        <input type="text" ref="name" placeholder="enter you username" />
+        <input type="password" ref="password" placeholder="enter password" />
+        <input type="submit" value="Register" />
+      </form>
     );
   }
+
 }
