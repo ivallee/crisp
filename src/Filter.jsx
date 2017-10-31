@@ -36,14 +36,14 @@ class Filter extends Component {
   }
 
   buildText = () => {
-    if(this.props.data.text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} />;
+    if(this.props.data.text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} ref={(input) => { this.textInput = input; }} />;
     return '';
   }
 
   buildDropdown = () => {
     const dropdown = this.props.data.dropdown;
     if(!dropdown) return '';
-    return <select className='form-control' value={this.props.data.value} onChange={this.update} >{dropdown.map(option => {
+    return <select className='form-control' value={this.props.data.value} onChange={this.update} ref={(input) => { this.selectInput = input; }} >{dropdown.map(option => {
       return <option value={option.key} key={option.key}>{option.display}</option>;
     })}</select>;
   }
