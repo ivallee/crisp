@@ -28,6 +28,7 @@ class RecipeCard extends Component {
   }
 
   componentWillReceiveProps(props) {
+    console.log(props);
     this.setState(this.extractStateProps(props));
   }
 

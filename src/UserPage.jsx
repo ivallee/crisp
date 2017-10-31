@@ -12,7 +12,6 @@ class UserPage extends Component {
       selectedCategory: '',
       recipes: this.buildRecipeList(this.props.savedRecipes, '')
     };
-    console.log(this.state.recipes);
   }
 
   static propTypes = {
