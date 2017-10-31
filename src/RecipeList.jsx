@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import RecipeCard from './RecipeCard.jsx';
+import dummyResults from './_dummyresults.js';
+
 
 class RecipeList extends Component {
 
@@ -39,6 +41,7 @@ class RecipeList extends Component {
 
   renderRecipes = () => {
     const recipes = this.props.recipeCount ? this.state.recipes.slice(0, this.props.recipeCount) : this.state.recipes;
+    // const recipes = dummyResults.results;
     return recipes.map((recipe, index) => {
       return <RecipeCard
         id={recipe.id}
