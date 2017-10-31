@@ -38,7 +38,7 @@ class UserDataContainer extends Component {
 
   loadRecipeData = async (recipe) => {
     const recipeData = await getRecipeDetails(recipe.id);
-    const selected = (({ image, recipes, servings, sourceName, title, time }) => ({ image, recipes, servings, sourceName, title, time }))(recipeData);
+    const selected = (({ image, recipes, servings, sourceName, title, readyInMinutes }) => ({ image, recipes, servings, sourceName, title, readyInMinutes }))(recipeData);
     Object.assign(recipe, selected);
   }
 
