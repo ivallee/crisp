@@ -14,6 +14,7 @@ class Categories extends Component {
     categories: PropTypes.array,
     addCategory: PropTypes.func,
     changeCategory: PropTypes.func,
+    deleteCategory: PropTypes.func,
     selectedCategory: PropTypes.string
   }
 
@@ -45,6 +46,7 @@ class Categories extends Component {
       const buttonStyle = (category.key === this.props.selectedCategory) ? 'btn btn-success col' : 'btn btn-secondary col';
       return <li className="list-group-item" key={index}>
         <input className={buttonStyle} type="button" value={category.name} onClick={this.setSelectedCategory(category.key)} />
+        {index > 0 && <button type="button" className="btn btn-delete" onClick={() => this.props.deleteCategory(category.name)}><i className="fa fa-lg fa-times"></i></button>}
       </li>;
     });
   }
