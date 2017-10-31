@@ -16,7 +16,6 @@ class RecipeDetails extends Component {
   componentWillMount() {
     getRecipeDetails(this.props.match.params.id)
     .then(recipeData => {
-      console.log(recipeData);
       this.setState({ recipeData });
     });
 

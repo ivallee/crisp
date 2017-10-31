@@ -20,6 +20,15 @@ const getUserRecipes = async () => {
   }
 };
 
+const categorizeRecipe = async (recipe_id, category, userUpdated) => {
+  try {
+    await axios.put(`${ENDPOINT}/users/recipes`, {recipe_id, category});
+    userUpdated();
+  } catch(err) {
+    console.error(err);
+  }
+};
+
 const deleteRecipe = async (recipe_id, userUpdated) => {
   try {
     await axios.delete(`${ENDPOINT}/users/recipes`, { params: { recipe_id } });
@@ -32,7 +41,6 @@ const deleteRecipe = async (recipe_id, userUpdated) => {
 const recipeSearch = async (query) => {
   try {
     const response = await axios.get(`${ENDPOINT}/recipes/search/${query || '%20'}`);
-    console.log(response);
     return response.data.results;
   } catch(err) {
     console.error(err);
@@ -72,7 +80,6 @@ const getFilter = async (id) => {
 
 const saveFilter = async (type, value, exclude, userUpdated) => {
   try {
-    console.log('Type:', type, 'Value:', value, 'Exclude:', exclude);
     await axios.post(`${ENDPOINT}/users/filters/`, { type, value, exclude });
     userUpdated();
   } catch(err) {
@@ -169,6 +176,7 @@ const register = async (name, password, userUpdated) => {
 module.exports = {
   saveRecipe,
   getUserRecipes,
+  categorizeRecipe,
   deleteRecipe,
   recipeSearch,
   getRecipeDetails,
