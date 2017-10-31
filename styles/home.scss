@@ -86,16 +86,11 @@ $bg-color-secondary: #EDF5E1;
 }
 
 body {
-  background-color: $bg-color-secondary;
+  background-color: $bg-color-primary;
 }
 
 .content-blocks {
-  background-color: $bg-color-secondary;
-}
-
-.navbar-container {
-  background: white;
-  padding-bottom: 50px;
+  background-color: $bg-color-primary;
 }
 
 .container {
