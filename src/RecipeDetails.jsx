@@ -83,6 +83,7 @@ class RecipeDetails extends Component {
           <div className="col-4">
             <img className='recipe-details-img' src={recipe.image} alt="Recipe image"></img>
             <div className="recipe-details-links d-flex justify-content-between">
+              <Link to='/results'><button type="button" className="btn btn-save"><i className="fa fa-lg fa-arrow-left" aria-hidden="true" ></i><br /> Back</button></Link>
               {this.state.saved && <CategorySelector id={this.props.id} userUpdated={this.props.userUpdated} categoryList={this.props.categories} category={this.state.category} />}
               {this.saveButton()}
             </div>
