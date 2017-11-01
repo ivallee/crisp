@@ -18,7 +18,8 @@ class RecipeCard extends Component {
     readyInMinutes: PropTypes.number,
     userUpdated: PropTypes.func,
     category: PropTypes.string,
-    categoryList: PropTypes.array
+    categoryList: PropTypes.array,
+    replaceable: PropTypes.bool
   }
 
   extractStateProps = ({ image, recipes, servings, sourceName, title, readyInMinutes }) => {
@@ -30,6 +31,10 @@ class RecipeCard extends Component {
   remove = (e) => {
     e.stopPropagation();
     this.props.removeRecipe(this.props.index);
+  }
+
+  closeButton = () => {
+    return this.props.replaceable? <button type="button" className="btn btn-delete" onClick={e => this.remove(e)}><i className="fa fa-lg fa-times"></i></button> : '';
   }
 
   saveButton = () => {
@@ -81,7 +86,6 @@ class RecipeCard extends Component {
               </div>
             </ Link>
             <div className="card-block d-flex justify-content-between">
-              <button type="button" className="btn btn-delete" onClick={e => this.remove(e)}><i className="fa fa-lg fa-times"></i></button>
               {this.categorySelector()}
               {this.saveButton()}
             </div>

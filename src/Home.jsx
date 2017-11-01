@@ -8,13 +8,16 @@ class Home extends Component {
     return (
       <div>
         <div className="jumbotron content-blocks">
-          <h5 className="display-4">Welcome to Crisp</h5>
-          <p className="lead">Crisp is a recipe recommendation engine for people who are looking to try cooking more meatless and plant-based meals.</p>
-          <p className="lead">To get started, enter some criteria and get your recomendations.</p>
-          <p className="lead">Registered users can save their favourite recipes and recommendation filters</p>
+          <h1 className="display-3 text-center">Welcome to Crisp</h1>
+          <hr />
+          <div className="welcome-text text-center">
+            <p className="lead">Crisp is a recipe recommendation engine for people who are looking to try cooking more meatless and plant-based meals.</p>
+            <p className="lead">To get started, enter some criteria and get your recomendations.</p>
+            <p className="lead">Registered users can save their favourite recipes and recommendation filters</p>
+          </div>
         </div>
 
-        <Search sendQuery={this.props.sendQuery} savedFilters={this.props.savedFilters}/>
+        <Search sendQuery={this.props.sendQuery} savedFilters={this.props.savedFilters} />
       </div>
 
 

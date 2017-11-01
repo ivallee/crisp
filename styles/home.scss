@@ -78,6 +78,7 @@
 //   text-align: center;
 // }
 
+// Filter form-control components
 .list-group-item-custom {
   // max-width: 600px;
   margin-top: 10px;
@@ -124,33 +125,37 @@ $bg-color-secondary: white;
   }
 }
 
-body {
-  background-image: url(https://images7.alphacoders.com/399/399642.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  // background-color: $bg-color-primary;
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Lato|Oswald|Source+Sans+Pro');
+
+
+h1 {
+  // font-family: 'Lobster Two', cursive;
+  font-family: 'Dancing Script', cursive;
 }
 
-// cream background with content bottom right
-// https://images7.alphacoders.com/406/406976.jpg
 
-// white background with table on right side
-// https://images7.alphacoders.com/406/406983.jpg
+hr {
+  border: 0;
+  height: 2px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
 
-// darker background bottom content
-// https://images8.alphacoders.com/406/406977.jpg
+body {
+  // background-color: $bg-color-primary;
+  background-image: url('/docs/bg-veggies.jpg');
+  // background-image: url('/veg-bg.jpeg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: 'Source Sans Pro', sans-serif;
 
-// brown background with centered content                   FAVE 
-// https://images7.alphacoders.com/399/399642.jpg
+}
 
-// light background with bottom content
-// https://images5.alphacoders.com/407/407498.jpg
 
 .content-blocks {
-  background-color: rgba(255, 255, 255, 0.85);
-  border: 1px solid black;
+  // background-color: $bg-color-secondary;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .container {
@@ -162,10 +167,10 @@ body {
 }
 
 .nav-link {
-  color:  white;
+  color:  $bg-color-secondary;
 }
 .nav-logo {
-  color: white;
+  color: $bg-color-secondary;
 }
 
 .btn-filter {
@@ -178,7 +183,7 @@ body {
 	// box-shadow: 0px 10px 14px -7px #3e7327;
 	background-color: $bg-color-primary;
 	border-radius:4px;
-	color: white;
+	color: $bg-color-secondary;
   padding: 0.4rem 0.8rem;
 }
 .btn-main:hover {
@@ -209,6 +214,10 @@ body {
   
 }
 
+.btn-user-filter:hover {
+  color: inherit;
+}
+
 .recipe-card {
 
   max-width: 250px;
@@ -236,6 +245,8 @@ body {
 
   .card {
     border: none;
+    // max-width: 210px;
+    // min-width:  210px;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.50);
   }
 
@@ -347,6 +358,21 @@ body {
   text-decoration: inherit;
 }
 
-.btn-user-filter:hover {
-  color: inherit;
+.filter-list {
+  padding-top: 20px;
+
+  .btn {
+    // background: transparent;
+    box-shadow: none;
+  }
+  
+  .btn-delete {
+    color: $bg-color-primary-dk;
+    background: transparent;
+  }
+}
+
+.welcome-text {
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 20px;
 }

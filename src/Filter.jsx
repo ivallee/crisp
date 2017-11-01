@@ -56,10 +56,16 @@ class Filter extends Component {
   render() {
     const test = this.props.data.saved_filter_id ? {background: 'tomato'} : {};
     return (
+<<<<<<< HEAD
       <li className="list-group-item list-group-item-custom" style={test}>
         <button type="button" className="close" aria-label="Remove" onClick={this.remove}>
           <span aria-hidden="true">&times;</span>
         </button>
+=======
+      <li className="list-group-item" style={test}>
+        {/* <button type="button" className="close" aria-label="Remove" onClick={this.remove}> */}
+        <button type="button" className="btn btn-delete close" onClick={this.remove}><i className="fa fa-lg fa-trash-o"></i></button>
+>>>>>>> master
         <div className="form-group row">
           <label htmlFor="example-text-input" className="col-2 col-form-label">{this.props.data.type}</label>
           <div className="col-10">

@@ -39,7 +39,7 @@ class NavBar extends Component {
       LoginStatus = <LoggedOut />;
     }
     return (
-      <nav className="navbar-container">
+      <nav>
         {LoginStatus}
         <Register userUpdated={this.props.userUpdated} />
         <Login userUpdated={this.props.userUpdated} />
@@ -64,8 +64,12 @@ function LoggedOut() {
 function LoggedIn(props) {
   return (
     <nav className="nav nav-pills flex-column flex-sm-row float-right">
+<<<<<<< HEAD
       <span className="flex-sm-fill text-sm-center nav-link">Logged in as {props.username}</span>
       <NavLink className="nav-link" activeClassName="nav-link" to='/'>Search</NavLink>
+=======
+      <span className="flex-sm-fill text-sm-center nav-link">Logged in as: {props.username}</span>
+>>>>>>> master
       <NavLink className="nav-link" activeClassName="nav-link" to='/users'>Your Page</NavLink>
       <a className="flex-sm-fill text-sm-center nav-link" href="#" onClick={props.onClick}>Log out</a>
     </nav>

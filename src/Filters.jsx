@@ -54,7 +54,7 @@ class Filters extends Component {
         <div className="d-flex justify-content-between">
           {this.state.filterTypes.map(this.addFilterButton)}
         </div>
-        <ul className="list-group">
+        <ul className="list-group filter-list">
           {this.props.filters.map((filter, index) => {
             return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter} ref={`Filter${index}`} />;
           })}

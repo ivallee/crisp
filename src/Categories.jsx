@@ -43,10 +43,8 @@ class Categories extends Component {
     const categories = [{ name: 'All Recipes' }, ...this.props.categories];
     return categories.map((category, index) => {
       category.key = (index > 0) ? category.name : '';
-      // const buttonStyle = (category.key === this.props.selectedCategory) ? 'btn btn-sm  btn-main' : 'btn btn-sm btn-secondary';
       const buttonStyle = (category.key === this.props.selectedCategory) ? 'active' : 'inactive';
       return <li className={'list-group-item ' + buttonStyle} key={index}>
-        {/* <input className={buttonStyle} type="button" value={category.name} onClick={this.setSelectedCategory(category.key)} /> */}
         <div className='category-item d-flex justify-content-between' onClick={this.setSelectedCategory(category.key)}>{category.name} {index > 0 && <button type="button" className="btn btn-delete" onClick={() => this.props.deleteCategory(category.name)}><i className="fa fa-lg fa-trash-o pull-right"></i></button>}</div>
       </li>;
     });
