@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'proptypes';
 import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
 import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
+import CategorySelector from './CategorySelector.jsx';
 import { getRecipeDetails, saveRecipe, deleteRecipe } from './api.js';
 
 class RecipeDetails extends Component {
@@ -11,15 +12,20 @@ class RecipeDetails extends Component {
     super(props);
 
     const recipeData = this.props.searchResponse.find(recipe => recipe && recipe.id === this.props.id) || {};
-    const saved = this.props.savedRecipes.some(saved => saved.id === this.props.id);
-    this.state = { recipeData, saved };
+    this.state = { recipeData, ...this.isSaved(this.props) };
+  }
+
+  isSaved(props) {
+    const match = props.savedRecipes.find(saved => saved.id === props.id);
+    return match ? { saved: true, category: match.category } : { saved: false, category: '' };
   }
 
   static propTypes = {
     searchResponse: PropTypes.array,
     savedRecipes: PropTypes.array,
     id: PropTypes.number,
-    userUpdated: PropTypes.func
+    userUpdated: PropTypes.func,
+    categories: PropTypes.array
   }
 
   componentDidMount() {
@@ -27,6 +33,10 @@ class RecipeDetails extends Component {
       .then(recipeData => {
         this.setState({ recipeData });
       });
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({ ...this.isSaved(props) });
   }
 
   saveButton() {
@@ -66,6 +76,7 @@ class RecipeDetails extends Component {
           <div className="col-4">
             <img className='recipe-details-img' src={recipe.image} alt="Recipe image"></img>
             <div className="recipe-details-links d-flex justify-content-between">
+              {this.state.saved && <CategorySelector id={this.props.id} userUpdated={this.props.userUpdated} categoryList={this.props.categories} category={this.state.category} />}
               {this.saveButton()}
             </div>
           </div>
