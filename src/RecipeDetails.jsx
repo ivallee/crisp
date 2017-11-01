@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'proptypes';
 import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
 import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
 import { getRecipeDetails } from './api.js';
@@ -8,20 +9,21 @@ class RecipeDetails extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      recipeData: {},
-    };
+
+    const recipeData = this.props.searchResponse.find(recipe => recipe && recipe.id === this.props.id);
+    this.state = recipeData ? { recipeData } : { recipeData: {} };
+  }
+
+  static propTypes = {
+    searchResponse: PropTypes.array,
+    id: PropTypes.number
   }
 
   componentWillMount() {
-    getRecipeDetails(this.props.match.params.id)
+    getRecipeDetails(this.props.id)
       .then(recipeData => {
         this.setState({ recipeData });
       });
-
-  }
-
-  componentDidMount() {
   }
 
   render() {
