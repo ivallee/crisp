@@ -62,19 +62,15 @@ class UserPage extends Component {
   }
 
   render() {
-    if (!this.props.username) {
+    if(!this.props.username) {
       return <Redirect to='/' />;
     }
     return (
       <div>
         <div className="jumbotron content-blocks">
-          <h1 className="display-4 text-center">Your recipes</h1>
+          <h1 className="display-4 text-center">Your Recipes</h1>
           <hr />
-          <p className="lead">Here you can manage your saved recipes, create new categories and update your recommendation filter settings</p>
-          {/* <p className="lead">Crisp is a recipe recommendation engine for people who are looking to try cooking more meatless and plant-based meals.</p>
-          <p className="lead">On this page you can update your preset filters and manage your recipes. The filters will be set automatically for you when you do a search.</p>
-          <p className="lead">You can disable them at the search page as well, if you would like to exclude them temporarily.</p>
-          <p className="lead">Management of your recipes is done through categorization. You can create new categories, remove old ones, and move your saved recipes to another category </p> */}
+          <p className="lead">Here you can manage your saved recipes, create new categories, and update your default filter settings</p>
           <div className="row marketing">
             <div className="col">
               <a href="#demo" className="btn btn-main btn-user-filter" data-toggle="collapse">Your filter settings</a>
@@ -87,26 +83,19 @@ class UserPage extends Component {
             </div>
           </div>
         </div>
-<div className="user-recipes">
-        <div className="row">
-          <div className="col-sm-3">
-          <div className="category-sidebar">
-            <Categories categories={this.props.categories} addCategory={this.addCategory} changeCategory={this.changeCategory} deleteCategory={this.deleteCategory} selectedCategory={this.state.selectedCategory} />
+        <div className="user-recipes">
+          <div className="row">
+            <div className="col-sm-3">
+              <div className="category-sidebar">
+                <Categories categories={this.props.categories} addCategory={this.addCategory} changeCategory={this.changeCategory} deleteCategory={this.deleteCategory} selectedCategory={this.state.selectedCategory} />
+              </div>
+            </div>
+            <div className="col-sm-9">
+              <RecipeContainer recipes={this.state.recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} categories={this.props.categories} />
+            </div>
           </div>
-            {/* <ul className="list-group">
-              <li className="list-group-item">
-
-              </li>
-            </ul> */}
-          </div>
-          <div className="col-sm-9">
-            <RecipeContainer recipes={this.state.recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} categories={this.props.categories} />
-          </div>
-        </div>
         </div>
       </div>
-
-
     );
   }
 }
