@@ -86,6 +86,7 @@ class RecipeCard extends Component {
               </div>
             </ Link>
             <div className="card-block d-flex justify-content-between">
+              {this.closeButton()}
               {this.categorySelector()}
               {this.saveButton()}
             </div>
