@@ -85,7 +85,7 @@ $bg-color-secondary: #EDF5E1;
   }
 }
 
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Lato|Oswald');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Lato|Oswald|Source+Sans+Pro');
 
 
 h1 {
@@ -103,19 +103,19 @@ hr {
 
 body {
   // background-color: $bg-color-primary;
-  background-image: url('https://images7.alphacoders.com/399/399642.jpg');
+  background-image: url('/docs/bg-veggies.jpg');
   // background-image: url('/veg-bg.jpeg');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 
 }
 
 
 .content-blocks {
   // background-color: $bg-color-secondary;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .container {
@@ -127,10 +127,10 @@ body {
 }
 
 .nav-link {
-  color:  black;
+  color:  $bg-color-secondary;
 }
 .nav-logo {
-  color: black;
+  color: $bg-color-secondary;
 }
 
 .btn-filter {
@@ -332,6 +332,6 @@ body {
 }
 
 .welcome-text {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   padding: 20px;
 }

@@ -68,7 +68,8 @@ class UserPage extends Component {
     return (
       <div>
         <div className="jumbotron content-blocks">
-          <h5 className="display-4 text-center">Your recipes</h5>
+          <h1 className="display-4 text-center">Your recipes</h1>
+          <hr />
           <p className="lead">Here you can manage your saved recipes, create new categories and update your recommendation filter settings</p>
           {/* <p className="lead">Crisp is a recipe recommendation engine for people who are looking to try cooking more meatless and plant-based meals.</p>
           <p className="lead">On this page you can update your preset filters and manage your recipes. The filters will be set automatically for you when you do a search.</p>

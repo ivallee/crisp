@@ -39,7 +39,7 @@ class NavBar extends Component {
       LoginStatus = <LoggedOut />;
     }
     return (
-      <nav className="navbar-container content-blocks">
+      <nav>
         {LoginStatus}
         <Register userUpdated={this.props.userUpdated} />
         <Login userUpdated={this.props.userUpdated} />
