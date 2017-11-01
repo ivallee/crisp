@@ -6,7 +6,7 @@ RecipeDetailsInstructions.propTypes = {
   stepDesc: PropTypes.string
 };
 
-function RecipeDetailsInstructions({ stepCount, stepDesc }) {
-  return <li>{stepCount}. {stepDesc}</li>;
+function RecipeDetailsInstructions({ stepDesc }) {
+  return <li>{stepDesc}</li>;
 }
 export default RecipeDetailsInstructions;
