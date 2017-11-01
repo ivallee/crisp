@@ -6,6 +6,6 @@ RecipeDetailsIngredients.propTypes = {
 };
 
 function RecipeDetailsIngredients({ ingredient }) {
-  return <li><small>{ingredient}</small></li>;
+  return <li><i className="fa fa-li fa-angle-right" aria-hidden="true"></i><small>{ingredient}</small></li>;
 }
 export default RecipeDetailsIngredients;

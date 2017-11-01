@@ -61,18 +61,18 @@ class RecipeDetails extends Component {
         <div className="row recipe-info">
           <div className='col-4'>
             <div className="recipe-details-ingredients">
-              <h5 className='text-center'>Ingredients:</h5>
-                <ul className=''>
+              <h3 className='text-center'>Ingredients:</h3>
+                <ul className='fa-ul'>
                   {ingredients}
                 </ul>
             </div>
           </div>
           <div className='col-8'>
             <div className="recipe-details-instructions">
-              <h5 className="text-center">Instructions:</h5>
-              <ul>
+              <h3 className="text-center">Instructions:</h3>
+              <ol>
                 {instructions}
-              </ul>
+              </ol>
             </div>
           </div>
         </div>
