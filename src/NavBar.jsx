@@ -27,7 +27,6 @@ class NavBar extends Component {
 
 
   render() {
-    console.log(this.props.username)
     const { loggedIn } = this.props;
     let LoginStatus = null;
     if (loggedIn) {
@@ -36,7 +35,7 @@ class NavBar extends Component {
       LoginStatus = <LoggedOut />;
     }
     return (
-      <nav className="navbar-container content-blocks">
+      <nav className="navbar-container">
         {LoginStatus}
         <Register userUpdated={this.props.userUpdated} />
         <Login userUpdated={this.props.userUpdated} />
