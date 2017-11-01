@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
+import PropTypes from 'proptypes';
 import Register from './Register.jsx';
 import Login from './Login.jsx';
 import { logout } from './api.js';
@@ -10,21 +10,25 @@ class NavBar extends Component {
     super(props);
     this.state = {
       redirect: false
-    }
+    };
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
+  }
 
+  static propTypes = {
+    loggedIn: PropTypes.bool,
+    username: PropTypes.string,
+    onClick: PropTypes.func,
+    userUpdated: PropTypes.func
   }
 
 
   handleLogoutClick() {
     logout(this.props.userUpdated).then(() => {
-      console.log('logout');
       this.setState({
         isLoggedIn: false
       });
     });
   }
-
 
   render() {
     const { loggedIn } = this.props;
@@ -47,7 +51,7 @@ class NavBar extends Component {
 export default NavBar;
 
 
-function LoggedOut(props) {
+function LoggedOut() {
   return (
     <nav className="nav nav-pills flex-column flex-sm-row float-right">
       <a className="fill text-sm-center nav-link" href="#demo" data-toggle="modal" data-target="#exampleModal">Register</a>
