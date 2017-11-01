@@ -2,10 +2,9 @@ import React from 'react';
 
 export default function Modal(props) {
   let modalRef = null;
-  const onComplete = (event) => {
+  const onComplete = () => {
     modalRef.getDOMNode().modal('hide');
   };
-  console.log(props, props.children);
   const children = React.Children.map(props.children, child => {
     return React.cloneElement(child, {
       onComplete

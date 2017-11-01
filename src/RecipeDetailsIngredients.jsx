@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'proptypes';
 
 RecipeDetailsIngredients.propTypes = {
@@ -6,10 +6,6 @@ RecipeDetailsIngredients.propTypes = {
 };
 
 function RecipeDetailsIngredients({ ingredient }) {
-
-  
-  return (
-    <li><small>{ingredient}</small></li>
-  );
+  return <li><small>{ingredient}</small></li>;
 }
 export default RecipeDetailsIngredients;
