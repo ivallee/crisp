@@ -48,7 +48,7 @@ class Main extends Component {
       <Switch>
         <Route exact path="/" render={() => <Home sendQuery={this.sendQuery} {...this.props} />} />
         <Route exact path='/results' render={() => <SearchResults searchResponse={this.state.searchResponse} {...this.props} />} />
-        <Route path='/recipes/:id' component={RecipeDetails} {...this.props} />
+        <Route path='/recipes/:id' render={() => <RecipeDetails searchResponse={this.state.searchResponse} {...this.props} />} />
         <Route path='/register' render={() => <Register {...this.props} />} />
         <Route path='/login' render={() => <Login {...this.props} />} />
         <Route path='/users' render={() => <UserPage {...this.props} />} />
