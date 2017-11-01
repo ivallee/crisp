@@ -85,12 +85,37 @@ $bg-color-secondary: #EDF5E1;
   }
 }
 
-body {
-  background-color: $bg-color-primary;
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Lato|Oswald|Source+Sans+Pro');
+
+
+h1 {
+  // font-family: 'Lobster Two', cursive;
+  font-family: 'Dancing Script', cursive;
 }
 
+
+hr {
+  border: 0;
+  height: 2px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+body {
+  // background-color: $bg-color-primary;
+  background-image: url('/docs/bg-veggies.jpg');
+  // background-image: url('/veg-bg.jpeg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+
 .content-blocks {
-  background-color: $bg-color-secondary;
+  // background-color: $bg-color-secondary;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .container {
@@ -102,10 +127,10 @@ body {
 }
 
 .nav-link {
-  color:  white;
+  color:  $bg-color-secondary;
 }
 .nav-logo {
-  color: white;
+  color: $bg-color-secondary;
 }
 
 .btn-filter {
@@ -118,7 +143,7 @@ body {
 	// box-shadow: 0px 10px 14px -7px #3e7327;
 	background-color: $bg-color-primary;
 	border-radius:4px;
-	color: white;
+	color: $bg-color-secondary;
   padding: 0.4rem 0.8rem;
 }
 .btn-main:hover {
@@ -148,6 +173,10 @@ body {
   
 }
 
+.btn-user-filter:hover {
+  color: inherit;
+}
+
 .recipe-card {
 
   max-width: 250px;
@@ -175,6 +204,8 @@ body {
 
   .card {
     border: none;
+    // max-width: 210px;
+    // min-width:  210px;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.50);
   }
 
@@ -286,6 +317,21 @@ body {
   text-decoration: inherit;
 }
 
-.btn-user-filter:hover {
-  color: inherit;
+.filter-list {
+  padding-top: 20px;
+
+  .btn {
+    // background: transparent;
+    box-shadow: none;
+  }
+  
+  .btn-delete {
+    color: $bg-color-primary-dk;
+    background: transparent;
+  }
+}
+
+.welcome-text {
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 20px;
 }
