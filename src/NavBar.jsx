@@ -43,7 +43,7 @@ class NavBar extends Component {
         {LoginStatus}
         <Register userUpdated={this.props.userUpdated} />
         <Login userUpdated={this.props.userUpdated} />
-        <h3 className='nav-logo'>Crisp</h3>
+        <NavLink className="nav-logo" activeClassName="nav-logo" to='/'><h3 className='nav-logo'>Crisp</h3></NavLink>
       </nav>
     );
   }
