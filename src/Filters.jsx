@@ -40,13 +40,19 @@ class Filters extends Component {
     };
   }
 
+  addFilterButton = (filter) => {
+    const duplicate = this.props.filters.findIndex(savedFilter => filter.type === savedFilter.type && savedFilter.unique);
+    const style = (duplicate > -1) ? 'btn btn-sm btn-secondary btn-filter' : 'btn btn-sm btn-main btn-filter';
+    return <button className={style} key={filter.id} onClick={this.addFilter(filter.id)}>{filter.type}</button>;
+  }
+
   render() {
     return (
       <div id="filter-div">
 
         <hr />
         <div className="d-flex justify-content-between">
-          {this.state.filterTypes.map(filter => <button className="btn btn-sm btn-main btn-filter" key={filter.id} onClick={this.addFilter(filter.id)}>{filter.type}</button>)}
+          {this.state.filterTypes.map(this.addFilterButton)}
         </div>
         <ul className="list-group">
           {this.props.filters.map((filter, index) => {
