@@ -61,7 +61,7 @@ class RecipeDetails extends Component {
         <div className="row recipe-info">
           <div className='col-4'>
             <div className="recipe-details-ingredients">
-              <h3 className='text-center'>Ingredients:</h3>
+              <h3 className='text-center'>Ingredients</h3>
                 <ul className='fa-ul'>
                   {ingredients}
                 </ul>
@@ -69,13 +69,14 @@ class RecipeDetails extends Component {
           </div>
           <div className='col-8'>
             <div className="recipe-details-instructions">
-              <h3 className="text-center">Instructions:</h3>
+              <h3 className="text-center">Instructions</h3>
               <ol>
                 {instructions}
               </ol>
             </div>
           </div>
         </div>
+        <hr />
       </div>
     );
   }

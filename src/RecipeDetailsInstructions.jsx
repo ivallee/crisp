@@ -7,6 +7,11 @@ RecipeDetailsInstructions.propTypes = {
 };
 
 function RecipeDetailsInstructions({ stepDesc }) {
-  return <li>{stepDesc}</li>;
+  return (
+    <div>
+    <li>{stepDesc}</li><br />
+    </div>
+  )
+    
 }
 export default RecipeDetailsInstructions;
