@@ -14,14 +14,10 @@ class RecipeDetails extends Component {
   }
 
   componentWillMount() {
-    getRecipeDetails(this.props.match.params.id)
+    getRecipeDetails(this.props.id)
     .then(recipeData => {
       this.setState({ recipeData });
     });
-
-  }
-
-  componentDidMount(){
   }
 
   render() {
