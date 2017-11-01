@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
+import CategorySelector from './CategorySelector.jsx';
 import { Link } from 'react-router-dom';
 import { saveRecipe, categorizeRecipe, deleteRecipe } from './api.js';
 
@@ -87,7 +88,7 @@ class RecipeCard extends Component {
             </ Link>
             <div className="card-block d-flex justify-content-between">
               {this.closeButton()}
-              {this.categorySelector()}
+              {this.props.saved && this.props.categoryList ? <CategorySelector {...this.props} /> : ''}
               {this.saveButton()}
             </div>
           </div>
