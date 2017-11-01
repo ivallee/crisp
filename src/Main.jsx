@@ -7,6 +7,7 @@ import RecipeDetails from './RecipeDetails.jsx';
 import NotFound from './error-pages/NotFound.jsx';
 import { recipeSearch } from './api.js';
 import Register from './Register.jsx';
+import Login from './Login.jsx';
 import UserPage from './UserPage.jsx';
 
 class Main extends Component {
@@ -48,7 +49,8 @@ class Main extends Component {
         <Route exact path="/" render={() => <Home sendQuery={this.sendQuery} {...this.props} />} />
         <Route exact path='/results' render={() => <SearchResults searchResponse={this.state.searchResponse} {...this.props} />} />
         <Route path='/recipes/:id' component={RecipeDetails} {...this.props} />
-        <Route path='/register' render={() => <Register newUser={this.newUser} {...this.props} />} />
+        <Route path='/register' render={() => <Register {...this.props} />} />
+        <Route path='/login' render={() => <Login {...this.props} />} />
         <Route path='/users' render={() => <UserPage {...this.props} />} />
 
         {/* Handles 404s client-side */}

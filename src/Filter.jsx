@@ -36,16 +36,21 @@ class Filter extends Component {
   }
 
   buildText = () => {
-    if(this.props.data.text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} />;
+    if(this.props.data.text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} ref="textInput" />;
     return '';
   }
 
   buildDropdown = () => {
     const dropdown = this.props.data.dropdown;
     if(!dropdown) return '';
-    return <select className='form-control' value={this.props.data.value} onChange={this.update} >{dropdown.map(option => {
+    return <select className='form-control' value={this.props.data.value} onChange={this.update} ref="selectInput" >{dropdown.map(option => {
       return <option value={option.key} key={option.key}>{option.display}</option>;
     })}</select>;
+  }
+
+  focus = () => {
+    if(this.props.data.text) this.refs.textInput.focus();
+    else if(this.props.data.dropdown) this.refs.selectInput.focus();
   }
 
   render() {
