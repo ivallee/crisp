@@ -104,17 +104,6 @@
 }
 
 
-a:not([href]):not([tabindex]) {
-  color: white;
-  // border: 1px solid white;
-}
-
-a:not([href]):not([tabindex]):hover {
-  color: white;
-  cursor: default;
-  
-}
-
 $bg-color-primary: #379863;
 $bg-color-primary-dk: #145a24;
 $bg-color-secondary: white;
