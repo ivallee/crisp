@@ -78,7 +78,8 @@ class Search extends Component {
   render() {
     return (
       <div className='jumbotron content-blocks'>
-        <h5>Add some filters or search for an item:</h5>
+        <h4 className="text-center search-title">Add some filters or search for an item</h4>
+        <br />
         <div className="row marketing">
           <div className="col">
             <SearchBar query={this.state.query} setQuery={this.setQuery} doSearch={this.doSearch} />
