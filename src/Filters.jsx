@@ -27,7 +27,7 @@ class Filters extends Component {
     return () => {
       getFilter(id)
         .then((filter) => {
-          const typeMatch = this.props.filters.findIndex(savedFilter => filter.type === savedFilter.type);
+          const typeMatch = this.props.filters.findIndex(savedFilter => savedFilter && filter.type === savedFilter.type);
           if(filter.unique && typeMatch > -1) {
             this.refs[`Filter${typeMatch}`].focus();
           } else {
@@ -41,7 +41,7 @@ class Filters extends Component {
   }
 
   addFilterButton = (filter) => {
-    const duplicate = this.props.filters.findIndex(savedFilter => filter.type === savedFilter.type && savedFilter.unique);
+    const duplicate = this.props.filters.findIndex(savedFilter => savedFilter && filter.type === savedFilter.type && savedFilter.unique);
     const style = (duplicate > -1) ? 'btn btn-sm btn-secondary btn-filter' : 'btn btn-sm btn-main btn-filter';
     return <button className={style} key={filter.id} onClick={this.addFilter(filter.id)}>{filter.type}</button>;
   }
