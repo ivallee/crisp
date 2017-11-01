@@ -53,8 +53,11 @@ class RecipeDetails extends Component {
             <h4 className="display-4">
               {recipe.title}
             </h4>
-            <h5 className="recipe-byline">By {recipe.sourceName}</h5>
-            <small className="text-muted"> Time required: {recipe.readyInMinutes} minutes</small>
+            <hr />
+            <div className="text-center">
+            <a href={recipe.sourceUrl}><h5 className="recipe-byline">By {recipe.sourceName}</h5></a>
+            <small><i className="fa fa-clock-o" aria-hidden="true"></i> {recipe.readyInMinutes} minutes &#8729; <i className="fa fa-users" aria-hidden="true"></i> {recipe.servings} servings</small>
+          </div>
           </div>
         </div>
         <hr className="recipe-details-hr" />
