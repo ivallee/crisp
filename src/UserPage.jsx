@@ -3,6 +3,7 @@ import PropTypes from 'proptypes';
 import RecipeContainer from './RecipeContainer.jsx';
 import Filters from './Filters.jsx';
 import Categories from './Categories.jsx';
+import { Redirect } from 'react-router-dom';
 import { saveFilter, updateSavedFilter, deleteSavedFilter, createCategory, deleteCategory } from './api.js';
 
 class UserPage extends Component {
@@ -10,7 +11,7 @@ class UserPage extends Component {
     super(props);
     this.state = {
       selectedCategory: '',
-      recipes: this.buildRecipeList(this.props.savedRecipes, '')
+      recipes: this.buildRecipeList(this.props.savedRecipes, ''),
     };
   }
 
@@ -60,6 +61,10 @@ class UserPage extends Component {
   }
 
   render() {
+    console.log(this.props.username)
+    if (!this.props.username) {
+      return <Redirect to='/' />;
+    }
     return (
       <div>
         <div className="jumbotron content-blocks">

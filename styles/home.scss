@@ -104,10 +104,10 @@ body {
 }
 
 .nav-link {
-  color:  $bg-color-secondary;
+  color:  black;
 }
 .nav-logo {
-  color: $bg-color-secondary;
+  color: black;
 }
 
 .btn-filter {
@@ -120,7 +120,7 @@ body {
 	// box-shadow: 0px 10px 14px -7px #3e7327;
 	background-color: $bg-color-primary;
 	border-radius:4px;
-	color: $bg-color-secondary;
+	color: black;
   padding: 0.4rem 0.8rem;
 }
 .btn-main:hover {
@@ -225,6 +225,65 @@ body {
 }
 
 .recipe-card-link:hover {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+
+//SIGN
+
+// .wrapper {	
+// 	margin-top: 40px;
+//   margin-bottom: 40px;
+// }
+
+// .form-signin {
+//   max-width: 380px;
+//   padding: 15px 35px 45px;
+//   margin: 0 auto;
+//   background-color: #fff;
+//   border: 1px solid rgba(0,0,0,0.1);  
+
+//   .form-signin-heading,
+// 	.checkbox {
+// 	  margin-bottom: 30px;
+// 	}
+
+// 	.checkbox {
+// 	  font-weight: normal;
+// 	}
+
+// 	.form-control {
+// 	  position: relative;
+// 	  font-size: 16px;
+// 	  height: auto;
+// 	  padding: 10px;
+// 		// @include box-sizing(border-box);
+
+// 		&:focus {
+// 		  z-index: 2;
+// 		}
+// 	}
+
+// 	input[type="text"] {
+// 	  margin-bottom: -1px;
+// 	  border-bottom-left-radius: 0;
+// 	  border-bottom-right-radius: 0;
+// 	}
+
+// 	input[type="password"] {
+// 	  margin-bottom: 20px;
+// 	  border-top-left-radius: 0;
+// 	  border-top-right-radius: 0;
+// 	}
+// }
+
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: inherit;
   text-decoration: inherit;
 }
