@@ -240,7 +240,7 @@ body {
 
   .card {
     border: none;
-    // max-width: 210px;
+    max-width: 210px;
     // min-width:  210px;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.50);
   }
@@ -261,6 +261,8 @@ body {
     min-height: 60px;
     max-height: 60px;
     padding-top: 10px;
+    font-family: 'Source Sans Pro';
+    font-style: italic;
   }
 
 }
