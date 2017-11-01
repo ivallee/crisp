@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'proptypes';
 import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
 import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
 import { getRecipeDetails } from './api.js';
@@ -8,16 +9,21 @@ class RecipeDetails extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      recipeData: {},
-    };
+
+    const recipeData = this.props.searchResponse.find(recipe => recipe && recipe.id === this.props.id);
+    this.state = recipeData ? { recipeData } : { recipeData: {} };
+  }
+
+  static propTypes = {
+    searchResponse: PropTypes.array,
+    id: PropTypes.number
   }
 
   componentWillMount() {
     getRecipeDetails(this.props.id)
-    .then(recipeData => {
-      this.setState({ recipeData });
-    });
+      .then(recipeData => {
+        this.setState({ recipeData });
+      });
   }
 
   render() {
@@ -53,14 +59,14 @@ class RecipeDetails extends Component {
             </div>
           </div>
         </div>
-        <hr className="recipe-details-hr"/>
+        <hr className="recipe-details-hr" />
         <div className="row recipe-info">
           <div className='col-4'>
             <div className="recipe-details-ingredients">
               <h3 className='text-center'>Ingredients</h3>
-                <ul className='fa-ul'>
-                  {ingredients}
-                </ul>
+              <ul className='fa-ul'>
+                {ingredients}
+              </ul>
             </div>
           </div>
           <div className='col-8'>
