@@ -82,6 +82,7 @@ class UserPage extends Component {
 
             </div>
           </div>
+          <hr />
         </div>
         <div className="user-recipes">
           <div className="row">
@@ -91,9 +92,11 @@ class UserPage extends Component {
               </div>
             </div>
             <div className="col-sm-9">
+        <div className="content-blocks">
               <RecipeContainer recipes={this.state.recipes} savedRecipes={this.props.savedRecipes} userUpdated={this.props.userUpdated} categories={this.props.categories} />
             </div>
           </div>
+        </div>
         </div>
       </div>
     );
