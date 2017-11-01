@@ -29,21 +29,21 @@ class Filter extends Component {
     const btnText = this.props.data.exclude? this.props.data.exclude_btn : this.props.data.btn;
     const btnStyle = this.props.data.exclude? 'btn-danger' : 'btn-main';
     if(!btnText) return '';
-    return <input className={`btn btn-sc ${btnStyle}`}
+    return <input className={`btn btn-sc button-custom ${btnStyle}`}
       type="button"
       value={btnText}
       onClick={this.switchType} />;
   }
 
   buildText = () => {
-    if(this.props.data.text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} ref="textInput" />;
+    if(this.props.data.text) return <input type="text" className='form-control-custom-ingredient' value={this.props.data.value} onChange={this.update} ref="textInput" />;
     return '';
   }
 
   buildDropdown = () => {
     const dropdown = this.props.data.dropdown;
     if(!dropdown) return '';
-    return <select className='form-control' value={this.props.data.value} onChange={this.update} ref="selectInput" >{dropdown.map(option => {
+    return <select className='form-control form-control-custom' value={this.props.data.value} onChange={this.update} ref="selectInput" >{dropdown.map(option => {
       return <option value={option.key} key={option.key}>{option.display}</option>;
     })}</select>;
   }

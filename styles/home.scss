@@ -73,22 +73,32 @@
 //   padding: 1em 0em;
 // }
 
-.list-group {
-  text-align: center;
-}
+
+// .list-group {
+//   text-align: center;
+// }
 
 .list-group-item-custom {
   // max-width: 600px;
   margin-top: 10px;
   border: 1px solid black;
-  border-radius: 35px;
+  // border-radius: 35px;
   // max-width: 300px;
   // margin-left: 60px;
 }
 
-.form-control {
-  // max-width: 300px;
-  // margin-left: 60px;
+.form-control-custom {
+  width: 300px;
+  margin-left: 135px;
+}
+
+.form-control-custom-ingredient {
+  width: 300px;
+  margin-left: 50px;
+}
+
+.button-custom {
+  width: 85px;
 }
 
 
