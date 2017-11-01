@@ -49,7 +49,6 @@ class Filters extends Component {
   render() {
     return (
       <div id="filter-div">
-
         <hr />
         <div className="d-flex justify-content-between">
           {this.state.filterTypes.map(this.addFilterButton)}

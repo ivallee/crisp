@@ -53,7 +53,7 @@ class RecipeDetails extends Component {
             <div className="recipe-details-links d-flex justify-content-between">
               <button type="button" className="btn btn-info">Save this recipe</button>
               {/* Make buttons functional */}
-              <Link to='/results'><button type="button" className="btn btn-info">Back to reccomendations</button></Link>
+              <Link to='/results'><button type="button" className="btn btn-info">Back to recommendations</button></Link>
             </div>
           </div>
         </div>

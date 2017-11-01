@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'proptypes';
 
 RecipeDetailsInstructions.propTypes = {
@@ -7,10 +7,6 @@ RecipeDetailsInstructions.propTypes = {
 };
 
 function RecipeDetailsInstructions({ stepCount, stepDesc }) {
-  
-
-  return (
-      <li>{stepCount}. {stepDesc}</li>
-  );
+  return <li>{stepCount}. {stepDesc}</li>;
 }
 export default RecipeDetailsInstructions;
