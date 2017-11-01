@@ -19,7 +19,8 @@ class UserPage extends Component {
     savedRecipes: PropTypes.array,
     savedFilters: PropTypes.array,
     categories: PropTypes.array,
-    userUpdated: PropTypes.func
+    userUpdated: PropTypes.func,
+    username: PropTypes.string
   }
 
   componentWillReceiveProps(props) {
@@ -61,7 +62,6 @@ class UserPage extends Component {
   }
 
   render() {
-    console.log(this.props.username)
     if (!this.props.username) {
       return <Redirect to='/' />;
     }
