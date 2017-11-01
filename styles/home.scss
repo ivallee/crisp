@@ -76,7 +76,7 @@
 
 $bg-color-primary: #379863;
 $bg-color-primary-dk: #145a24;
-$bg-color-secondary: #EDF5E1;
+$bg-color-secondary: white;
 
 
 @media (min-width: 1200px) {
@@ -86,11 +86,33 @@ $bg-color-secondary: #EDF5E1;
 }
 
 body {
-  background-color: $bg-color-primary;
+  background-image: url(https://images7.alphacoders.com/399/399642.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  // background-color: $bg-color-primary;
 }
+
+// cream background with content bottom right
+// https://images7.alphacoders.com/406/406976.jpg
+
+// white background with table on right side
+// https://images7.alphacoders.com/406/406983.jpg
+
+// darker background bottom content
+// https://images8.alphacoders.com/406/406977.jpg
+
+// brown background with centered content                   FAVE 
+// https://images7.alphacoders.com/399/399642.jpg
+
+// light background with bottom content
+// https://images5.alphacoders.com/407/407498.jpg
 
 .content-blocks {
   background-color: $bg-color-secondary;
+  opacity: 0.8;
+  border: 1px solid black;
 }
 
 .container {
@@ -199,7 +221,7 @@ body {
 }
 
 .recipe-details-img {
-  max-width: 300px;
+  max-width: 275px;
   max-height: 200px;
   border-radius: 5px;
   border-style: solid;
@@ -208,7 +230,7 @@ body {
 }
 
 .recipe-details-ingredients {
-  border-radius: 20px;
+  border-radius: 5px;
   border-style: solid;
   border-width: 1px;
 }
