@@ -16,7 +16,7 @@ class Search extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setState({ filters: props.savedFilters });
+    this.setState({ filters: [ ...props.savedFilters ] });
   }
 
   doSearch = () => {
