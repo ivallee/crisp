@@ -73,6 +73,35 @@
 //   padding: 1em 0em;
 // }
 
+.list-group {
+  text-align: center;
+}
+
+.list-group-item-custom {
+  // max-width: 600px;
+  margin-top: 10px;
+  border: 1px solid black;
+  border-radius: 35px;
+  // max-width: 300px;
+  // margin-left: 60px;
+}
+
+.form-control {
+  // max-width: 300px;
+  // margin-left: 60px;
+}
+
+
+a:not([href]):not([tabindex]) {
+  color: white;
+  // border: 1px solid white;
+}
+
+a:not([href]):not([tabindex]):hover {
+  color: white;
+  cursor: default;
+  
+}
 
 $bg-color-primary: #379863;
 $bg-color-primary-dk: #145a24;
@@ -110,8 +139,7 @@ body {
 // https://images5.alphacoders.com/407/407498.jpg
 
 .content-blocks {
-  background-color: $bg-color-secondary;
-  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.85);
   border: 1px solid black;
 }
 
@@ -148,13 +176,14 @@ body {
 }
 
 .category-sidebar {
+  border: 1px solid black;
 
   li {
     background-color: $bg-color-secondary;
   }
 
   .active {
-    background-color: #17a2b8;
+    background-color: #379863;
     border: none;
   }
 

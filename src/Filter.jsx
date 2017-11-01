@@ -56,7 +56,7 @@ class Filter extends Component {
   render() {
     const test = this.props.data.saved_filter_id ? {background: 'tomato'} : {};
     return (
-      <li className="list-group-item" style={test}>
+      <li className="list-group-item list-group-item-custom" style={test}>
         <button type="button" className="close" aria-label="Remove" onClick={this.remove}>
           <span aria-hidden="true">&times;</span>
         </button>

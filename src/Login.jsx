@@ -53,7 +53,7 @@ export default class Login extends Component {
             <h2 className="form-signin-heading">Please login</h2>
             <input type="text" className="form-control" name="username" ref="name" placeholder="Email Address" />
             <input type="password" className="form-control" name="password" ref="password" placeholder="Password"/>      
-            <button className="btn btn-primary btn-block" type="submit">Login</button>   
+            <button className="btn btn-main btn-block" type="submit">Login</button>   
           </form>
           </div>
         </div>

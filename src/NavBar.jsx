@@ -54,9 +54,9 @@ export default NavBar;
 function LoggedOut() {
   return (
     <nav className="nav nav-pills flex-column flex-sm-row float-right">
+      <NavLink className="nav-link" activeClassName="nav-link" to='/'>Search</NavLink>
       <a className="fill text-sm-center nav-link" href="#demo" data-toggle="modal" data-target="#exampleModal">Register</a>
       <a className="fill text-sm-center nav-link" href="#demo2" data-toggle="modal" data-target="#exampleModal2">Login</a>
-      <NavLink className="nav-link" activeClassName="nav-link" to='/'>Search</NavLink>
     </nav>
   );
 }
@@ -64,10 +64,10 @@ function LoggedOut() {
 function LoggedIn(props) {
   return (
     <nav className="nav nav-pills flex-column flex-sm-row float-right">
-      {<a className="flex-sm-fill text-sm-center nav-link">Logged in as: {props.username}</a>}
+      <span className="flex-sm-fill text-sm-center nav-link">Logged in as {props.username}</span>
+      <NavLink className="nav-link" activeClassName="nav-link" to='/'>Search</NavLink>
       <NavLink className="nav-link" activeClassName="nav-link" to='/users'>Your Page</NavLink>
       <a className="flex-sm-fill text-sm-center nav-link" href="#" onClick={props.onClick}>Log out</a>
-      <NavLink className="nav-link" activeClassName="nav-link" to='/'>Search</NavLink>
     </nav>
   );
 }
