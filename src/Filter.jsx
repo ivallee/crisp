@@ -29,21 +29,21 @@ class Filter extends Component {
     const btnText = this.props.data.exclude? this.props.data.exclude_btn : this.props.data.btn;
     const btnStyle = this.props.data.exclude? 'btn-danger' : 'btn-main';
     if(!btnText) return '';
-    return <input className={`btn btn-sc ${btnStyle}`}
+    return <input className={`btn btn-sc button-custom ${btnStyle}`}
       type="button"
       value={btnText}
       onClick={this.switchType} />;
   }
 
   buildText = () => {
-    if(this.props.data.text) return <input type="text" className='form-control' value={this.props.data.value} onChange={this.update} ref="textInput" />;
+    if(this.props.data.text) return <input type="text" className='form-control-custom-ingredient' value={this.props.data.value} onChange={this.update} ref="textInput" />;
     return '';
   }
 
   buildDropdown = () => {
     const dropdown = this.props.data.dropdown;
     if(!dropdown) return '';
-    return <select className='form-control' value={this.props.data.value} onChange={this.update} ref="selectInput" >{dropdown.map(option => {
+    return <select className='form-control form-control-custom' value={this.props.data.value} onChange={this.update} ref="selectInput" >{dropdown.map(option => {
       return <option value={option.key} key={option.key}>{option.display}</option>;
     })}</select>;
   }
@@ -54,9 +54,9 @@ class Filter extends Component {
   }
 
   render() {
-    const test = this.props.data.saved_filter_id ? {background: 'tomato'} : {};
+    const test = this.props.data.saved_filter_id ? {background: 'rgba(55, 152, 99, 0.4)'} : {};
     return (
-      <li className="list-group-item" style={test}>
+      <li className="list-group-item list-group-item-filter" style={test}>
         {/* <button type="button" className="close" aria-label="Remove" onClick={this.remove}> */}
         <button type="button" className="btn btn-delete close" onClick={this.remove}><i className="fa fa-lg fa-trash-o"></i></button>
         <div className="form-group row">

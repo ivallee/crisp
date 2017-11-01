@@ -74,9 +74,39 @@
 // }
 
 
+// .list-group {
+//   text-align: center;
+// }
+
+// Filter form-control components
+.list-group-item-filter {
+  // max-width: 600px;
+  margin-top: 10px;
+  border: 1px solid black;
+  // background: rgba(55, 152, 99, 0.4)
+  // border-radius: 35px;
+  // max-width: 300px;
+  // margin-left: 60px;
+}
+
+.form-control-custom {
+  width: 300px;
+  margin-left: 135px;
+}
+
+.form-control-custom-ingredient {
+  width: 300px;
+  margin-left: 50px;
+}
+
+.button-custom {
+  width: 85px;
+}
+
+
 $bg-color-primary: #379863;
 $bg-color-primary-dk: #145a24;
-$bg-color-secondary: #EDF5E1;
+$bg-color-secondary: white;
 
 
 @media (min-width: 1200px) {
@@ -156,13 +186,14 @@ body {
 }
 
 .category-sidebar {
+  border: 1px solid black;
 
   li {
     background-color: $bg-color-secondary;
   }
 
   .active {
-    background-color: #17a2b8;
+    background-color: #379863;
     border: none;
   }
 
@@ -235,7 +266,7 @@ body {
 }
 
 .recipe-details-img {
-  max-width: 300px;
+  max-width: 275px;
   max-height: 200px;
   border-radius: 5px;
   border-style: solid;
@@ -244,7 +275,7 @@ body {
 }
 
 .recipe-details-ingredients {
-  border-radius: 20px;
+  border-radius: 5px;
   border-style: solid;
   border-width: 1px;
 }
