@@ -64,7 +64,7 @@ function LoggedOut() {
 function LoggedIn(props) {
   return (
     <nav className="nav nav-pills flex-column flex-sm-row float-right">
-      {<a className="flex-sm-fill text-sm-center nav-link">Logged in as: {props.username}</a>}
+      <span className="flex-sm-fill text-sm-center nav-link">Logged in as: {props.username}</span>
       <NavLink className="nav-link" activeClassName="nav-link" to='/users'>Your Page</NavLink>
       <a className="flex-sm-fill text-sm-center nav-link" href="#" onClick={props.onClick}>Log out</a>
       <NavLink className="nav-link" activeClassName="nav-link" to='/'>Search</NavLink>
