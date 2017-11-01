@@ -27,12 +27,14 @@ class Filters extends Component {
     return () => {
       getFilter(id)
         .then((filter) => {
-          if(filter.unique && this.props.filters.some(savedFilter => filter.type === savedFilter.type)) {
-            alert('Duplicate!');
+          const typeMatch = this.props.filters.findIndex(savedFilter => filter.type === savedFilter.type);
+          if(filter.unique && typeMatch > -1) {
+            this.refs[`Filter${typeMatch}`].focus();
           } else {
             filter.value = '';
             filter.exclude = false;
             this.props.addFilter(filter);
+            this.refs.Filter0.focus();
           }
         });
     };
@@ -48,7 +50,7 @@ class Filters extends Component {
         </div>
         <ul className="list-group">
           {this.props.filters.map((filter, index) => {
-            return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter} />;
+            return filter && <Filter data={filter} key={index} index={index} update={this.props.updateFilter} remove={this.props.removeFilter} ref={`Filter${index}`} />;
           })}
         </ul>
       </div>
