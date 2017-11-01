@@ -83,7 +83,7 @@ class RecipeDetails extends Component {
           <div className="col-4">
             <img className='recipe-details-img' src={recipe.image} alt="Recipe image"></img>
             <div className="recipe-details-links d-flex justify-content-between">
-              <Link to='/results'><button type="button" className="btn btn-save"><i className="fa fa-lg fa-arrow-left" aria-hidden="true" ></i><br /> Back</button></Link>
+              <button type="button" className="btn btn-save"><i className="fa fa-lg fa-arrow-left" aria-hidden="true" onClick={() => window.history.back()}></i><br /> Back</button>
               {this.state.saved && <CategorySelector id={this.props.id} userUpdated={this.props.userUpdated} categoryList={this.props.categories} category={this.state.category} />}
               {this.saveButton()}
             </div>
@@ -117,7 +117,7 @@ class RecipeDetails extends Component {
         </div>
         <hr />
         <div className="d-flex justify-content-center">
-          <Link to='/results'><button type="button" className="btn btn-main">Back to recommendations</button></Link>
+          <button type="button" className="btn btn-main" onClick={() => window.history.back()}>Back</button>
         </div>
       </div>
     );
