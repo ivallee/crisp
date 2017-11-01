@@ -159,7 +159,9 @@ body {
 .content-blocks {
   // background-color: $bg-color-secondary;
   background-color: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem 2rem;
 }
+
 
 .container {
   height: 100vh;
@@ -411,6 +413,10 @@ body {
     background: transparent;
   }
 }
+
+// .welcome {
+//   padding: 1rem 2rem;
+// }
 
 .welcome-text {
   font-family: 'Source Sans Pro', sans-serif;

@@ -18,6 +18,7 @@ class SearchResults extends Component {
           <h1 className="text-center">Recommendations</h1>
           <hr />
           <RecipeContainer recipes = {this.props.searchResponse} savedRecipes = {this.props.savedRecipes} userUpdated = {this.props.userUpdated} count={4}/>
+          <hr />
           <div className='d-flex justify-content-center'>
             <NavLink className="nav-link" activeClassName="nav-link" to='/'><button className="btn btn-success">Do a different search</button></NavLink>
           </div>
