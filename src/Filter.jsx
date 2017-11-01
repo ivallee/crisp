@@ -54,9 +54,9 @@ class Filter extends Component {
   }
 
   render() {
-    // const test = this.props.data.saved_filter_id ? {background: 'tomato'} : {};
+    const test = this.props.data.saved_filter_id ? {background: 'rgba(55, 152, 99, 0.4)'} : {};
     return (
-      <li className="list-group-item list-group-item-filter">
+      <li className="list-group-item list-group-item-filter" style={test}>
         {/* <button type="button" className="close" aria-label="Remove" onClick={this.remove}> */}
         <button type="button" className="btn btn-delete close" onClick={this.remove}><i className="fa fa-lg fa-trash-o"></i></button>
         <div className="form-group row">
