@@ -7,7 +7,7 @@ import { getFilterTypes } from './api.js';
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = { query: '', filters: props.savedFilters };
+    this.state = { query: '', filters: [ ...props.savedFilters ] };
   }
 
   static propTypes = {
