@@ -41,7 +41,7 @@ class RecipeDetails extends Component {
     return (
       <div className='jumbotron content-blocks'>
         <div className="row">
-          <div className="col-6 d-flex justify-content-center">
+          <div className="col-6 d-flex justify-content-left">
             <img className='recipe-details-img' src={recipe.image} alt="Recipe image"></img>
           </div>
           <div className="col-6">

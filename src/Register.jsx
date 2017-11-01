@@ -45,7 +45,7 @@ export default class Register extends Component {
            <h2 className="form-signin-heading">Sign up</h2>
            <input type="text" className="form-control" name="username" ref="name" placeholder="Email Address" />
            <input type="password" className="form-control" name="password" ref="password" placeholder="Password"/>      
-           <button className="btn btn-primary btn-block" type="submit">Sign Up</button>   
+           <button className="btn btn-main btn-block" type="submit">Sign Up</button>   
          </form>
          </div>
        </div>
