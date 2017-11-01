@@ -80,8 +80,8 @@ const saveFilter = (knex, Promise) => {
 };
 
 function saveFilterOption(knex, filter_id) {
-  return ({ key, display }) => {
-    return knex('filter_options').insert({ key, display, filter_id });
+  return ({ key, display }, display_order) => {
+    return knex('filter_options').insert({ key, display, filter_id, display_order });
   };
 }
 
