@@ -11,13 +11,20 @@ class RecipeDetails extends Component {
   constructor(props) {
     super(props);
 
-    const recipeData = this.props.searchResponse.find(recipe => recipe && recipe.id === this.props.id) || {};
+    const recipeData = this.findMatchingRecipe();
     this.state = { recipeData, ...this.isSaved(this.props) };
   }
 
   isSaved(props) {
     const match = props.savedRecipes.find(saved => saved.id === props.id);
     return match ? { saved: true, category: match.category } : { saved: false, category: '' };
+  }
+
+  findMatchingRecipe() {
+    const matchByID = recipe => recipe && recipe.id === this.props.id;
+    const fromSearch = this.props.searchResponse.find(matchByID);
+    const fromSaved = this.props.savedRecipes.find(matchByID);
+    return fromSearch || fromSaved || {};
   }
 
   static propTypes = {
