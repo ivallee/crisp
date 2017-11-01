@@ -272,6 +272,25 @@ body {
 
 }
 
+.recipe-details-links {
+
+  padding-top: 0.5rem;
+  
+  .btn {
+    background: transparent;
+    box-shadow: none;
+  }
+  
+  .btn-delete {
+    color: #dc3545;
+  }
+  
+  .btn-save {
+    color: $bg-color-primary;
+  }
+}
+
+
 .recipe-byline {
   font-family: 'Open Sans Pro';
   font-style: italic;
@@ -294,7 +313,7 @@ body {
 }
 
 .recipe-details-hr {
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   margin-bottom: 1.5rem;
 }
 

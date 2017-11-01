@@ -15,13 +15,13 @@ class RecipeDetails extends Component {
 
   componentWillMount() {
     getRecipeDetails(this.props.match.params.id)
-    .then(recipeData => {
-      this.setState({ recipeData });
-    });
+      .then(recipeData => {
+        this.setState({ recipeData });
+      });
 
   }
 
-  componentDidMount(){
+  componentDidMount() {
   }
 
   render() {
@@ -41,8 +41,13 @@ class RecipeDetails extends Component {
     return (
       <div className='jumbotron content-blocks'>
         <div className="row">
-          <div className="col-4 d-flex justify-content-left">
+          <div className="col-4">
             <img className='recipe-details-img' src={recipe.image} alt="Recipe image"></img>
+            <div className="recipe-details-links d-flex justify-content-between">
+            <button type="button" className="btn btn-save"><i className="fa fa-lg fa-bookmark-o" aria-hidden="true"></i><br /> Save</button>
+            <button type="button" className="btn btn-save"><i className="fa fa-lg fa-bookmark" aria-hidden="true"></i><br /> Saved</button>
+              {/* Make buttons functional */}
+            </div>
           </div>
           <div className="col-8 text-center">
             <h4 className="display-4">
@@ -50,21 +55,16 @@ class RecipeDetails extends Component {
             </h4>
             <h5 className="recipe-byline">By {recipe.sourceName}</h5>
             <small className="text-muted"> Time required: {recipe.readyInMinutes} minutes</small>
-            <div className="recipe-details-links d-flex justify-content-between">
-              <button type="button" className="btn btn-info">Save this recipe</button>
-              {/* Make buttons functional */}
-              <Link to='/results'><button type="button" className="btn btn-info">Back to recommendations</button></Link>
-            </div>
           </div>
         </div>
-        <hr className="recipe-details-hr"/>
+        <hr className="recipe-details-hr" />
         <div className="row recipe-info">
           <div className='col-4'>
             <div className="recipe-details-ingredients">
               <h3 className='text-center'>Ingredients</h3>
-                <ul className='fa-ul'>
-                  {ingredients}
-                </ul>
+              <ul className='fa-ul'>
+                {ingredients}
+              </ul>
             </div>
           </div>
           <div className='col-8'>
@@ -77,6 +77,9 @@ class RecipeDetails extends Component {
           </div>
         </div>
         <hr />
+        <div className="d-flex justify-content-center">
+          <Link to='/results'><button type="button" className="btn btn-main">Back to recommendations</button></Link>
+        </div>
       </div>
     );
   }
