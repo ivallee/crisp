@@ -272,6 +272,11 @@ body {
 
 }
 
+.recipe-byline {
+  font-family: 'Open Sans Pro';
+  font-style: italic;
+}
+
 .recipe-details-img {
   max-width: 275px;
   max-height: 200px;
@@ -287,9 +292,14 @@ body {
   border-width: 1px;
 }
 
-.recipe-info {
-  padding-top: 60px;
+.recipe-details-hr {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
+
+// .recipe-info {
+//   padding-top: 60px;
+// }
 
 .recipe-card-link {
   color: inherit;

@@ -41,14 +41,14 @@ class RecipeDetails extends Component {
     return (
       <div className='jumbotron content-blocks'>
         <div className="row">
-          <div className="col-6 d-flex justify-content-left">
+          <div className="col-4 d-flex justify-content-left">
             <img className='recipe-details-img' src={recipe.image} alt="Recipe image"></img>
           </div>
-          <div className="col-6">
-            <h4>
+          <div className="col-8 text-center">
+            <h4 className="display-4">
               {recipe.title}
             </h4>
-            <h5>By {recipe.sourceName}</h5>
+            <h5 className="recipe-byline">By {recipe.sourceName}</h5>
             <small className="text-muted"> Time required: {recipe.readyInMinutes} minutes</small>
             <div className="recipe-details-links d-flex justify-content-between">
               <button type="button" className="btn btn-info">Save this recipe</button>
@@ -57,6 +57,7 @@ class RecipeDetails extends Component {
             </div>
           </div>
         </div>
+        <hr className="recipe-details-hr"/>
         <div className="row recipe-info">
           <div className='col-4'>
             <div className="recipe-details-ingredients">
