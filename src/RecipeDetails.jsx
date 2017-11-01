@@ -3,27 +3,47 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'proptypes';
 import RecipeDetailsIngredients from './RecipeDetailsIngredients.jsx';
 import RecipeDetailsInstructions from './RecipeDetailsInstructions.jsx';
-import { getRecipeDetails } from './api.js';
+import { getRecipeDetails, saveRecipe, deleteRecipe } from './api.js';
 
 class RecipeDetails extends Component {
 
   constructor(props) {
     super(props);
 
-    const recipeData = this.props.searchResponse.find(recipe => recipe && recipe.id === this.props.id);
-    this.state = recipeData ? { recipeData } : { recipeData: {} };
+    const recipeData = this.props.searchResponse.find(recipe => recipe && recipe.id === this.props.id) || {};
+    const saved = this.props.savedRecipes.some(saved => saved.id === this.props.id);
+    this.state = { recipeData, saved };
   }
 
   static propTypes = {
     searchResponse: PropTypes.array,
-    id: PropTypes.number
+    savedRecipes: PropTypes.array,
+    id: PropTypes.number,
+    userUpdated: PropTypes.func
   }
 
-  componentWillMount() {
+  componentDidMount() {
     getRecipeDetails(this.props.id)
       .then(recipeData => {
         this.setState({ recipeData });
       });
+  }
+
+  saveButton() {
+    if(this.state.saved) {
+      const unsave = () => {
+        this.setState({ saved: false });
+        deleteRecipe(this.props.id, this.props.userUpdated);
+      };
+      return <button type="button" className="btn btn-save"><i className="fa fa-lg fa-bookmark" aria-hidden="true" onClick={unsave}></i><br /> Saved</button>;
+    }
+    else {
+      const save = () => {
+        this.setState({ saved: true });
+        saveRecipe(this.props.id, this.props.userUpdated);
+      };
+      return <button type="button" className="btn btn-save"><i className="fa fa-lg fa-bookmark-o" aria-hidden="true" onClick={save}></i><br /> Save</button>;
+    }
   }
 
   render() {
@@ -46,9 +66,7 @@ class RecipeDetails extends Component {
           <div className="col-4">
             <img className='recipe-details-img' src={recipe.image} alt="Recipe image"></img>
             <div className="recipe-details-links d-flex justify-content-between">
-            <button type="button" className="btn btn-save"><i className="fa fa-lg fa-bookmark-o" aria-hidden="true"></i><br /> Save</button>
-            <button type="button" className="btn btn-save"><i className="fa fa-lg fa-bookmark" aria-hidden="true"></i><br /> Saved</button>
-              {/* Make buttons functional */}
+              {this.saveButton()}
             </div>
           </div>
           <div className="col-8 text-center">
