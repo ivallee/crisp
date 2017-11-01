@@ -61,15 +61,19 @@ function LoggedOut() {
   );
 }
 
-function LoggedIn(props) {
+function LoggedIn({username, onClick}) {
   return (
     <nav className="nav nav-pills flex-column flex-sm-row float-right">
-      <span className="flex-sm-fill text-sm-center nav-link">Logged in as {props.username}</span>
+      <span className="flex-sm-fill text-sm-center nav-link">Logged in as {username}</span>
       <NavLink className="nav-link" activeClassName="nav-link" to='/'>Search</NavLink>
       <NavLink className="nav-link" activeClassName="nav-link" to='/users'>Your Page</NavLink>
-      <a className="flex-sm-fill text-sm-center nav-link" href="#" onClick={props.onClick}>Log out</a>
+      <a className="flex-sm-fill text-sm-center nav-link" href="#" onClick={onClick}>Log out</a>
     </nav>
   );
 }
 
+LoggedIn.propTypes ={
+  username: PropTypes.string,
+  onClick: PropTypes.func
+};
 
