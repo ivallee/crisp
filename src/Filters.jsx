@@ -31,10 +31,11 @@ class Filters extends Component {
           if(filter.unique && typeMatch > -1) {
             this.refs[`Filter${typeMatch}`].focus();
           } else {
+            console.log(this.refs);
             filter.value = '';
             filter.exclude = false;
             this.props.addFilter(filter);
-            this.refs.Filter0.focus();
+            if(this.refs.Filter0) this.refs.Filter0.focus();
           }
         });
     };

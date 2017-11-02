@@ -1,45 +1,42 @@
-React Boilerplate
+Crisp
 =====================
 
-A minimal and light dev environment for ReactJS.
+A recipe recommendation engine for people who want to try cooking more plant-based meals. Tinder for 🌽🍅
 
-### Usage
 
-Clone the boilerplate and create your own git repo.
+### Features
 
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
+Customize your search based on ingredients to include or exclude, dietary restrictions, allergies, preferred cuisine or type of meal.
 
-Install the dependencies and start the server.
+Users can make searches without registering. Signing up provides more utility for the user however. Logged in, the user can:
+- Set default filters that will apply to any searches (handy for things like allergies)
+- Save recipes
+- Create categories to organize their newly found recipes
 
-```
-npm install
-npm start
-open http://localhost:3000
-```
 
-### Static Files
+### Screenshots
 
-You can store static files like images, fonts, etc in the `build` folder.
+``` include screenshots here ```
 
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
+### Getting Started
 
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
+1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
+2. Update the `.env` file with your correct local information
+3. update `recipes.js` with your api url of choice
+3. Install dependencies: `npm install`
+5. Run migrations: `npm run knex migrate:latest`
+7. Run the server(s): `npm start`
+8. Visit `http://localhost:3000/`
 
 ### Dependencies
 
+* npm 5.2 or below
+* node 8.8.1 or above
+* Express
 * React
-* Webpack
+* Axios
 * [babel-loader](https://github.com/babel/babel-loader)
+* Webpack
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+
+

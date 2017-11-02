@@ -27,9 +27,9 @@ class UserPage extends Component {
     this.setState({ recipes: this.buildRecipeList(props.savedRecipes, this.state.selectedCategory) });
   }
 
-  addFilter = (filter) => {
+  addFilter = async (filter) => {
     const { type, value, exclude } = filter;
-    saveFilter(type, value, exclude, this.props.userUpdated);
+    return await saveFilter(type, value, exclude, this.props.userUpdated);
   }
 
   removeFilter = (filterID) => {

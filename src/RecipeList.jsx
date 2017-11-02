@@ -47,7 +47,7 @@ class RecipeList extends Component {
         removeRecipe={this.removeRecipe}
         userUpdated={this.props.userUpdated}
         categoryList={this.props.categories}
-        replaceable={Boolean(this.props.recipeCount)}
+        replaceable={Boolean(this.props.recipeCount) && this.state.recipes.length > this.props.recipeCount}
       />;
     });
   };
