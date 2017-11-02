@@ -38,6 +38,7 @@ $bg-color-secondary: white;
 
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script|Lato|Oswald|Source+Sans+Pro');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
 
 a {
   color: inherit;
@@ -182,6 +183,7 @@ body {
     max-width: 210px;
     // min-width:  210px;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.50);
+    background-color: #fff9ed;
   }
 
   .card-block {
@@ -200,8 +202,8 @@ body {
     min-height: 60px;
     max-height: 60px;
     padding-top: 10px;
-    font-family: 'Source Sans Pro';
-    font-style: italic;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
   }
 
 }
@@ -266,55 +268,6 @@ body {
 }
 
 
-//SIGN
-
-// .wrapper {	
-// 	margin-top: 40px;
-//   margin-bottom: 40px;
-// }
-
-// .form-signin {
-//   max-width: 380px;
-//   padding: 15px 35px 45px;
-//   margin: 0 auto;
-//   background-color: #fff;
-//   border: 1px solid rgba(0,0,0,0.1);  
-
-//   .form-signin-heading,
-// 	.checkbox {
-// 	  margin-bottom: 30px;
-// 	}
-
-// 	.checkbox {
-// 	  font-weight: normal;
-// 	}
-
-// 	.form-control {
-// 	  position: relative;
-// 	  font-size: 16px;
-// 	  height: auto;
-// 	  padding: 10px;
-// 		// @include box-sizing(border-box);
-
-// 		&:focus {
-// 		  z-index: 2;
-// 		}
-// 	}
-
-// 	input[type="text"] {
-// 	  margin-bottom: -1px;
-// 	  border-bottom-left-radius: 0;
-// 	  border-bottom-right-radius: 0;
-// 	}
-
-// 	input[type="password"] {
-// 	  margin-bottom: 20px;
-// 	  border-top-left-radius: 0;
-// 	  border-top-right-radius: 0;
-// 	}
-// }
-
-
 .modal {
   position: absolute;
   top: 50%;
@@ -337,10 +290,6 @@ body {
     background: transparent;
   }
 }
-
-// .welcome {
-//   padding: 1rem 2rem;
-// }
 
 .welcome-text {
   font-family: 'Source Sans Pro', sans-serif;
