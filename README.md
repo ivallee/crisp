@@ -32,8 +32,9 @@ Users can make searches without registering. Signing up provides more utility fo
 
 * npm 5.2 or below
 * node 8.8.1 or above
+* Express
 * React
-* axios
+* Axios
 * [babel-loader](https://github.com/babel/babel-loader)
 * Webpack
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
