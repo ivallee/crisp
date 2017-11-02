@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import UserDataContainer from './UserDataContainer.jsx';
 import NavBar from './NavBar.jsx';
 import Main from './Main.jsx';
-import Footer from './Footer.jsx';
 
 class App extends Component {
   render() {
@@ -11,7 +10,6 @@ class App extends Component {
         <UserDataContainer>
           <NavBar />
           <Main />
-          <Footer />
         </UserDataContainer>
       </div>
     );
