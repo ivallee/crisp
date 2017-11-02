@@ -1,7 +1,7 @@
 Crisp
 =====================
 
-A recipe recommendation engine for people who want to try cooking more plant-based meals. Tinder for 🌽🍅
+A recipe recommendation engine for people who want to try cooking more plant-based meals.
 
 
 ### Features
@@ -34,9 +34,11 @@ Users can make searches without registering. Signing up provides more utility fo
 * node 8.8.1 or above
 * Express
 * React
+* React Router
 * Axios
 * [babel-loader](https://github.com/babel/babel-loader)
 * Webpack
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+* PostgreSQL
 
 
