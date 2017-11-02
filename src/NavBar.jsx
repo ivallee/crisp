@@ -64,7 +64,7 @@ function LoggedOut() {
 function LoggedIn({username, onClick}) {
   return (
     <nav className="nav nav-pills flex-column flex-sm-row float-right">
-      <span className="flex-sm-fill text-sm-center nav-link">Logged in as {username}</span>
+      <span className="flex-sm-fill text-sm-center nav-link">{username}</span>
       <NavLink className="nav-link" activeClassName="nav-link" to='/'>Search</NavLink>
       <NavLink className="nav-link" activeClassName="nav-link" to='/users'>Your Recipes</NavLink>
       <a className="flex-sm-fill text-sm-center nav-link" href="#" onClick={onClick}>Log Out</a>

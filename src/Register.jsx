@@ -35,7 +35,7 @@ export default class Register extends Component {
               <div className="wrapper">
                 <form className="form-signin" onSubmit={this.handleRegistration.bind(this)}>
                   <h2 className="form-signin-heading">Sign up</h2>
-                  <input type="text" className="form-control" name="username" ref="name" placeholder="Email Address" />
+                  <input type="email" className="form-control" name="username" ref="name" placeholder="Email Address" />
                   <input type="password" className="form-control" name="password" ref="password" placeholder="Password" />
                   <button className="btn btn-main btn-block" type="submit">Sign Up</button>
                 </form>
