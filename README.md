@@ -15,8 +15,10 @@ Users can make searches without registering. Signing up provides more utility fo
 
 
 ### Screenshots
-
-``` include screenshots here ```
+![Search](https://github.com/ivallee/crisp/blob/master/docs/screenshots/search.png?raw=true)
+![Recommendations](https://github.com/ivallee/crisp/blob/master/docs/screenshots/recommendations.png?raw=true)
+![Details](https://github.com/ivallee/crisp/blob/master/docs/screenshots/details.png?raw=true)
+![User-page](https://github.com/ivallee/crisp/blob/master/docs/screenshots/user-page.png?raw=true)
 
 ### Getting Started
 
