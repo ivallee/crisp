@@ -13,13 +13,6 @@ Users can make searches without registering. Signing up provides more utility fo
 - Save recipes
 - Create categories to organize their newly found recipes
 
-
-### Screenshots
-![Search](https://github.com/ivallee/crisp/blob/master/docs/screenshots/search.png?raw=true)
-![Recommendations](https://github.com/ivallee/crisp/blob/master/docs/screenshots/recommendations.png?raw=true)
-![Details](https://github.com/ivallee/crisp/blob/master/docs/screenshots/details.png?raw=true)
-![User-page](https://github.com/ivallee/crisp/blob/master/docs/screenshots/user-page.png?raw=true)
-
 ### Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
@@ -43,4 +36,8 @@ Users can make searches without registering. Signing up provides more utility fo
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 * PostgreSQL
 
-
+### Screenshots
+![Search](https://github.com/ivallee/crisp/blob/master/docs/screenshots/search.png?raw=true)
+![Recommendations](https://github.com/ivallee/crisp/blob/master/docs/screenshots/recommendations.png?raw=true)
+![Details](https://github.com/ivallee/crisp/blob/master/docs/screenshots/details.png?raw=true)
+![User-page](https://github.com/ivallee/crisp/blob/master/docs/screenshots/user-page.png?raw=true)
