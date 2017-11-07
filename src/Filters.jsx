@@ -31,7 +31,7 @@ class Filters extends Component {
           if(filter.unique && typeMatch > -1) {
             this.refs[`Filter${typeMatch}`].focus();
           } else {
-            console.log(this.refs);
+            // console.log(this.refs);
             filter.value = '';
             filter.exclude = false;
             this.props.addFilter(filter);

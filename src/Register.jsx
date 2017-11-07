@@ -19,7 +19,7 @@ export default class Register extends Component {
     let name = this.refs.name.value;
     let password = this.refs.password.value;
     register(name, password, this.props.userUpdated).then((response) => {
-      console.log(response);
+      // console.log(response);
     });
   }
 
