@@ -45,7 +45,6 @@ a:hover {
 
 
 h1, h2, h3, h4, h5 {
-  // font-family: 'Lobster Two', cursive;
   font-family: 'Dancing Script', cursive, serif;
 }
 
@@ -60,7 +59,6 @@ hr {
 body {
   // background-color: $bg-color-primary;
   background-image: url('/docs/bg-veggies.jpg');
-  // background-image: url('/veg-bg.jpeg');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -74,7 +72,6 @@ body {
 }
 
 .content-blocks {
-  // background-color: $bg-color-secondary;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 1.5rem 2rem;
   border-radius: 0.3rem;
@@ -100,15 +97,11 @@ body {
   text-decoration: none;
 }
 
-
 .btn-filter {
   width: 100px;  
 }
 
 .btn-main {
-	// -moz-box-shadow: 0px 10px 14px -7px #3e7327;
-	// -webkit-box-shadow: 0px 10px 14px -7px #3e7327;
-	// box-shadow: 0px 10px 14px -7px #3e7327;
 	background-color: $bg-color-primary;
 	border-radius:4px;
 	color: $bg-color-secondary;
@@ -248,10 +241,6 @@ body {
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
 }
-
-// .recipe-info {
-//   padding-top: 60px;
-// }
 
 .recipe-card-link {
   color: inherit;
